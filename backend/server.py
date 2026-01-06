@@ -27,10 +27,9 @@ async def startup():
         ['node', 'dist/server.js'],
         cwd='/app/backend',
         env=env,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        bufsize=1
+        # Don't pipe stdout/stderr, let them go to supervisor logs
+        stdout=None,
+        stderr=None
     )
     
     # Wait for backend to be ready
