@@ -19,6 +19,7 @@ export function UserManagement() {
   const [showModal, setShowModal] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [formData, setFormData] = useState({
+    username: '',
     email: '',
     name: '',
     password: '',
