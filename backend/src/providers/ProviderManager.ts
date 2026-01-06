@@ -86,8 +86,13 @@ export class ProviderManager {
     }
 
     // Fallback to first available provider
-    const [firstProviderId, firstProvider] = providers.entries().next().value;
-    return firstProvider;
+    const firstEntry = providers.entries().next().value;
+    if (firstEntry) {
+      const [firstProviderId, firstProvider] = firstEntry;
+      return firstProvider;
+    }
+
+    throw new Error('No providers available');
   }
 
   async listUserProviders(userId: string): Promise<IProviderConfig[]> {
