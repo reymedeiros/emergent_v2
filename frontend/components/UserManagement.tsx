@@ -237,6 +237,21 @@ export function UserManagement() {
               </div>
 
               <div>
+                <label className="block text-sm font-medium mb-1">Username</label>
+                <input
+                  type="text"
+                  value={formData.username}
+                  onChange={(e) =>
+                    setFormData({ ...formData, username: e.target.value })
+                  }
+                  className="w-full px-3 py-2 bg-secondary border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Alphanumeric only, max 20 chars"
+                  maxLength={20}
+                  required
+                />
+              </div>
+
+              <div>
                 <label className="block text-sm font-medium mb-1">Email</label>
                 <input
                   type="email"
