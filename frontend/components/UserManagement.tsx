@@ -184,7 +184,7 @@ export function UserManagement() {
                   @{user.username} • {user.email}
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  Created: {new Date(user.createdAt).toLocaleDateString()}
+                  Created: {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
                 </div>
               </div>
               <div className="flex items-center gap-2">
