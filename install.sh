@@ -287,7 +287,7 @@ EOF
 
 # Create frontend .env.local
 cat > /opt/emergent-clone/frontend/.env.local <<EOF
-NEXT_PUBLIC_API_URL=http://$LAN_IP:4000
+NEXT_PUBLIC_API_URL=http://$LAN_IP
 EOF
 
 echo ""
