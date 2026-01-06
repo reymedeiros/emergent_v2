@@ -116,7 +116,7 @@ export function UserManagement() {
 
   const openCreateModal = () => {
     setEditingUser(null);
-    setFormData({ email: '', name: '', password: '', isAdmin: false });
+    setFormData({ username: '', email: '', name: '', password: '', isAdmin: false });
     setError('');
     setShowModal(true);
   };
@@ -124,6 +124,7 @@ export function UserManagement() {
   const openEditModal = (user: User) => {
     setEditingUser(user);
     setFormData({
+      username: user.username,
       email: user.email,
       name: user.name,
       password: '',
@@ -136,7 +137,7 @@ export function UserManagement() {
   const closeModal = () => {
     setShowModal(false);
     setEditingUser(null);
-    setFormData({ email: '', name: '', password: '', isAdmin: false });
+    setFormData({ username: '', email: '', name: '', password: '', isAdmin: false });
     setError('');
   };
 
