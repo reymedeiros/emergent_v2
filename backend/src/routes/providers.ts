@@ -107,7 +107,7 @@ export async function providerRoutes(fastify: FastifyInstance) {
   fastify.post<{ Body: ProviderConfigBody }>('/providers/configs', {
     preHandler: [fastify.authenticate as any]
   }, async (request, reply) => {
-    const userId = (request.user as any).userId;
+    const userId = (request.user as any).id;
     const body = request.body;
 
     // Validate required fields
