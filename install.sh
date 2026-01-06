@@ -330,11 +330,12 @@ async function createAdmin() {
     
     const User = mongoose.model('User', userSchema);
     
-    const existing = await User.findOne({ email: 'admin' });
+    const existing = await User.findOne({ username: 'admin' });
     if (!existing) {
       const hashedPassword = await bcrypt.hash('admin123', 10);
       await User.create({
-        email: 'admin',
+        username: 'admin',
+        email: 'admin@example.com',
         password: hashedPassword,
         name: 'Administrator',
         isAdmin: true,
