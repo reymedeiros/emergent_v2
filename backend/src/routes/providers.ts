@@ -81,7 +81,7 @@ export async function providerRoutes(fastify: FastifyInstance) {
   fastify.get('/providers/configs', {
     preHandler: [fastify.authenticate as any]
   }, async (request: FastifyRequest, reply: FastifyReply) => {
-    const userId = (request.user as any).userId;
+    const userId = (request.user as any).id;
     
     const configs = await providerManager.listUserProviders(userId);
     
