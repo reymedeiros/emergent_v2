@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useProjectStore } from '@/lib/store/projects';
 import { useAuthStore } from '@/lib/store/auth';
-import { FolderOpen, Plus, Trash2, LogOut, Users } from 'lucide-react';
+import { FolderOpen, Plus, Trash2, LogOut, Users, Settings } from 'lucide-react';
 
 export function Sidebar() {
   const { projects, loadProjects, selectProject, currentProject, deleteProject } = useProjectStore();
