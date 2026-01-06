@@ -159,7 +159,7 @@ export async function providerRoutes(fastify: FastifyInstance) {
   }>('/providers/configs/:id', {
     preHandler: [fastify.authenticate as any]
   }, async (request, reply) => {
-    const userId = (request.user as any).userId;
+    const userId = (request.user as any).id;
     const { id } = request.params;
     const body = request.body;
 
