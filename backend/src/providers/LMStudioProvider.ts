@@ -55,7 +55,7 @@ export class LMStudioProvider extends BaseLLMProvider {
   ): Promise<AIResponse> {
     try {
       const response = await this.client.post('/chat/completions', {
-        model: llmConfig.model || config.ai.lmStudio.defaultModel,
+        model: llmConfig.model || this.defaultModel,
         messages: this.formatMessages(messages),
         temperature: llmConfig.temperature || 0.7,
         max_tokens: llmConfig.maxTokens || 2048,
