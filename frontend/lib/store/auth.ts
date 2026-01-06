@@ -3,6 +3,7 @@ import { authAPI } from '../api';
 
 interface User {
   id: string;
+  username: string;
   email: string;
   name: string;
   isAdmin: boolean;
