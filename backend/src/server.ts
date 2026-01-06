@@ -57,6 +57,7 @@ async function start() {
       prefix: '/api'
     });
     await fastify.register(buildRoutes, { prefix: '/api' });
+    await fastify.register(providerRoutes, { prefix: '/api' });
 
     fastify.get('/health', async () => {
       return { status: 'ok', timestamp: new Date().toISOString() };
