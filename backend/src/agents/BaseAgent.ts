@@ -12,11 +12,12 @@ export abstract class BaseAgent {
 
   protected async callLLM(
     messages: AIMessage[],
+    userId: string,
     model?: string,
     stream: boolean = false,
     onChunk?: (chunk: string) => void
   ): Promise<string> {
-    const provider = await providerManager.getProvider();
+    const provider = await providerManager.getProvider(userId);
     const config = {
       model: model || this.defaultModel,
       temperature: this.temperature,
