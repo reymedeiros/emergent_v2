@@ -22,7 +22,13 @@ export function PromptPanel() {
       const wsUrl = apiUrl.replace('http', 'ws');
       const token = localStorage.getItem('token');
 
-      const ws = new WebSocket(`${wsUrl}/api/build/${currentProject._id}`);
+      if (!token) {
+        addLog('error', 'No authentication token found');
+        setIsBuilding(false);
+        return;
+      }
+
+      const ws = new WebSocket(`${wsUrl}/api/build/${currentProject._id}?token=${encodeURIComponent(token)}`);
 
       ws.onopen = () => {
         addLog('info', 'Connected to build service');
