@@ -8,10 +8,13 @@ import os
 import time
 import httpx
 import asyncio
+import websockets
 from starlette.applications import Starlette
 from starlette.responses import Response, StreamingResponse
-from starlette.routing import Mount, Route
+from starlette.routing import Mount, Route, WebSocketRoute
 from starlette.middleware.cors import CORSMiddleware
+from starlette.websockets import WebSocket
+from starlette.endpoints import WebSocketEndpoint
 
 # Backend Node.js server details
 BACKEND_URL = "http://localhost:4000"
