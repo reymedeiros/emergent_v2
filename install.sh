@@ -518,10 +518,9 @@ MongoDB:
 
 JWT Secret: $JWT_SECRET
 
-LM Studio URL: $LM_STUDIO_URL
+Web Interface: http://$LAN_IP
 
-Frontend: http://$LAN_IP:3000
-Backend: http://$LAN_IP:4000
+Note: Configure AI providers through Settings > Provider Settings
 EOF
 
 chmod 600 /root/emergent-clone-credentials.txt
