@@ -381,13 +381,13 @@ fi
 
 echo ""
 echo "========================================="
-echo "Step 11: Creating systemd services"
+echo "Step 12: Creating systemd services"
 echo "========================================="
 
-# Create backend service
+# Create backend service (Python ASGI proxy)
 cat > /etc/systemd/system/emergent-backend.service <<EOF
 [Unit]
-Description=Emergent Clone Backend
+Description=Emergent Clone Backend (ASGI Proxy)
 After=network.target mongod.service redis.service
 
 [Service]
@@ -395,7 +395,7 @@ Type=simple
 User=root
 WorkingDirectory=/opt/emergent-clone/backend
 Environment=NODE_ENV=production
-ExecStart=/usr/bin/node dist/server.js
+ExecStart=/opt/emergent-clone-venv/bin/uvicorn server:app --host 0.0.0.0 --port 8001
 Restart=always
 RestartSec=10
 StandardOutput=journal
