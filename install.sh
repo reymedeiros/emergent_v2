@@ -199,7 +199,22 @@ echo "Redis installed and configured"
 
 echo ""
 echo "========================================="
-echo "Step 6: Installing Nginx"
+echo "Step 6: Installing Python dependencies"
+echo "========================================="
+apt-get install -y python3 python3-pip python3-venv build-essential
+
+# Create Python virtual environment for backend proxy
+python3 -m venv /opt/emergent-clone-venv
+
+# Install required Python packages for ASGI proxy
+/opt/emergent-clone-venv/bin/pip install --upgrade pip
+/opt/emergent-clone-venv/bin/pip install httpx starlette uvicorn
+
+echo "Python environment created and configured"
+
+echo ""
+echo "========================================="
+echo "Step 7: Installing Nginx"
 echo "========================================="
 apt-get install -y nginx
 
