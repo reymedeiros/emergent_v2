@@ -28,7 +28,7 @@ const providerConfigSchema = new Schema<IProviderConfig>({
     enum: ['openai', 'anthropic', 'gemini', 'mistral', 'groq', 'lmstudio']
   },
   name: { type: String, required: true },
-  apiKey: { type: String, required: true },
+  apiKey: { type: String, required: false, default: '' },
   baseUrl: { type: String },
   defaultModel: { type: String, required: true },
   enabled: { type: Boolean, default: true },
