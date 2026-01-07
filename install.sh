@@ -394,10 +394,14 @@ After=network.target mongod.service redis.service
 Type=simple
 User=root
 WorkingDirectory=/opt/emergent-clone/backend
+
 Environment=NODE_ENV=production
+Environment=NODE_BACKEND_DIR=/opt/emergent-clone/backend
+Environment=NODE_ENTRYPOINT=dist/server.js
+
 ExecStart=/opt/emergent-clone-venv/bin/uvicorn server:app --host 0.0.0.0 --port 8001
 Restart=always
-RestartSec=10
+RestartSec=5
 StandardOutput=journal
 StandardError=journal
 

@@ -15,37 +15,48 @@ from starlette.middleware.cors import CORSMiddleware
 
 # Backend Node.js server details
 BACKEND_URL = "http://localhost:4000"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+NODE_BACKEND_DIR = os.getenv("NODE_BACKEND_DIR", BASE_DIR)
+NODE_ENTRYPOINT = os.getenv("NODE_ENTRYPOINT", "dist/server.js")
 node_process = None
 
 async def startup():
-    """Start the Node.js backend server"""
+    """Start the Node.js backend server (non-Docker safe)"""
     global node_process
+
     env = os.environ.copy()
-    
-    print("🚀 Starting Node.js Fastify backend on port 4000...")
+
+    backend_dir = NODE_BACKEND_DIR
+    entrypoint = os.path.join(backend_dir, NODE_ENTRYPOINT)
+
+    if not os.path.isdir(backend_dir):
+        raise RuntimeError(f"Backend directory not found: {backend_dir}")
+
+    if not os.path.isfile(entrypoint):
+        raise RuntimeError(f"Node entrypoint not found: {entrypoint}")
+
+    print(f"🚀 Starting Node.js backend from {entrypoint}")
+
     node_process = subprocess.Popen(
-        ['node', 'dist/server.js'],
-        cwd='/app/backend',
+        ["node", entrypoint],
+        cwd=backend_dir,
         env=env,
-        # Don't pipe stdout/stderr, let them go to supervisor logs
         stdout=None,
         stderr=None
     )
-    
-    # Wait for backend to be ready
-    max_retries = 30
-    for i in range(max_retries):
+
+    # Wait for backend healthcheck
+    for i in range(30):
         try:
             async with httpx.AsyncClient() as client:
-                response = await client.get(f"{BACKEND_URL}/health", timeout=2.0)
-                if response.status_code == 200:
-                    print(f"✅ Node.js backend is ready on port 4000")
+                r = await client.get(f"{BACKEND_URL}/health", timeout=2.0)
+                if r.status_code == 200:
+                    print("✅ Node.js backend is ready")
                     return
-        except:
-            if i < max_retries - 1:
-                await asyncio.sleep(1)
-    
-    print("⚠️  Backend may not be fully ready, continuing anyway...")
+        except Exception:
+            await asyncio.sleep(1)
+
+    print("⚠️ Backend did not respond to healthcheck, continuing anyway...")
 
 async def shutdown():
     """Shutdown the Node.js backend server"""
