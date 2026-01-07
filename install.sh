@@ -440,7 +440,7 @@ systemctl start emergent-frontend
 
 echo ""
 echo "========================================="
-echo "Step 12: Configuring firewall"
+echo "Step 13: Configuring firewall"
 echo "========================================="
 ufw --force enable
 ufw allow 22/tcp        # SSH
