@@ -252,19 +252,60 @@ $ curl http://localhost:8001/health
 ## How It Works Now
 
 1. **User clicks "Build" button**
-2. **Frontend**:
+2. **Frontend (port 3000)**:
    - Retrieves JWT token from localStorage
    - Validates token exists
-   - Creates WebSocket connection with token as query param: `ws://url/api/build/:id?token=xxx`
-3. **Backend**:
-   - Receives WebSocket upgrade request
+   - Creates WebSocket connection: `ws://url:8001/api/build/:id?token=xxx`
+3. **Python Proxy (port 8001)**:
+   - Accepts WebSocket upgrade request
+   - Extracts query parameters (including token)
+   - Forwards to Node.js backend: `ws://localhost:4000/api/build/:id?token=xxx`
+   - Establishes bidirectional message forwarding
+4. **Node.js Backend (port 4000)**:
+   - Receives WebSocket upgrade request with token in query
    - Extracts token from query parameter
    - Verifies JWT token using `fastify.jwt.verify()`
    - If valid: establishes WebSocket connection and processes build
    - If invalid/missing: sends error message and closes connection
-4. **Build pipeline executes** with authenticated user context
-5. **Progress updates** sent via WebSocket to frontend
-6. **LM Studio** receives requests from backend's PipelineOrchestrator
+5. **Build Pipeline**:
+   - Executes with authenticated user context
+   - Sends progress updates via WebSocket → Python Proxy → Frontend
+6. **LM Studio (port 1234)**:
+   - Receives requests from backend's PipelineOrchestrator
+   - Processes AI inference
+   - Returns results to backend
+
+## Request Flow Diagram
+
+```
+┌──────────────┐
+│   Browser    │
+│   Frontend   │ ws://192.168.1.201/api/build/xxx?token=jwt
+└──────┬───────┘
+       │
+       ▼
+┌──────────────────┐
+│  Python Proxy    │ Port 8001
+│  (server.py)     │ • Accepts WebSocket
+│                  │ • Forwards with query params
+└──────┬───────────┘
+       │
+       │ ws://localhost:4000/api/build/xxx?token=jwt
+       ▼
+┌──────────────────┐
+│  Node.js Backend │ Port 4000
+│  (Fastify)       │ • Verifies JWT token
+│                  │ • Authenticates user
+│                  │ • Processes build
+└──────┬───────────┘
+       │
+       │ HTTP POST /v1/chat/completions
+       ▼
+┌──────────────────┐
+│   LM Studio      │ Port 1234
+│   (Local AI)     │ • Generates code
+└──────────────────┘
+```
 
 ## Why This Approach
 
