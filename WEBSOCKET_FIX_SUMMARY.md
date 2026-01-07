@@ -86,7 +86,61 @@ fastify.get('/build/:projectId', {
 
 ## Solution Implemented
 
-### 1. Frontend Fix
+### 1. Added WebSocket Proxying to Python Proxy
+**File**: `/app/backend/server.py`
+
+Added WebSocket support with bidirectional message forwarding:
+```python
+import websockets
+from starlette.routing import WebSocketRoute
+from starlette.websockets import WebSocket
+
+async def websocket_proxy(websocket: WebSocket):
+    """Proxy WebSocket connections to the Node.js backend"""
+    await websocket.accept()
+    
+    # Build the backend WebSocket URL
+    path = websocket.url.path
+    query = str(websocket.url.query)
+    backend_ws_url = f"ws://localhost:4000{path}"
+    if query:
+        backend_ws_url += f"?{query}"
+    
+    try:
+        async with websockets.connect(backend_ws_url) as backend_ws:
+            # Bidirectional forwarding
+            async def forward_to_backend():
+                while True:
+                    message = await websocket.receive_text()
+                    await backend_ws.send(message)
+            
+            async def forward_to_client():
+                async for message in backend_ws:
+                    await websocket.send_text(message)
+            
+            await asyncio.gather(
+                forward_to_backend(),
+                forward_to_client(),
+                return_exceptions=True
+            )
+    except Exception as e:
+        print(f"WebSocket proxy error: {e}")
+        await websocket.send_text(f'{{"type":"error","message":"WebSocket proxy error: {str(e)}"}}')
+    finally:
+        await websocket.close()
+
+# Register WebSocket route
+app = Starlette(
+    routes=[
+        WebSocketRoute('/api/build/{project_id}', websocket_proxy),
+        Route('/{path:path}', proxy, methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']),
+    ],
+    on_startup=[startup],
+    on_shutdown=[shutdown]
+)
+```
+
+### 2. Frontend Fix - Pass JWT Token
 **File**: `/app/frontend/components/PromptPanel.tsx`
 
 Added token validation and pass token as query parameter:
@@ -102,7 +156,7 @@ if (!token) {
 const ws = new WebSocket(`${wsUrl}/api/build/${currentProject._id}?token=${encodeURIComponent(token)}`);
 ```
 
-### 2. Backend Fix
+### 3. Backend Fix - Verify JWT from Query Parameter
 **File**: `/app/backend/src/routes/build.ts`
 
 Added JWT token verification from query parameters:
@@ -141,28 +195,25 @@ export async function buildRoutes(fastify: FastifyInstance) {
     // Continue with authenticated userId...
 ```
 
-### 3. Configuration Fixes
+### 4. Install Python Dependencies
+```bash
+source /root/.venv/bin/activate
+pip install httpx websockets starlette
+```
 
-**Backend Configuration**:
-- Created `/app/backend/.env` with correct port:
-  ```env
-  PORT=8001
-  HOST=0.0.0.0
-  NODE_ENV=production
-  MONGODB_URI=mongodb://localhost:27017/emergent_clone
-  JWT_SECRET=your-super-secret-jwt-key-change-in-production
-  ```
+### 5. Configuration
+**Backend .env** (`/app/backend/.env`):
+```env
+PORT=4000  # Node.js backend runs on 4000
+HOST=0.0.0.0
+NODE_ENV=production
+MONGODB_URI=mongodb://localhost:27017/emergent_clone
+JWT_SECRET=your-super-secret-jwt-key-change-in-production
+```
 
-**Supervisor Configuration** (`/etc/supervisor/conf.d/supervisord.conf`):
-- Changed from: `command=/root/.venv/bin/uvicorn server:app --host 0.0.0.0 --port 8001 --workers 1 --reload`
-- Changed to: `command=yarn start`
-
-**Build Steps**:
-1. `cd /app/backend && yarn install` - Install dependencies
-2. `cd /app/backend && yarn build` - Build TypeScript
-3. `cd /app/frontend && yarn build` - Rebuild frontend with changes
-4. `sudo supervisorctl reread && sudo supervisorctl update` - Update supervisor
-5. `sudo supervisorctl restart all` - Restart all services
+**Supervisor** (already configured correctly):
+- Runs Python proxy with uvicorn on port 8001
+- Python proxy automatically starts Node.js backend on port 4000
 
 ## Verification
 
