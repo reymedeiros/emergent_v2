@@ -268,7 +268,7 @@ echo "Nginx installed and configured"
 
 echo ""
 echo "========================================="
-echo "Step 7: Installing application"
+echo "Step 8: Installing application"
 echo "========================================="
 
 # Create application directory
