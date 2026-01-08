@@ -93,199 +93,53 @@ cleanup_old_backups() {
 
 restore_from_backup() {
   local backup_dir="$1"
-  local reason="${2:-Manual restore}"
   
   if [ -z "$backup_dir" ] || [ ! -d "$backup_dir" ]; then
     echo "❌ Error: Backup directory not found: $backup_dir"
-    log_rollback_history "RESTORE_FAILED" "$backup_dir" "FAILED" "Backup directory not found"
     return 1
   fi
   
   echo "🔄 Rolling back from backup: $backup_dir"
-  echo "   Reason: $reason"
   
-  # Stop services gracefully
-  echo "  Stopping services..."
+  # Stop services
   systemctl stop emergent-backend emergent-frontend 2>/dev/null || true
-  sleep 2
   
   # Restore .env files
-  echo "  Restoring configuration files..."
   if [ -f "$backup_dir/backend.env" ]; then
     cp "$backup_dir/backend.env" "$APP_DIR/backend/.env"
-    echo "    ✓ Restored backend/.env"
+    echo "  ✓ Restored backend/.env"
   fi
   
   if [ -f "$backup_dir/frontend.env.local" ]; then
     cp "$backup_dir/frontend.env.local" "$APP_DIR/frontend/.env.local"
-    echo "    ✓ Restored frontend/.env.local"
+    echo "  ✓ Restored frontend/.env.local"
   fi
   
   # Restore application files
-  echo "  Restoring application files..."
   rsync -a --delete "$backup_dir/app/" "$APP_DIR/"
-  echo "    ✓ Restored application files"
-  
-  # Reload systemd configuration
-  echo "  Reloading systemd configuration..."
-  systemctl daemon-reload
+  echo "  ✓ Restored application files"
   
   # Restart services
-  echo "  Starting services..."
-  systemctl start emergent-backend
-  sleep 3
-  systemctl start emergent-frontend
+  systemctl start emergent-backend emergent-frontend
   
-  echo "  ✓ Services restarted"
-  echo ""
-  echo "  Verifying system health after restore..."
-  
-  # Perform comprehensive health check
-  if check_health "full" 3 15; then
-    echo ""
-    echo "✓ Rollback completed successfully - All services are healthy"
-    log_rollback_history "RESTORE_SUCCESS" "$backup_dir" "SUCCESS" "$reason - All services verified healthy"
-    return 0
-  else
-    echo ""
-    echo "❌ Rollback completed but health check failed"
-    echo ""
-    echo "Service status:"
-    systemctl status emergent-backend --no-pager -l | head -20
-    echo ""
-    systemctl status emergent-frontend --no-pager -l | head -20
-    echo ""
-    echo "Recent backend logs:"
-    journalctl -u emergent-backend -n 20 --no-pager
-    echo ""
-    log_rollback_history "RESTORE_PARTIAL" "$backup_dir" "PARTIAL" "$reason - Services restored but health check failed"
-    return 1
-  fi
+  echo "✓ Rollback completed successfully"
 }
 
-# Rollback history logging
-log_rollback_history() {
-  local action="$1"
-  local backup_path="$2"
-  local status="$3"
-  local details="$4"
-  local history_file="$BACKUP_BASE_DIR/rollback_history.log"
-  
-  mkdir -p "$BACKUP_BASE_DIR"
-  
-  echo "========================================" >> "$history_file"
-  echo "Timestamp: $(date '+%Y-%m-%d %H:%M:%S')" >> "$history_file"
-  echo "Action: $action" >> "$history_file"
-  echo "Backup Path: $backup_path" >> "$history_file"
-  echo "Status: $status" >> "$history_file"
-  echo "Details: $details" >> "$history_file"
-  echo "========================================" >> "$history_file"
-  echo "" >> "$history_file"
-}
-
-# Enhanced health check function
+# Health check function
 check_health() {
-  local check_mode="${1:-full}"  # full or quick
-  local retry_count="${2:-3}"
-  local wait_time="${3:-10}"
+  echo "Checking service health..."
   
-  echo "Checking service health (mode: $check_mode)..."
+  # Wait for services to start
+  sleep 5
   
-  local all_healthy=true
-  local health_report=""
+  # Check backend health
+  local backend_health=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8001/health 2>/dev/null || echo "000")
   
-  # Wait for services to stabilize
-  if [ "$check_mode" = "full" ]; then
-    echo "  Waiting ${wait_time}s for services to stabilize..."
-    sleep "$wait_time"
-  else
-    sleep 3
-  fi
-  
-  # Check systemd service status
-  echo "  Checking systemd services..."
-  if systemctl is-active --quiet emergent-backend; then
-    echo "    ✓ emergent-backend service is active"
-    health_report="${health_report}\n  ✓ Backend service: active"
-  else
-    echo "    ❌ emergent-backend service is not active"
-    health_report="${health_report}\n  ❌ Backend service: inactive"
-    all_healthy=false
-  fi
-  
-  if systemctl is-active --quiet emergent-frontend; then
-    echo "    ✓ emergent-frontend service is active"
-    health_report="${health_report}\n  ✓ Frontend service: active"
-  else
-    echo "    ❌ emergent-frontend service is not active"
-    health_report="${health_report}\n  ❌ Frontend service: inactive"
-    all_healthy=false
-  fi
-  
-  # Check backend Python proxy (port 8001)
-  echo "  Checking backend proxy (port 8001)..."
-  local backend_proxy_health=""
-  for i in $(seq 1 $retry_count); do
-    backend_proxy_health=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8001/health 2>/dev/null || echo "000")
-    if [ "$backend_proxy_health" = "200" ]; then
-      echo "    ✓ Backend proxy is healthy (HTTP 200)"
-      health_report="${health_report}\n  ✓ Backend proxy (8001): HTTP 200"
-      break
-    else
-      if [ $i -lt $retry_count ]; then
-        echo "    ⚠️  Backend proxy check failed (HTTP $backend_proxy_health), retrying ($i/$retry_count)..."
-        sleep 2
-      else
-        echo "    ❌ Backend proxy health check failed (HTTP $backend_proxy_health)"
-        health_report="${health_report}\n  ❌ Backend proxy (8001): HTTP $backend_proxy_health"
-        all_healthy=false
-      fi
-    fi
-  done
-  
-  # Check Node.js backend (port 4000) - direct check
-  if [ "$check_mode" = "full" ]; then
-    echo "  Checking Node.js backend (port 4000)..."
-    local node_backend_health=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:4000/health 2>/dev/null || echo "000")
-    if [ "$node_backend_health" = "200" ]; then
-      echo "    ✓ Node.js backend is healthy (HTTP 200)"
-      health_report="${health_report}\n  ✓ Node.js backend (4000): HTTP 200"
-    else
-      echo "    ❌ Node.js backend health check failed (HTTP $node_backend_health)"
-      health_report="${health_report}\n  ❌ Node.js backend (4000): HTTP $node_backend_health"
-      all_healthy=false
-    fi
-  fi
-  
-  # Check frontend (port 3000)
-  echo "  Checking frontend (port 3000)..."
-  local frontend_health=""
-  for i in $(seq 1 $retry_count); do
-    frontend_health=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000 2>/dev/null || echo "000")
-    if [ "$frontend_health" = "200" ]; then
-      echo "    ✓ Frontend is responding (HTTP 200)"
-      health_report="${health_report}\n  ✓ Frontend (3000): HTTP 200"
-      break
-    else
-      if [ $i -lt $retry_count ]; then
-        echo "    ⚠️  Frontend check failed (HTTP $frontend_health), retrying ($i/$retry_count)..."
-        sleep 2
-      else
-        echo "    ❌ Frontend health check failed (HTTP $frontend_health)"
-        health_report="${health_report}\n  ❌ Frontend (3000): HTTP $frontend_health"
-        all_healthy=false
-      fi
-    fi
-  done
-  
-  # Save health report to temp file
-  echo -e "$health_report" > /tmp/health_check_report
-  
-  if [ "$all_healthy" = true ]; then
-    echo "  ✓ All services are healthy"
+  if [ "$backend_health" = "200" ]; then
+    echo "  ✓ Backend is healthy (HTTP 200)"
     return 0
   else
-    echo "  ❌ Some services are unhealthy"
+    echo "  ❌ Backend health check failed (HTTP $backend_health)"
     return 1
   fi
 }
@@ -293,104 +147,21 @@ check_health() {
 # Error handler with rollback
 error_handler() {
   local exit_code=$?
-  local failed_command="${BASH_COMMAND}"
-  local line_number="${BASH_LINENO[0]}"
-  
   echo ""
-  echo "========================================="
-  echo "❌ ERROR DURING $MODE"
-  echo "========================================="
-  echo "Exit Code: $exit_code"
-  echo "Failed Command: $failed_command"
-  echo "Line Number: $line_number"
-  echo "Timestamp: $(date '+%Y-%m-%d %H:%M:%S')"
-  echo ""
+  echo "❌ Error occurred during $MODE (exit code: $exit_code)"
   
   if [ "$MODE" = "UPDATE" ] && [ -f /tmp/latest_backup_path ]; then
     local backup_path=$(cat /tmp/latest_backup_path)
-    echo "Backup available at: $backup_path"
     echo ""
-    echo "========================================="
-    echo "INITIATING AUTOMATIC ROLLBACK"
-    echo "========================================="
-    echo ""
+    echo "Attempting automatic rollback..."
+    restore_from_backup "$backup_path"
     
-    # Log the failure
-    log_rollback_history "UPDATE_FAILED" "$backup_path" "TRIGGERED" "Update failed at line $line_number: $failed_command (exit code: $exit_code)"
-    
-    # Attempt restore
-    if restore_from_backup "$backup_path" "Automatic rollback due to update failure"; then
-      echo ""
-      echo "========================================="
-      echo "✓ ROLLBACK SUCCESSFUL"
-      echo "========================================="
-      echo ""
-      echo "System has been restored to previous working state."
-      echo ""
-      echo "Health Check Summary:"
-      if [ -f /tmp/health_check_report ]; then
-        cat /tmp/health_check_report
-      fi
-      echo ""
-      echo "Your system is operational. Update was reverted."
-      echo ""
-      echo "Next Steps:"
-      echo "  1. Review the error above to understand what failed"
-      echo "  2. Check rollback history: cat $BACKUP_BASE_DIR/rollback_history.log"
-      echo "  3. Check service logs:"
-      echo "     - Backend: sudo journalctl -u emergent-backend -n 50"
-      echo "     - Frontend: sudo journalctl -u emergent-frontend -n 50"
-      echo "  4. Contact support if you need assistance"
-      echo ""
+    if [ $? -eq 0 ]; then
+      echo "✓ System restored to previous state"
     else
-      echo ""
-      echo "========================================="
-      echo "❌ ROLLBACK FAILED"
-      echo "========================================="
-      echo ""
-      echo "Automatic rollback was attempted but health checks failed."
-      echo "The system may require manual intervention."
-      echo ""
-      echo "Backup Location: $backup_path"
-      echo ""
-      echo "Health Check Summary:"
-      if [ -f /tmp/health_check_report ]; then
-        cat /tmp/health_check_report
-      fi
-      echo ""
-      echo "Manual Recovery Steps:"
-      echo "  1. Check service status:"
-      echo "     sudo systemctl status emergent-backend"
-      echo "     sudo systemctl status emergent-frontend"
-      echo ""
-      echo "  2. Check service logs:"
-      echo "     sudo journalctl -u emergent-backend -n 50"
-      echo "     sudo journalctl -u emergent-frontend -n 50"
-      echo ""
-      echo "  3. Try restarting services:"
-      echo "     sudo systemctl restart emergent-backend emergent-frontend"
-      echo ""
-      echo "  4. If issues persist, manually restore from backup:"
-      echo "     sudo systemctl stop emergent-backend emergent-frontend"
-      echo "     sudo rsync -a --delete $backup_path/app/ $APP_DIR/"
-      echo "     sudo cp $backup_path/backend.env $APP_DIR/backend/.env"
-      echo "     sudo cp $backup_path/frontend.env.local $APP_DIR/frontend/.env.local"
-      echo "     sudo systemctl start emergent-backend emergent-frontend"
-      echo ""
-      echo "  5. Check rollback history for details:"
-      echo "     cat $BACKUP_BASE_DIR/rollback_history.log"
-      echo ""
+      echo "❌ Rollback failed. Manual recovery may be required."
+      echo "Backup location: $backup_path"
     fi
-    
-    # Clean up temp files
-    rm -f /tmp/health_check_report /tmp/latest_backup_path
-  else
-    echo "No backup available for rollback."
-    echo "This may be a fresh installation failure."
-    echo ""
-    echo "Check logs for details:"
-    echo "  sudo journalctl -u emergent-backend -n 50"
-    echo "  sudo journalctl -u emergent-frontend -n 50"
   fi
   
   exit $exit_code
@@ -1035,55 +806,29 @@ echo "========================================="
 echo "Verifying installation"
 echo "========================================="
 
-# Comprehensive health check using enhanced function
-if check_health "full" 3 10; then
-  echo ""
-  echo "✓ All health checks passed"
-  
-  # Log successful installation/update
-  if [ "$MODE" = "UPDATE" ]; then
-    if [ -f /tmp/latest_backup_path ]; then
-      local backup_path=$(cat /tmp/latest_backup_path)
-      log_rollback_history "UPDATE_SUCCESS" "$backup_path" "SUCCESS" "Update completed successfully - All services healthy"
-    fi
-  fi
+# Check service status
+if systemctl is-active --quiet emergent-backend && systemctl is-active --quiet emergent-frontend; then
+  echo "  ✓ Services are running"
 else
+  echo "  ❌ Some services failed to start"
   echo ""
-  echo "❌ Health check failed"
+  echo "Backend status:"
+  systemctl status emergent-backend --no-pager
   echo ""
-  echo "Health Check Report:"
-  if [ -f /tmp/health_check_report ]; then
-    cat /tmp/health_check_report
-  fi
-  echo ""
-  echo "Service Status:"
-  echo "---------------"
-  systemctl status emergent-backend --no-pager -l | head -15
-  echo ""
-  systemctl status emergent-frontend --no-pager -l | head -15
+  echo "Frontend status:"
+  systemctl status emergent-frontend --no-pager
+  exit 1
+fi
+
+# Health check
+if check_health; then
+  echo "  ✓ Health check passed"
+else
+  echo "  ❌ Health check failed"
   echo ""
   echo "Troubleshooting:"
   echo "  - Check backend logs: sudo journalctl -u emergent-backend -n 50"
   echo "  - Check frontend logs: sudo journalctl -u emergent-frontend -n 50"
-  echo "  - Try restarting services: sudo systemctl restart emergent-backend emergent-frontend"
-  echo ""
-  
-  if [ "$MODE" = "UPDATE" ]; then
-    echo "If issues persist, you can rollback to the previous version:"
-    if [ -f /tmp/latest_backup_path ]; then
-      local backup_path=$(cat /tmp/latest_backup_path)
-      echo "  Backup location: $backup_path"
-      echo ""
-      echo "Manual rollback:"
-      echo "  sudo systemctl stop emergent-backend emergent-frontend"
-      echo "  sudo rsync -a --delete $backup_path/app/ $APP_DIR/"
-      echo "  sudo cp $backup_path/backend.env $APP_DIR/backend/.env"
-      echo "  sudo cp $backup_path/frontend.env.local $APP_DIR/frontend/.env.local"
-      echo "  sudo systemctl start emergent-backend emergent-frontend"
-      echo ""
-    fi
-  fi
-  
   exit 1
 fi
 
@@ -1205,14 +950,11 @@ else
   fi
   echo ""
   echo "Update complete! Your application is ready to use."
-  echo ""
-  echo "Update and rollback history available at:"
-  echo "  $BACKUP_BASE_DIR/rollback_history.log"
 fi
 
 echo ""
 
 # Clean up temp files
-rm -f /tmp/latest_backup_path /tmp/health_check_report
+rm -f /tmp/latest_backup_path
 
 exit 0
