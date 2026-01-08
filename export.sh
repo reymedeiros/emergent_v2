@@ -1,0 +1,1 @@
+zip -r emergent_v2.zip . -x "*/node_modules/*" -x "*/dist/*" -x "*/__pycache__/*" -x "*/.next/*"
