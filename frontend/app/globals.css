@@ -2,33 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
+/* Custom Fonts */
+@font-face {
+  font-family: 'Brockmann';
+  src: url('/fonts/Brockmann-Regular-CFBdZhjj.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: 'Brockmann';
+  src: url('/fonts/Brockmann-Medium-DWnaEPVI.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brockmann';
+  src: url('/fonts/Brockmann-SemiBold-DN9dX72F.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ndot';
+  src: url('/fonts/ndot-47-inspired-by-nothing-D5y43lnK.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Variables - Dark Theme (Emergent.sh) */
+:root {
+  --background: 240 3% 6%;
+  --foreground: 210 40% 98%;
+  --card: 240 3% 6%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 240 14% 87%;
+  --primary-foreground: 240 3% 6%;
+  --secondary: 240 2% 12%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 220 5% 38%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 0 0% 20%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+  --radius: 0.5rem;
+  
+  /* Custom colors */
+  --yellow-primary: 40 44% 64%;
+  --yellow-primary-text: 40 5% 38%;
+  --cyan-accent: 180 100% 50%;
+  --cyan-glow: 180 100% 70%;
+  --loader-color: #1bb4cc;
+  --task-done: #DDDDE6;
+  --task-running: #2EBBE5;
+  --task-pending: #DDDDE6;
+  --step-inactive: #5C5F66;
+  --step-title: #ACACB2;
+  --step-completed: #939399;
+  --step-success: #29CC83;
+}
+
+/* Base styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+html {
+  overflow-y: hidden;
+  height: 100vh;
+  height: 100dvh;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Brockmann', 'Inter', system-ui, -apple-system, sans-serif;
   background: hsl(var(--background));
   color: hsl(var(--foreground));
   overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -45,4 +115,169 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(102, 234, 255, 0.1);
+  color: #66eaff;
+}
+
+::-moz-selection {
+  background-color: rgba(102, 234, 255, 0.1);
+  color: #66eaff;
+}
+
+/* Pixel font class */
+.font-pixel {
+  font-family: 'Ndot', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #5CE1E6 0%, #38B6FF 50%, #5CE1E6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button hover effects */
+.btn-glow {
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(92, 225, 230, 0.3);
+}
+
+/* Tab styles */
+.tab-active {
+  background: hsl(var(--secondary));
+  border-bottom: 2px solid hsl(var(--foreground));
+}
+
+.tab-inactive {
+  background: transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-inactive:hover {
+  background: hsl(var(--secondary) / 0.5);
+}
+
+/* Input focus styles */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: hsl(var(--ring));
+}
+
+/* Monaco editor overrides */
+.monaco-editor,
+.monaco-diff-editor,
+.monaco-component {
+  --vscode-focusBorder: transparent !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+.monaco-editor .focused,
+.monaco-editor:focus,
+.monaco-editor .view-line {
+  outline: none !important;
+  border: none !important;
+}
+
+/* Particle background */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(92, 225, 230, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Dropdown menu animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-enter {
+  animation: slideDown 0.2s ease-out forwards;
 }
