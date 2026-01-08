@@ -1,0 +1,1 @@
+zip -r p8stUyethu.zip . -x "*/node_modules/*" -x "*/dist/*" -x "*/__pycache__/*" -x "*/.next/*"
