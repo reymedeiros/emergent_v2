@@ -165,6 +165,19 @@ body {
   font-family: 'Brockmann', sans-serif;
 }
 
+.font-inter {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.font-jetbrains {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Default body font stack */
+body {
+  font-family: 'Brockmann', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
 /* Status Pulse Animation - Exact match from HTML */
 @keyframes status-pulse {
   0%, 100% {
