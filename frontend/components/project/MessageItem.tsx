@@ -132,9 +132,9 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
           {/* Message Content */}
           <div className="flex flex-col flex-1 w-full gap-3">
             <div className="min-w-0 w-full">
-              <div className="my-1 overflow-hidden text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal">
-                <div className="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal max-w-[50rem]">
-                  <p className="my-4 font-['Inter']">
+              <div className="my-1 overflow-hidden text-[#dcdce5] text-[16px] leading-[28px] font-normal" style={{ fontFamily: 'Inter' }}>
+                <div className="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] text-[16px] leading-[28px] font-normal max-w-[50rem] [&_p]:my-0" style={{ fontFamily: 'Inter' }}>
+                  <p className="my-4" style={{ fontFamily: 'Inter' }}>
                     {message.content}
                   </p>
                 </div>
@@ -159,11 +159,13 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
         >
           <div className="flex items-start gap-3">
             <div className="flex-1 min-w-0">
-              <div className="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
-                <div className="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal max-w-[50rem]">
-                  <p className="my-4 font-['Inter']">
-                    {message.content}
-                  </p>
+              <div className="prose prose-invert max-w-none">
+                <div className="my-1 overflow-hidden text-[#cfe3e6] text-[16px] leading-[28px] font-normal" style={{ fontFamily: 'Inter' }}>
+                  <div className="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] text-[16px] leading-[28px] font-normal max-w-[50rem] [&_p]:my-0" style={{ fontFamily: 'Inter' }}>
+                    <p className="my-4" style={{ fontFamily: 'Inter' }}>
+                      {message.content}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
