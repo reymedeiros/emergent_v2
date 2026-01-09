@@ -4,10 +4,6 @@
 
 This document provides a comprehensive analysis and implementation guide for creating a pixel-perfect visual clone of the Emergent.sh AI Agent execution UI. The goal is to refactor the existing project execution page to match the design exactly.
 
-**IMPORTANT**: This is a FRONTEND-ONLY task. Do not modify backend APIs or logic.
-
----
-
 ## Project Architecture
 
 ### Tech Stack
@@ -212,16 +208,26 @@ export const layout = {
   }
 }
 
-.border-beam::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  animation: border-beam calc(var(--duration) * 1s) infinite linear;
-  animation-delay: var(--delay);
-  background: linear-gradient(to left, var(--color-from), var(--color-to), transparent);
-  offset-anchor: calc(var(--anchor) * 1%) 50%;
-  offset-path: rect(0 auto auto 0 round calc(var(--size) * 1px));
-}
+.border-beam {
+    @apply pointer-events-none absolute inset-0 rounded-[inherit]
+      border-[calc(var(--border-width)*1px)] border-transparent
+      ![mask-clip:padding-box,border-box]
+      ![mask-composite:intersect]
+      [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)];
+  }
+
+  .border-beam::after {
+    content: '';
+    @apply absolute aspect-square
+      w-[calc(var(--size)*1px)]
+      animate-border-beam
+      [animation-delay:var(--delay)]
+      [background:linear-gradient(to_left,var(--color-from),var(--color-to),transparent)]
+      [offset-anchor:calc(var(--anchor)*1%)_50%]
+      [offset-path:rect(0_auto_auto_0_round_calc(var(--size)*1px))];
+  }
+
+
 ```
 
 ### Sweep Animation
@@ -406,49 +412,6 @@ export const layout = {
 
 ---
 
-## Implementation Checklist
-
-### Phase 1: Design Tokens & CSS
-- [ ] Update `/app/frontend/lib/design-tokens.ts` with extracted colors
-- [ ] Add keyframe animations to `/app/frontend/app/globals.css`
-- [ ] Add CSS custom properties for status pulse animation
-- [ ] Ensure Brockmann and Inter fonts are properly loaded
-
-### Phase 2: Tab Bar Refactor
-- [ ] Update TabBar.tsx with new styling
-- [ ] Add animated status indicator to project tabs
-- [ ] Style active/inactive tab states
-- [ ] Style "+" button
-
-### Phase 3: Agent Status Component
-- [ ] Refactor AgentStatus.tsx with animated pulse
-- [ ] Support running (green) and waiting (blue) states
-- [ ] Match exact colors and animation timing
-
-### Phase 4: Message Item Component
-- [ ] Refactor MessageItem.tsx for code blocks
-- [ ] Add file path highlighting (#FF99FD)
-- [ ] Add expand/collapse for tool outputs
-- [ ] Style checkmarks for completed steps
-
-### Phase 5: Input Area Component
-- [ ] Refactor input container styling
-- [ ] Add bottom bar actions (icons, buttons)
-- [ ] Style Send/Stop buttons
-- [ ] Add border-beam animation for waiting state
-
-### Phase 6: Preview Panel
-- [ ] Refactor PreviewPanel.tsx header
-- [ ] Add resizable panel with teal accent
-- [ ] Style refresh/open/close buttons
-
-### Phase 7: Layout Integration
-- [ ] Update ProjectExecutionView.tsx
-- [ ] Implement full-width vs split-screen toggle
-- [ ] Position Code/Preview buttons
-
----
-
 ## Button Behaviors
 
 | Element | Running State | Waiting State |
@@ -465,7 +428,7 @@ export const layout = {
 
 ## Important Notes
 
-1. **Keep Particle Background**: The animated particle background is already implemented and should be preserved in HomeView.
+1. **Particle Background**: The animated particle background is already implemented and should be preserved in HomeView.
 
 2. **Tab System**: Tabs open views inside the page, not browser tabs. The system is already implemented in `/app/frontend/lib/store/tabs.ts`.
 
@@ -490,18 +453,3 @@ All reference HTML files and fonts are in: `/app/sample_assets/`
 - `Agent_Waiting_Project_Split_Screen.html`
 - `main-BirpqjJG.css` (compiled Tailwind CSS)
 - Font files (.otf)
-
----
-
-## Session Handoff
-
-This document contains all necessary analysis for implementing the Emergent.sh visual clone. The next session should:
-
-1. Read this AI.md document completely
-2. View the sample HTML files for specific details if needed
-3. Start with design tokens update
-4. Proceed through the implementation checklist
-5. Test each component visually against the HTML references
-6. Use browser dev tools to compare pixel values if needed
-
-The current codebase already has the structure in place - it just needs to be restyled to match the exact Emergent.sh design.

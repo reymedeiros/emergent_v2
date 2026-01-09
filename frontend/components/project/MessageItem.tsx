@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Check, ChevronRight, ChevronDown, Copy, Bot, User } from 'lucide-react';
+import { Check, ChevronRight, ChevronDown } from 'lucide-react';
 import { emergentColors } from '@/lib/design-tokens';
 
 export interface Message {
@@ -22,27 +22,20 @@ interface MessageItemProps {
 }
 
 export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
-  const [copied, setCopied] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const isAgent = message.role === 'agent';
   const isStep = message.type === 'step';
   const isCode = message.type === 'code';
 
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(message.content);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-    onCopy?.();
-  };
-
   // Parse file paths in content for highlighting
   const renderContentWithPaths = (content: string) => {
     // Match file paths like /app/path/file.ext
-    const pathRegex = /(\/[\w\-\/\.]+)/g;
+    const pathRegex = /(\/(app|var|home|usr|etc|tmp)[\/\w\-\.]*)/g;
     const parts = content.split(pathRegex);
     
     return parts.map((part, index) => {
-      if (pathRegex.test(part)) {
+      if (part && pathRegex.test(part)) {
+        pathRegex.lastIndex = 0; // Reset regex state
         return (
           <span key={index} className="text-[#FF99FD] font-brockmann">
             {part}
@@ -72,7 +65,9 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
             <div className="flex items-center gap-2 min-w-0 flex-1">
               {/* Status Icon */}
               {isCompleted ? (
-                <Check className="w-4 h-4 flex-shrink-0" style={{ color: emergentColors.stepSuccess }} />
+                <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 6L9 17L4 12" stroke="#29CC83" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               ) : (
                 <div 
                   className="w-4 h-4 rounded-full animate-pulse flex-shrink-0"

@@ -77,6 +77,10 @@
   --agent-running-bg: rgba(103, 203, 101, 0.125);
   --agent-waiting: #5FD3F3;
   --agent-waiting-bg: rgba(95, 211, 243, 0.125);
+  
+  /* Resizer colors */
+  --resizer-default: #242424;
+  --resizer-hover: #00CCAF;
 }
 
 /* Base styles */
@@ -145,21 +149,18 @@ body {
   font-family: 'Brockmann', sans-serif;
 }
 
-/* Status Pulse Animation */
+/* Status Pulse Animation - Exact match from HTML */
 @keyframes status-pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--status-pulse-color, rgba(46, 187, 229, 0.7));
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--status-pulse-color, rgba(103, 203, 101, 0.44));
   }
-  70% {
-    box-shadow: 0 0 0 6px var(--status-pulse-transparent, rgba(46, 187, 229, 0));
-  }
-  100% {
-    box-shadow: 0 0 0 0 var(--status-pulse-transparent, rgba(46, 187, 229, 0));
+  50% {
+    box-shadow: 0 0 0 8px var(--status-pulse-transparent, rgba(103, 203, 101, 0));
   }
 }
 
 .animate-status-pulse {
-  animation: status-pulse 2s ease-out infinite;
+  animation: status-pulse 2s ease-in-out infinite;
 }
 
 /* Border Blink Animation (Input Focus) */
@@ -194,6 +195,11 @@ body {
   background: linear-gradient(to left, var(--color-from), var(--color-to), transparent);
   offset-anchor: calc(var(--anchor) * 1%) 50%;
   offset-path: rect(0 auto auto 0 round calc(var(--size) * 1px));
+}
+
+.animate-border-beam {
+  animation: border-beam calc(var(--duration, 8) * 1s) infinite linear;
+  animation-delay: var(--delay, 0s);
 }
 
 /* Sweep Animation */
@@ -370,4 +376,57 @@ input:focus, textarea:focus, select:focus {
 
 .text-path {
   color: #FF99FD;
+}
+
+/* Resizer handle styles */
+.resizer-handle {
+  background-color: #242424;
+  transition: background-color 0.2s;
+}
+
+.resizer-handle:hover,
+.resizer-handle[data-resize-handle-state="drag"] {
+  background-color: rgba(0, 204, 175, 0.6);
+}
+
+.resizer-knob {
+  background-color: #242424;
+  border-color: #242424;
+  transition: all 0.2s;
+}
+
+.resizer-handle:hover .resizer-knob,
+.resizer-handle[data-resize-handle-state="drag"] .resizer-knob {
+  background-color: #00CCAF;
+  border-color: #00CCAF;
+}
+
+/* Border beam component for waiting state */
+.border-beam-container {
+  --duration: 8;
+  --delay: 0s;
+  --size: 100;
+  --anchor: 90;
+  --color-from: #5FD3F3;
+  --color-to: transparent;
+  --border-width: 1;
+}
+
+.border-beam-effect {
+  border: calc(var(--border-width) * 1px) solid transparent;
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+}
+
+.border-beam-effect::after {
+  content: '';
+  position: absolute;
+  aspect-ratio: 1;
+  width: calc(var(--size) * 1px);
+  animation: border-beam calc(var(--duration) * 1s) infinite linear;
+  animation-delay: var(--delay);
+  background: linear-gradient(to left, var(--color-from), var(--color-to), transparent);
+  offset-anchor: calc(var(--anchor) * 1%) 50%;
+  offset-path: rect(0 auto auto 0 round calc(var(--size) * 1px));
 }

@@ -14,17 +14,17 @@ export function AgentStatus({ status }: AgentStatusProps) {
 
   if (!isActive) return null;
 
-  // Status-specific colors
-  const statusColor = isRunning ? emergentColors.agentRunningPrimary : emergentColors.agentWaitingPrimary;
-  const statusBg = isRunning ? emergentColors.agentRunningBackground : emergentColors.agentWaitingBackground;
-  const statusPulse = isRunning ? emergentColors.agentRunningPulse : emergentColors.agentWaitingPulse;
-  const statusPulseTransparent = isRunning ? emergentColors.agentRunningPulseTransparent : emergentColors.agentWaitingPulseTransparent;
+  // Status-specific colors - exact match from HTML reference
+  const statusColor = isRunning ? 'rgb(103,203,101)' : 'rgb(95,211,243)';
+  const statusBg = isRunning ? 'rgba(103,203,101,0.125)' : 'rgba(95,211,243,0.125)';
+  const statusPulse = isRunning ? '#67CB6570' : '#5FD3F370';
+  const statusPulseTransparent = isRunning ? '#67CB6500' : '#5FD3F300';
   const statusText = isRunning ? 'Agent is running...' : 'Agent is waiting...';
 
   return (
     <div className="flex items-center gap-2 md:gap-4" data-testid="agent-status">
       <div className="flex items-center gap-2 min-w-[58vw] md:min-w-fit md:gap-4">
-        {/* Animated Status Indicator */}
+        {/* Animated Status Indicator - exact match from HTML */}
         <div 
           className="w-4 h-4 rounded-lg flex justify-center items-center animate-status-pulse"
           style={{

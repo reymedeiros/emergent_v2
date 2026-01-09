@@ -10,18 +10,23 @@ export const emergentColors = {
   hoverBackground: '#2A2A2B',
   divider: '#242424',
   border: '#252526',
+  previewBackground: '#111112',
+  buttonHoverBg: '#FFFFFF14',
+  buttonBg: '#FFFFFF0A',
   
   // Status Colors (Agent Running)
   agentRunningPrimary: '#67CB65',
   agentRunningBackground: 'rgba(103,203,101,0.125)',
   agentRunningPulse: '#67CB6570',
   agentRunningPulseTransparent: '#67CB6500',
+  agentRunningGradient: 'linear-gradient(rgba(255,255,255,0.02) 0%, rgba(103,203,101,0.2) 100%)',
   
   // Status Colors (Agent Waiting)
   agentWaitingPrimary: '#5FD3F3',
   agentWaitingBackground: 'rgba(95,211,243,0.125)',
   agentWaitingPulse: '#5FD3F370',
   agentWaitingPulseTransparent: '#5FD3F300',
+  agentWaitingGradient: 'linear-gradient(rgba(255,255,255,0.02) 0%, rgba(95,211,243,0.2) 100%)',
   
   // Text Colors
   foreground: '#F8FAFC',
@@ -30,6 +35,10 @@ export const emergentColors = {
   stepTitle: '#ACACB2',
   codeText: '#CCEDFF99',
   pathHighlight: '#FF99FD',
+  closeButtonColor: '#7B7B80',
+  previewText: '#939399',
+  buttonIconColor: '#737380',
+  lightText: '#E6E6E6',
   
   // Accent Colors
   accentTeal: '#00CCAF',
@@ -46,6 +55,7 @@ export const emergentColors = {
   // Special
   yellowPrimary: '#C9A74D',
   yellowText: 'hsl(40, 5%, 38%)',
+  submitButtonBg: '#ECECEC',
 } as const;
 
 // Legacy colors export for backward compatibility
