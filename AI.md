@@ -453,11 +453,11 @@ export const layout = {
 
 | Element | Running State | Waiting State |
 |---------|---------------|---------------|
-| Tab indicator | Green pulsing dot | Blue pulsing dot |
+| Tab indicator | Green pulsing dot (when agent is running) | Blue pulsing dot (when agent is waiting) |
 | Status text | "Agent is running..." (green) | "Agent is waiting..." (blue) |
-| Input button | Stop (square icon) | Submit (arrow up) |
-| Preview button | Opens split view | Opens split view |
-| Code button | Placeholder (no action) | Placeholder (no action) |
+| Input button | Stop (/app/sample_assets/assets/svg/stop.svg) | Submit (/app/sample_assets/assets/svg/arrow.svg) |
+| Preview button (/app/sample_assets/assets/svg/preview.svg) | Opens split view | Opens split view |
+| Code button (/app/sample_assets/assets/svg/code.svg) | Placeholder (no action) | Placeholder (no action) |
 | Home tab | Returns to home (keeps tab) | Returns to home (keeps tab) |
 | "+" button | Opens home for new project | Opens home for new project |
 
@@ -469,7 +469,7 @@ export const layout = {
 
 2. **Tab System**: Tabs open views inside the page, not browser tabs. The system is already implemented in `/app/frontend/lib/store/tabs.ts`.
 
-3. **Fonts Location**: Fonts should be in `/app/frontend/public/fonts/` with the following files:
+3. **Fonts Location**: Fonts already are in `/app/frontend/public/fonts/` with the following files:
    - Brockmann-Regular-CFBdZhjj.otf
    - Brockmann-Medium-DWnaEPVI.otf
    - Brockmann-SemiBold-DN9dX72F.otf
