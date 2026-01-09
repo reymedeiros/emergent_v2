@@ -1,0 +1,4026 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><!--
+ Page saved with SingleFile 
+ url: https://app.emergent.sh/chat 
+ saved date: Thu Jan 08 2026 11:06:05 GMT-0300 (Horário Padrão de Brasília)
+-->
+
+<head>
+   <meta charset="utf-8" />
+   <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+   <title>Emergent</title>
+   <meta content="Emergent - AI-Powered App Development | No Code Required" name="title" />
+   <meta
+      content="Transform ideas into production-ready applications with AI. Build web apps, mobile platforms, and custom software through simple conversation, no coding required."
+      name="description" />
+   <meta
+      content="no-code development, AI app builder, software development, web app creator, mobile app development, AI coding assistant"
+      name="keywords" />
+   <meta content="Emergent" name="author" />
+   <meta content="website" property="og:type" />
+   <meta content="https://app.emergent.sh/" property="og:url" />
+   <meta content="Emergent - AI-Powered App Development | No Code Required" property="og:title" />
+   <meta
+      content="From idea to app in minutes. AI-powered development platform for creators, entrepreneurs, and developers."
+      property="og:description" />
+   <meta content="https://app.emergent.sh/logo.png" property="og:image" />
+   <meta content="v1096rpo7sp3nzp96d9ik3cvgwzodd" name="facebook-domain-verification" />
+   <meta content="summary_large_image" property="twitter:card" />
+   <meta content="https://app.emergent.sh/" property="twitter:url" />
+   <meta content="Emergent - AI-Powered App Development | No Code Required" property="twitter:title" />
+   <meta
+      content="Build real products with Emergent's vibe-coding platform. Emergent AI creates production-ready applications from natural language—no developers required."
+      property="twitter:description" />
+   <meta content="https://app.emergent.sh/twitter-image.jpg" property="twitter:image" />
+   <style>
+      :root {
+         --sf-img-19: url("assets/img/img_00001.png")
+      }
+   </style>
+   <style>
+      @font-face {
+         font-family: "Inter";
+         font-style: italic;
+         font-weight: 100 900;
+         src: url("assets/fonts/fonts_00001.woff2")format("woff2");
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+      }
+
+      @font-face {
+         font-family: "Inter";
+         font-style: normal;
+         font-weight: 100 900;
+         src: url("assets/fonts/fonts_00002.woff2")format("woff2");
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+      }
+   </style>
+   <link href="https://app.emergent.sh/" rel="canonical" />
+   <style>
+      @keyframes progress {
+         0% {
+            transform: translate(0) scaleX(1)
+         }
+
+         50% {
+            transform: translate(2500%) scaleX(3)
+         }
+
+         to {
+            transform: translate(4900%) scaleX(1)
+         }
+      }
+
+      @keyframes monaco-findInput-highlight-0 {
+         0% {
+            background: #fdff00cc
+         }
+
+         to {
+            background: transparent
+         }
+      }
+
+      @keyframes monaco-findInput-highlight-1 {
+         0% {
+            background: #fdff00cc
+         }
+
+         99% {
+            background: transparent
+         }
+      }
+
+      @keyframes monaco-findInput-highlight-dark-0 {
+         0% {
+            background: #ffffff70
+         }
+
+         to {
+            background: transparent
+         }
+      }
+
+      @keyframes monaco-findInput-highlight-dark-1 {
+         0% {
+            background: #ffffff70
+         }
+
+         99% {
+            background: transparent
+         }
+      }
+
+      :root {
+         --vscode-sash-size: 4px;
+         --vscode-sash-hover-size: 4px
+      }
+
+      @keyframes monaco-cursor-smooth {
+
+         0%,
+         20% {
+            opacity: 1
+         }
+
+         60%,
+         to {
+            opacity: 0
+         }
+      }
+
+      @keyframes monaco-cursor-phase {
+
+         0%,
+         20% {
+            opacity: 1
+         }
+
+         90%,
+         to {
+            opacity: 0
+         }
+      }
+
+      @keyframes monaco-cursor-expand {
+
+         0%,
+         20% {
+            transform: scaleY(1)
+         }
+
+         80%,
+         to {
+            transform: scaleY(0)
+         }
+      }
+
+      @keyframes fadeIn {
+         0% {
+            opacity: 0
+         }
+
+         to {
+            opacity: 1
+         }
+      }
+
+      @keyframes fadeOut {
+         0% {
+            opacity: 1
+         }
+
+         to {
+            opacity: 0
+         }
+      }
+
+      @keyframes fadein {
+         0% {
+            opacity: 0;
+            visibility: visible
+         }
+
+         to {
+            opacity: 1
+         }
+      }
+
+      @keyframes codicon-spin {
+         to {
+            transform: rotate(360deg)
+         }
+      }
+
+      @font-face {
+         font-family: codicon;
+         src: url("assets/fonts/fonts_00003.ttf")format("truetype")
+      }
+
+      ::-ms-clear {
+         display: none
+      }
+   </style>
+   <style>
+      @font-face {
+         font-family: "Inter";
+         font-style: normal;
+         font-weight: 400;
+         src: url("assets/fonts/fonts_00004.woff2")format("woff2");
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+      }
+
+      @font-face {
+         font-family: "Inter";
+         font-style: normal;
+         font-weight: 500;
+         src: url("assets/fonts/fonts_00005.woff2")format("woff2");
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+      }
+
+      @font-face {
+         font-family: "Inter";
+         font-style: normal;
+         font-weight: 600;
+         src: url("assets/fonts/fonts_00006.woff2")format("woff2");
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+      }
+
+      @font-face {
+         font-family: "JetBrains Mono";
+         font-style: italic;
+         font-weight: 100 800;
+         src: url("assets/fonts/fonts_00007.woff2")format("woff2");
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+      }
+
+      @font-face {
+         font-family: "JetBrains Mono";
+         font-style: normal;
+         font-weight: 100 800;
+         src: url("assets/fonts/fonts_00008.woff2")format("woff2");
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+      }
+
+      @font-face {
+         font-family: Nothing;
+         src: url("assets/img/img_00002.html")format("truetype");
+         font-weight: 400;
+         font-style: normal
+      }
+
+      @keyframes modalFadeIn {
+         0% {
+            opacity: 0;
+            transform: translate(-50%, -48%) scale(.96)
+         }
+
+         to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1)
+         }
+      }
+
+      @keyframes spin_7e9500 {
+         0% {
+            transform: rotate(0)
+         }
+
+         to {
+            transform: rotate(360deg)
+         }
+      }
+
+      @keyframes rotate_51eb93 {
+         0% {
+            transform: rotate(0)
+         }
+
+         65%,
+         to {
+            transform: rotate(360deg)
+         }
+      }
+
+      @keyframes smoothRotate_82841c {
+         0% {
+            transform: rotate(0)
+         }
+
+         to {
+            transform: rotate(360deg)
+         }
+      }
+
+      @keyframes fadeIn {
+         0% {
+            opacity: 0;
+            transform: translateY(10px);
+            filter: blur(2px)
+         }
+
+         to {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0)
+         }
+      }
+
+      *,
+      :before,
+      :after {
+         --tw-border-spacing-x: 0;
+         --tw-border-spacing-y: 0;
+         --tw-translate-x: 0;
+         --tw-translate-y: 0;
+         --tw-rotate: 0;
+         --tw-skew-x: 0;
+         --tw-skew-y: 0;
+         --tw-scale-x: 1;
+         --tw-scale-y: 1;
+         --tw-pan-x: ;
+         --tw-pan-y: ;
+         --tw-pinch-zoom: ;
+         --tw-scroll-snap-strictness: proximity;
+         --tw-gradient-from-position: ;
+         --tw-gradient-via-position: ;
+         --tw-gradient-to-position: ;
+         --tw-ordinal: ;
+         --tw-slashed-zero: ;
+         --tw-numeric-figure: ;
+         --tw-numeric-spacing: ;
+         --tw-numeric-fraction: ;
+         --tw-ring-inset: ;
+         --tw-ring-offset-width: 0px;
+         --tw-ring-offset-color: #fff;
+         --tw-ring-color: rgb(59 130 246/.5);
+         --tw-ring-offset-shadow: 0 0#0000;
+         --tw-ring-shadow: 0 0#0000;
+         --tw-shadow: 0 0#0000;
+         --tw-shadow-colored: 0 0#0000;
+         --tw-blur: ;
+         --tw-brightness: ;
+         --tw-contrast: ;
+         --tw-grayscale: ;
+         --tw-hue-rotate: ;
+         --tw-invert: ;
+         --tw-saturate: ;
+         --tw-sepia: ;
+         --tw-drop-shadow: ;
+         --tw-backdrop-blur: ;
+         --tw-backdrop-brightness: ;
+         --tw-backdrop-contrast: ;
+         --tw-backdrop-grayscale: ;
+         --tw-backdrop-hue-rotate: ;
+         --tw-backdrop-invert: ;
+         --tw-backdrop-opacity: ;
+         --tw-backdrop-saturate: ;
+         --tw-backdrop-sepia: ;
+         --tw-contain-size: ;
+         --tw-contain-layout: ;
+         --tw-contain-paint: ;
+         --tw-contain-style:
+      }
+
+      ::backdrop {
+         --tw-border-spacing-x: 0;
+         --tw-border-spacing-y: 0;
+         --tw-translate-x: 0;
+         --tw-translate-y: 0;
+         --tw-rotate: 0;
+         --tw-skew-x: 0;
+         --tw-skew-y: 0;
+         --tw-scale-x: 1;
+         --tw-scale-y: 1;
+         --tw-pan-x: ;
+         --tw-pan-y: ;
+         --tw-pinch-zoom: ;
+         --tw-scroll-snap-strictness: proximity;
+         --tw-gradient-from-position: ;
+         --tw-gradient-via-position: ;
+         --tw-gradient-to-position: ;
+         --tw-ordinal: ;
+         --tw-slashed-zero: ;
+         --tw-numeric-figure: ;
+         --tw-numeric-spacing: ;
+         --tw-numeric-fraction: ;
+         --tw-ring-inset: ;
+         --tw-ring-offset-width: 0px;
+         --tw-ring-offset-color: #fff;
+         --tw-ring-color: rgb(59 130 246/.5);
+         --tw-ring-offset-shadow: 0 0#0000;
+         --tw-ring-shadow: 0 0#0000;
+         --tw-shadow: 0 0#0000;
+         --tw-shadow-colored: 0 0#0000;
+         --tw-blur: ;
+         --tw-brightness: ;
+         --tw-contrast: ;
+         --tw-grayscale: ;
+         --tw-hue-rotate: ;
+         --tw-invert: ;
+         --tw-saturate: ;
+         --tw-sepia: ;
+         --tw-drop-shadow: ;
+         --tw-backdrop-blur: ;
+         --tw-backdrop-brightness: ;
+         --tw-backdrop-contrast: ;
+         --tw-backdrop-grayscale: ;
+         --tw-backdrop-hue-rotate: ;
+         --tw-backdrop-invert: ;
+         --tw-backdrop-opacity: ;
+         --tw-backdrop-saturate: ;
+         --tw-backdrop-sepia: ;
+         --tw-contain-size: ;
+         --tw-contain-layout: ;
+         --tw-contain-paint: ;
+         --tw-contain-style:
+      }
+
+      *,
+      :before,
+      :after {
+         box-sizing: border-box;
+         border-width: 0;
+         border-style: solid
+      }
+
+      :before,
+      :after {
+         --tw-content: ""
+      }
+
+      html {
+         line-height: 1.5;
+         -webkit-text-size-adjust: 100%;
+         -moz-tab-size: 4;
+         -o-tab-size: 4;
+         tab-size: 4;
+         font-family: Brockmann, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+         font-feature-settings: normal;
+         font-variation-settings: normal;
+         -webkit-tap-highlight-color: transparent
+      }
+
+      body {
+         margin: 0;
+         line-height: inherit
+      }
+
+      code,
+      pre {
+         font-family: JetBrains Mono, monospace;
+         font-feature-settings: normal;
+         font-variation-settings: normal;
+         font-size: 1em
+      }
+
+      button,
+      input,
+      textarea {
+         font-family: inherit;
+         font-feature-settings: inherit;
+         font-variation-settings: inherit;
+         font-size: 100%;
+         font-weight: inherit;
+         line-height: inherit;
+         letter-spacing: inherit;
+         color: inherit;
+         margin: 0;
+         padding: 0
+      }
+
+      button {
+         text-transform: none
+      }
+
+      button {
+         -webkit-appearance: button;
+         background-color: transparent;
+         background-image: none
+      }
+
+      ::-webkit-inner-spin-button,
+      ::-webkit-outer-spin-button {
+         height: auto
+      }
+
+      ::-webkit-search-decoration {
+         -webkit-appearance: none
+      }
+
+      ::-webkit-file-upload-button {
+         -webkit-appearance: button;
+         font: inherit
+      }
+
+      p,
+      pre {
+         margin: 0
+      }
+
+      ol {
+         list-style: none;
+         margin: 0
+      }
+
+      input::-moz-placeholder,
+      textarea::-moz-placeholder {
+         opacity: 1;
+         color: #9ca3af
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+         opacity: 1;
+         color: #9ca3af
+      }
+
+      button {
+         cursor: pointer
+      }
+
+      :disabled {
+         cursor: default
+      }
+
+      img,
+      svg,
+      iframe {
+         display: block;
+         vertical-align: middle
+      }
+
+      img {
+         max-width: 100%
+      }
+
+      :root {
+         --inherit: inherit;
+         --current: currentColor;
+         --transparent: transparent;
+         --black: #000;
+         --white: #fff;
+         --slate-50: #f8fafc;
+         --slate-100: #f1f5f9;
+         --slate-200: #e2e8f0;
+         --slate-300: #cbd5e1;
+         --slate-400: #94a3b8;
+         --slate-500: #64748b;
+         --slate-600: #475569;
+         --slate-700: #334155;
+         --slate-800: #1e293b;
+         --slate-900: #0f172a;
+         --slate-950: #020617;
+         --gray-50: #f9fafb;
+         --gray-100: #f3f4f6;
+         --gray-200: #e5e7eb;
+         --gray-300: #d1d5db;
+         --gray-400: #9ca3af;
+         --gray-500: #6b7280;
+         --gray-600: #4b5563;
+         --gray-700: #374151;
+         --gray-800: #1f2937;
+         --gray-900: #111827;
+         --gray-950: #030712;
+         --zinc-50: #fafafa;
+         --zinc-100: #f4f4f5;
+         --zinc-200: #e4e4e7;
+         --zinc-300: #d4d4d8;
+         --zinc-400: #a1a1aa;
+         --zinc-500: #71717a;
+         --zinc-600: #52525b;
+         --zinc-700: #3f3f46;
+         --zinc-800: #27272a;
+         --zinc-900: #18181b;
+         --zinc-950: #09090b;
+         --neutral-50: #fafafa;
+         --neutral-100: #f5f5f5;
+         --neutral-200: #e5e5e5;
+         --neutral-300: #d4d4d4;
+         --neutral-400: #a3a3a3;
+         --neutral-500: #737373;
+         --neutral-600: #525252;
+         --neutral-700: #404040;
+         --neutral-800: #262626;
+         --neutral-900: #171717;
+         --neutral-950: #0a0a0a;
+         --stone-50: #fafaf9;
+         --stone-100: #f5f5f4;
+         --stone-200: #e7e5e4;
+         --stone-300: #d6d3d1;
+         --stone-400: #a8a29e;
+         --stone-500: #78716c;
+         --stone-600: #57534e;
+         --stone-700: #44403c;
+         --stone-800: #292524;
+         --stone-900: #1c1917;
+         --stone-950: #0c0a09;
+         --red-50: #fef2f2;
+         --red-100: #fee2e2;
+         --red-200: #fecaca;
+         --red-300: #fca5a5;
+         --red-400: #f87171;
+         --red-500: #ef4444;
+         --red-600: #dc2626;
+         --red-700: #b91c1c;
+         --red-800: #991b1b;
+         --red-900: #7f1d1d;
+         --red-950: #450a0a;
+         --orange-50: #fff7ed;
+         --orange-100: #ffedd5;
+         --orange-200: #fed7aa;
+         --orange-300: #fdba74;
+         --orange-400: #fb923c;
+         --orange-500: #f97316;
+         --orange-600: #ea580c;
+         --orange-700: #c2410c;
+         --orange-800: #9a3412;
+         --orange-900: #7c2d12;
+         --orange-950: #431407;
+         --amber-50: #fffbeb;
+         --amber-100: #fef3c7;
+         --amber-200: #fde68a;
+         --amber-300: #fcd34d;
+         --amber-400: #fbbf24;
+         --amber-500: #f59e0b;
+         --amber-600: #d97706;
+         --amber-700: #b45309;
+         --amber-800: #92400e;
+         --amber-900: #78350f;
+         --amber-950: #451a03;
+         --yellow-50: #fefce8;
+         --yellow-100: #fef9c3;
+         --yellow-200: #fef08a;
+         --yellow-300: #fde047;
+         --yellow-400: #facc15;
+         --yellow-500: #eab308;
+         --yellow-600: #ca8a04;
+         --yellow-700: #a16207;
+         --yellow-800: #854d0e;
+         --yellow-900: #713f12;
+         --yellow-950: #422006;
+         --yellow: hsl(var(--yellow-primary));
+         --yellow-text: hsl(var(--yellow-primary-text));
+         --lime-50: #f7fee7;
+         --lime-100: #ecfccb;
+         --lime-200: #d9f99d;
+         --lime-300: #bef264;
+         --lime-400: #a3e635;
+         --lime-500: #84cc16;
+         --lime-600: #65a30d;
+         --lime-700: #4d7c0f;
+         --lime-800: #3f6212;
+         --lime-900: #365314;
+         --lime-950: #1a2e05;
+         --green-50: #f0fdf4;
+         --green-100: #dcfce7;
+         --green-200: #bbf7d0;
+         --green-300: #86efac;
+         --green-400: #4ade80;
+         --green-500: #22c55e;
+         --green-600: #16a34a;
+         --green-700: #15803d;
+         --green-800: #166534;
+         --green-900: #14532d;
+         --green-950: #052e16;
+         --emerald-50: #ecfdf5;
+         --emerald-100: #d1fae5;
+         --emerald-200: #a7f3d0;
+         --emerald-300: #6ee7b7;
+         --emerald-400: #34d399;
+         --emerald-500: #10b981;
+         --emerald-600: #059669;
+         --emerald-700: #047857;
+         --emerald-800: #065f46;
+         --emerald-900: #064e3b;
+         --emerald-950: #022c22;
+         --teal-50: #f0fdfa;
+         --teal-100: #ccfbf1;
+         --teal-200: #99f6e4;
+         --teal-300: #5eead4;
+         --teal-400: #2dd4bf;
+         --teal-500: #14b8a6;
+         --teal-600: #0d9488;
+         --teal-700: #0f766e;
+         --teal-800: #115e59;
+         --teal-900: #134e4a;
+         --teal-950: #042f2e;
+         --cyan-50: #ecfeff;
+         --cyan-100: #cffafe;
+         --cyan-200: #a5f3fc;
+         --cyan-300: #67e8f9;
+         --cyan-400: #22d3ee;
+         --cyan-500: #06b6d4;
+         --cyan-600: #0891b2;
+         --cyan-700: #0e7490;
+         --cyan-800: #155e75;
+         --cyan-900: #164e63;
+         --cyan-950: #083344;
+         --sky-50: #f0f9ff;
+         --sky-100: #e0f2fe;
+         --sky-200: #bae6fd;
+         --sky-300: #7dd3fc;
+         --sky-400: #38bdf8;
+         --sky-500: #0ea5e9;
+         --sky-600: #0284c7;
+         --sky-700: #0369a1;
+         --sky-800: #075985;
+         --sky-900: #0c4a6e;
+         --sky-950: #082f49;
+         --blue-50: #eff6ff;
+         --blue-100: #dbeafe;
+         --blue-200: #bfdbfe;
+         --blue-300: #93c5fd;
+         --blue-400: #60a5fa;
+         --blue-500: #3b82f6;
+         --blue-600: #2563eb;
+         --blue-700: #1d4ed8;
+         --blue-800: #1e40af;
+         --blue-900: #1e3a8a;
+         --blue-950: #172554;
+         --indigo-50: #eef2ff;
+         --indigo-100: #e0e7ff;
+         --indigo-200: #c7d2fe;
+         --indigo-300: #a5b4fc;
+         --indigo-400: #818cf8;
+         --indigo-500: #6366f1;
+         --indigo-600: #4f46e5;
+         --indigo-700: #4338ca;
+         --indigo-800: #3730a3;
+         --indigo-900: #312e81;
+         --indigo-950: #1e1b4b;
+         --violet-50: #f5f3ff;
+         --violet-100: #ede9fe;
+         --violet-200: #ddd6fe;
+         --violet-300: #c4b5fd;
+         --violet-400: #a78bfa;
+         --violet-500: #8b5cf6;
+         --violet-600: #7c3aed;
+         --violet-700: #6d28d9;
+         --violet-800: #5b21b6;
+         --violet-900: #4c1d95;
+         --violet-950: #2e1065;
+         --purple-50: #faf5ff;
+         --purple-100: #f3e8ff;
+         --purple-200: #e9d5ff;
+         --purple-300: #d8b4fe;
+         --purple-400: #c084fc;
+         --purple-500: #a855f7;
+         --purple-600: #9333ea;
+         --purple-700: #7e22ce;
+         --purple-800: #6b21a8;
+         --purple-900: #581c87;
+         --purple-950: #3b0764;
+         --fuchsia-50: #fdf4ff;
+         --fuchsia-100: #fae8ff;
+         --fuchsia-200: #f5d0fe;
+         --fuchsia-300: #f0abfc;
+         --fuchsia-400: #e879f9;
+         --fuchsia-500: #d946ef;
+         --fuchsia-600: #c026d3;
+         --fuchsia-700: #a21caf;
+         --fuchsia-800: #86198f;
+         --fuchsia-900: #701a75;
+         --fuchsia-950: #4a044e;
+         --pink-50: #fdf2f8;
+         --pink-100: #fce7f3;
+         --pink-200: #fbcfe8;
+         --pink-300: #f9a8d4;
+         --pink-400: #f472b6;
+         --pink-500: #ec4899;
+         --pink-600: #db2777;
+         --pink-700: #be185d;
+         --pink-800: #9d174d;
+         --pink-900: #831843;
+         --pink-950: #500724;
+         --rose-50: #fff1f2;
+         --rose-100: #ffe4e6;
+         --rose-200: #fecdd3;
+         --rose-300: #fda4af;
+         --rose-400: #fb7185;
+         --rose-500: #f43f5e;
+         --rose-600: #e11d48;
+         --rose-700: #be123c;
+         --rose-800: #9f1239;
+         --rose-900: #881337;
+         --rose-950: #4c0519;
+         --border: hsl(var(--border));
+         --input: hsl(var(--input));
+         --ring: hsl(var(--ring));
+         --background: hsl(var(--background));
+         --foreground: hsl(var(--foreground));
+         --loader: #61D7FB;
+         --loader-muted: rgba(97, 215, 251, .2);
+         --primary: hsl(var(--primary));
+         --primary-foreground: hsl(var(--primary-foreground));
+         --secondary: hsl(var(--secondary));
+         --secondary-foreground: hsl(var(--secondary-foreground));
+         --destructive: hsl(var(--destructive));
+         --destructive-foreground: hsl(var(--destructive-foreground));
+         --muted: hsl(var(--muted));
+         --muted-foreground: hsl(var(--muted-foreground));
+         --accent: hsl(var(--accent));
+         --accent-foreground: hsl(var(--accent-foreground));
+         --popover: hsl(var(--popover));
+         --popover-foreground: hsl(var(--popover-foreground));
+         --card: hsl(var(--card));
+         --card-foreground: hsl(var(--card-foreground));
+         --card-blue: hsl(var(--card-blue-background));
+         --card-blueGray: hsl(var(--card-blue-gray-background));
+         --task-done: #DDDDE6;
+         --task-running: #2EBBE5;
+         --task-pending: #DDDDE6;
+         --step-inactive: #5C5F66;
+         --step-title: #ACACB2;
+         --step-completed: #939399;
+         --step-success: #29CC83
+      }
+
+      * {
+         font-family: Brockmann, sans-serif
+      }
+
+      html {
+         overflow-y: hidden;
+         height: 100dvh
+      }
+
+      body {
+         padding-right: 0 !important;
+         height: 100dvh
+      }
+
+      :root {
+         --background: 240 3% 6%;
+         --foreground: 222.2 84% 4.9%;
+         --card: 240 3% 6%;
+         --card-foreground: 222.2 84% 4.9%;
+         --card-blue-background: 194 100% 35%;
+         --card-blue-gray-background: 194 47% 81%;
+         --popover: 0 0% 100%;
+         --popover-foreground: 222.2 84% 4.9%;
+         --primary: 240 14% 87%;
+         --primary-foreground: 240 3% 6%;
+         --secondary: 210 40% 96.1%;
+         --secondary-foreground: 222.2 47.4% 11.2%;
+         --yellow-primary: 40 44% 64%;
+         --yellow-primary-text: 40 5% 38%;
+         --loader-color: #1bb4cc;
+         --muted: 210 40% 96.1%;
+         --muted-foreground: 215.4 16.3% 46.9%;
+         --accent: 210 40% 96.1%;
+         --accent-foreground: 222.2 47.4% 11.2%;
+         --destructive: 0 84.2% 60.2%;
+         --destructive-foreground: 210 40% 98%;
+         --border: 214.3 31.8% 91.4%;
+         --input: 214.3 31.8% 91.4%;
+         --ring: 222.2 84% 4.9%;
+         --radius: .5rem;
+         --vh: 1vh;
+         --dvh: 1dvh
+      }
+
+      .dark {
+         --background: 240 3% 6%;
+         --foreground: 210 40% 98%;
+         --card: 240 3% 6%;
+         --card-foreground: 210 40% 98%;
+         --card-blue-background: 194 100% 35%;
+         --card-blue-gray-background: 194 47% 81%;
+         --yellow-primary: 40 44% 64%;
+         --yellow-primary-text: 40 5% 38%;
+         --loader-color: #1bb4cc;
+         --popover: 222.2 84% 4.9%;
+         --popover-foreground: 210 40% 98%;
+         --primary: 240 14% 87%;
+         --primary-foreground: 240 3% 6%;
+         --secondary: 240 2% 12%;
+         --secondary-foreground: 210 40% 98%;
+         --muted: 217.2 32.6% 17.5%;
+         --muted-foreground: 220 5% 38%;
+         --accent: 217.2 32.6% 17.5%;
+         --accent-foreground: 210 40% 98%;
+         --destructive: 0 62.8% 30.6%;
+         --destructive-foreground: 210 40% 98%;
+         --border: 0 0% 35%;
+         --input: 217.2 32.6% 17.5%;
+         --ring: 212.7 26.8% 83.9%
+      }
+
+      * {
+         border-color: hsl(var(--border))
+      }
+
+      body {
+         background-color: hsl(var(--background));
+         color: hsl(var(--foreground));
+         -webkit-font-smoothing: antialiased;
+         -moz-osx-font-smoothing: grayscale;
+         font-feature-settings: "rlig" 1, "calt" 1
+      }
+
+      ::selection {
+         background-color: #66eaff1a;
+         color: #66eaff
+      }
+
+      ::-moz-selection {
+         background-color: #66eaff1a;
+         color: #66eaff
+      }
+
+      .pointer-events-none {
+         pointer-events: none
+      }
+
+      .pointer-events-auto {
+         pointer-events: auto
+      }
+
+      .fixed {
+         position: fixed
+      }
+
+      .absolute {
+         position: absolute
+      }
+
+      .relative {
+         position: relative
+      }
+
+      .sticky {
+         position: sticky
+      }
+
+      .inset-0 {
+         top: 0;
+         right: 0;
+         bottom: 0;
+         left: 0
+      }
+
+      .-left-\[20px\] {
+         left: -20px
+      }
+
+      .-right-\[20px\] {
+         right: -20px
+      }
+
+      .bottom-0 {
+         bottom: 0
+      }
+
+      .left-0 {
+         left: 0
+      }
+
+      .right-0 {
+         right: 0
+      }
+
+      .top-0 {
+         top: 0
+      }
+
+      .top-\[14px\] {
+         top: 14px
+      }
+
+      .z-10 {
+         z-index: 10
+      }
+
+      .z-20 {
+         z-index: 20
+      }
+
+      .z-\[10000\] {
+         z-index: 10000
+      }
+
+      .z-\[2\] {
+         z-index: 2
+      }
+
+      .z-\[40\] {
+         z-index: 40
+      }
+
+      .z-\[49\] {
+         z-index: 49
+      }
+
+      .z-\[50\] {
+         z-index: 50
+      }
+
+      .z-\[99999\] {
+         z-index: 99999
+      }
+
+      .col-span-1 {
+         grid-column: span 1/span 1
+      }
+
+      .row-span-2 {
+         grid-row: span 2/span 2
+      }
+
+      .-m-1 {
+         margin: -.25rem
+      }
+
+      .mx-1 {
+         margin-left: .25rem;
+         margin-right: .25rem
+      }
+
+      .mx-auto {
+         margin-left: auto;
+         margin-right: auto
+      }
+
+      .my-1 {
+         margin-top: .25rem;
+         margin-bottom: .25rem
+      }
+
+      .my-2 {
+         margin-top: .5rem;
+         margin-bottom: .5rem
+      }
+
+      .my-3 {
+         margin-top: .75rem;
+         margin-bottom: .75rem
+      }
+
+      .my-4 {
+         margin-top: 1rem;
+         margin-bottom: 1rem
+      }
+
+      .mb-0 {
+         margin-bottom: 0
+      }
+
+      .mb-1 {
+         margin-bottom: .25rem
+      }
+
+      .mb-14 {
+         margin-bottom: 3.5rem
+      }
+
+      .ml-0\.5 {
+         margin-left: .125rem
+      }
+
+      .ml-1 {
+         margin-left: .25rem
+      }
+
+      .ml-2 {
+         margin-left: .5rem
+      }
+
+      .mt-10 {
+         margin-top: 2.5rem
+      }
+
+      .mt-4 {
+         margin-top: 1rem
+      }
+
+      .mt-\[10rem\] {
+         margin-top: 10rem
+      }
+
+      .mt-\[56px\] {
+         margin-top: 56px
+      }
+
+      .block {
+         display: block
+      }
+
+      .inline-block {
+         display: inline-block
+      }
+
+      .flex {
+         display: flex
+      }
+
+      .inline-flex {
+         display: inline-flex
+      }
+
+      .hidden {
+         display: none
+      }
+
+      .size-5 {
+         width: 1.25rem;
+         height: 1.25rem
+      }
+
+      .size-9 {
+         width: 2.25rem;
+         height: 2.25rem
+      }
+
+      .size-\[18px\] {
+         width: 18px;
+         height: 18px
+      }
+
+      .h-1\.5 {
+         height: .375rem
+      }
+
+      .h-10 {
+         height: 2.5rem
+      }
+
+      .h-2 {
+         height: .5rem
+      }
+
+      .h-3 {
+         height: .75rem
+      }
+
+      .h-32 {
+         height: 8rem
+      }
+
+      .h-4 {
+         height: 1rem
+      }
+
+      .h-5 {
+         height: 1.25rem
+      }
+
+      .h-6 {
+         height: 1.5rem
+      }
+
+      .h-8 {
+         height: 2rem
+      }
+
+      .h-9 {
+         height: 2.25rem
+      }
+
+      .h-\[14rem\] {
+         height: 14rem
+      }
+
+      .h-\[20px\] {
+         height: 20px
+      }
+
+      .h-\[25px\] {
+         height: 25px
+      }
+
+      .h-\[56px\] {
+         height: 56px
+      }
+
+      .h-dvh {
+         height: 100dvh
+      }
+
+      .h-full {
+         height: 100%
+      }
+
+      .max-h-\[200px\] {
+         max-height: 200px
+      }
+
+      .max-h-full {
+         max-height: 100%
+      }
+
+      .max-h-screen {
+         max-height: 100vh
+      }
+
+      .min-h-6 {
+         min-height: 1.5rem
+      }
+
+      .min-h-\[1px\] {
+         min-height: 1px
+      }
+
+      .min-h-\[64px\] {
+         min-height: 64px
+      }
+
+      .w-1\.5 {
+         width: .375rem
+      }
+
+      .w-10 {
+         width: 2.5rem
+      }
+
+      .w-2 {
+         width: .5rem
+      }
+
+      .w-3 {
+         width: .75rem
+      }
+
+      .w-4 {
+         width: 1rem
+      }
+
+      .w-5 {
+         width: 1.25rem
+      }
+
+      .w-6 {
+         width: 1.5rem
+      }
+
+      .w-8 {
+         width: 2rem
+      }
+
+      .w-9 {
+         width: 2.25rem
+      }
+
+      .w-\[1px\] {
+         width: 1px
+      }
+
+      .w-\[20px\] {
+         width: 20px
+      }
+
+      .w-\[300px\] {
+         width: 300px
+      }
+
+      .w-\[48px\] {
+         width: 48px
+      }
+
+      .w-fit {
+         width: fit-content
+      }
+
+      .w-full {
+         width: 100%
+      }
+
+      .w-px {
+         width: 1px
+      }
+
+      .min-w-0 {
+         min-width: 0px
+      }
+
+      .min-w-2 {
+         min-width: .5rem
+      }
+
+      .min-w-\[58vw\] {
+         min-width: 58vw
+      }
+
+      .max-w-4xl {
+         max-width: 56rem
+      }
+
+      .max-w-\[50rem\] {
+         max-width: 50rem
+      }
+
+      .max-w-\[80px\] {
+         max-width: 80px
+      }
+
+      .max-w-\[calc\(896px-52px\)\] {
+         max-width: 844px
+      }
+
+      .max-w-full {
+         max-width: 100%
+      }
+
+      .max-w-none {
+         max-width: none
+      }
+
+      .flex-1 {
+         flex: 1 1 0%
+      }
+
+      .flex-shrink-0 {
+         flex-shrink: 0
+      }
+
+      .shrink-0 {
+         flex-shrink: 0
+      }
+
+      .rotate-90 {
+         --tw-rotate: 90deg;
+         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+      }
+
+      .scale-\[0\.8\] {
+         --tw-scale-x: .8;
+         --tw-scale-y: .8;
+         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+      }
+
+      .transform {
+         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+      }
+
+      @keyframes blink {
+
+         0%,
+         to {
+            opacity: 1
+         }
+
+         50% {
+            opacity: 0
+         }
+      }
+
+      @keyframes blink-border {
+
+         0%,
+         to {
+            border-color: #4d9fff4d
+         }
+
+         50% {
+            border-color: #4d9fffcc
+         }
+      }
+
+      @keyframes marquee {
+         0% {
+            transform: translate(0)
+         }
+
+         to {
+            transform: translate(-100%)
+         }
+      }
+
+      @keyframes ping {
+
+         75%,
+         to {
+            transform: scale(2);
+            opacity: 0
+         }
+      }
+
+      @keyframes pulse {
+         50% {
+            opacity: .5
+         }
+      }
+
+      @keyframes shiny-text {
+
+         0%,
+         90%,
+         to {
+            background-position: calc(-100% - var(--shiny-width))0
+         }
+
+         30%,
+         60% {
+            background-position: calc(100% + var(--shiny-width))0
+         }
+      }
+
+      @keyframes spin {
+         to {
+            transform: rotate(360deg)
+         }
+      }
+
+      @keyframes status-pulse {
+         0% {
+            box-shadow: 0 0 0 0 var(--status-pulse-color, rgba(46, 187, 229, .7))
+         }
+
+         70% {
+            box-shadow: 0 0 0 6px var(--status-pulse-transparent, rgba(46, 187, 229, 0))
+         }
+
+         to {
+            box-shadow: 0 0 0 0 var(--status-pulse-transparent, rgba(46, 187, 229, 0))
+         }
+      }
+
+      .animate-status-pulse {
+         animation: status-pulse 2s ease-out infinite
+      }
+
+      @keyframes text {
+
+         0%,
+         to {
+            background-size: 200% 200%;
+            background-position: left center
+         }
+
+         50% {
+            background-size: 200% 200%;
+            background-position: right center
+         }
+      }
+
+      .cursor-default {
+         cursor: default
+      }
+
+      .cursor-not-allowed {
+         cursor: not-allowed
+      }
+
+      .cursor-pointer {
+         cursor: pointer
+      }
+
+      .select-text {
+         -webkit-user-select: text;
+         -moz-user-select: text;
+         user-select: text
+      }
+
+      .resize-none {
+         resize: none
+      }
+
+      .flex-row {
+         flex-direction: row
+      }
+
+      .flex-col {
+         flex-direction: column
+      }
+
+      .flex-col-reverse {
+         flex-direction: column-reverse
+      }
+
+      .items-start {
+         align-items: flex-start
+      }
+
+      .items-end {
+         align-items: flex-end
+      }
+
+      .items-center {
+         align-items: center
+      }
+
+      .justify-end {
+         justify-content: flex-end
+      }
+
+      .justify-center {
+         justify-content: center
+      }
+
+      .justify-between {
+         justify-content: space-between
+      }
+
+      .gap-1 {
+         gap: .25rem
+      }
+
+      .gap-2 {
+         gap: .5rem
+      }
+
+      .gap-3 {
+         gap: .75rem
+      }
+
+      .gap-4 {
+         gap: 1rem
+      }
+
+      .gap-\[10px\] {
+         gap: 10px
+      }
+
+      .gap-\[4px\] {
+         gap: 4px
+      }
+
+      .space-x-0>:not([hidden])~:not([hidden]) {
+         --tw-space-x-reverse: 0;
+         margin-right: calc(0px*var(--tw-space-x-reverse));
+         margin-left: calc(0px*calc(1 - var(--tw-space-x-reverse)))
+      }
+
+      .space-x-1>:not([hidden])~:not([hidden]) {
+         --tw-space-x-reverse: 0;
+         margin-right: calc(.25rem*var(--tw-space-x-reverse));
+         margin-left: calc(.25rem*calc(1 - var(--tw-space-x-reverse)))
+      }
+
+      .space-x-2>:not([hidden])~:not([hidden]) {
+         --tw-space-x-reverse: 0;
+         margin-right: calc(.5rem*var(--tw-space-x-reverse));
+         margin-left: calc(.5rem*calc(1 - var(--tw-space-x-reverse)))
+      }
+
+      .space-x-3>:not([hidden])~:not([hidden]) {
+         --tw-space-x-reverse: 0;
+         margin-right: calc(.75rem*var(--tw-space-x-reverse));
+         margin-left: calc(.75rem*calc(1 - var(--tw-space-x-reverse)))
+      }
+
+      .space-y-\[10px\]>:not([hidden])~:not([hidden]) {
+         --tw-space-y-reverse: 0;
+         margin-top: calc(10px*calc(1 - var(--tw-space-y-reverse)));
+         margin-bottom: calc(10px*var(--tw-space-y-reverse))
+      }
+
+      .self-center {
+         align-self: center
+      }
+
+      .overflow-hidden {
+         overflow: hidden
+      }
+
+      .overflow-y-auto {
+         overflow-y: auto
+      }
+
+      .overflow-x-hidden {
+         overflow-x: hidden
+      }
+
+      .overflow-y-scroll {
+         overflow-y: scroll
+      }
+
+      .truncate {
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap
+      }
+
+      .whitespace-nowrap {
+         white-space: nowrap
+      }
+
+      .whitespace-pre {
+         white-space: pre
+      }
+
+      .whitespace-pre-wrap {
+         white-space: pre-wrap
+      }
+
+      .text-wrap {
+         text-wrap: wrap
+      }
+
+      .text-nowrap {
+         text-wrap: nowrap
+      }
+
+      .break-words {
+         overflow-wrap: break-word
+      }
+
+      .rounded {
+         border-radius: .25rem
+      }
+
+      .rounded-\[12px\] {
+         border-radius: 12px
+      }
+
+      .rounded-\[30px\] {
+         border-radius: 30px
+      }
+
+      .rounded-\[38px\] {
+         border-radius: 38px
+      }
+
+      .rounded-\[6px\] {
+         border-radius: 6px
+      }
+
+      .rounded-full {
+         border-radius: 9999px
+      }
+
+      .rounded-lg {
+         border-radius: var(--radius)
+      }
+
+      .rounded-md {
+         border-radius: calc(var(--radius) - 2px)
+      }
+
+      .rounded-none {
+         border-radius: 0
+      }
+
+      .rounded-sm {
+         border-radius: calc(var(--radius) - 4px)
+      }
+
+      .rounded-xl {
+         border-radius: .75rem
+      }
+
+      .rounded-t-xl {
+         border-top-left-radius: .75rem;
+         border-top-right-radius: .75rem
+      }
+
+      .rounded-br-none {
+         border-bottom-right-radius: 0
+      }
+
+      .rounded-tl-\[14px\] {
+         border-top-left-radius: 14px
+      }
+
+      .rounded-tl-lg {
+         border-top-left-radius: var(--radius)
+      }
+
+      .rounded-tr-\[14px\] {
+         border-top-right-radius: 14px
+      }
+
+      .rounded-tr-lg {
+         border-top-right-radius: var(--radius)
+      }
+
+      .border {
+         border-width: 1px
+      }
+
+      .border-0 {
+         border-width: 0px
+      }
+
+      .border-2 {
+         border-width: 2px
+      }
+
+      .border-b {
+         border-bottom-width: 1px
+      }
+
+      .border-\[\#242424\] {
+         --tw-border-opacity: 1;
+         border-color: rgb(36 36 36/var(--tw-border-opacity, 1))
+      }
+
+      .border-\[\#242424\]\/60 {
+         border-color: #24242499
+      }
+
+      .border-\[\#252526\] {
+         --tw-border-opacity: 1;
+         border-color: rgb(37 37 38/var(--tw-border-opacity, 1))
+      }
+
+      .border-transparent {
+         border-color: transparent
+      }
+
+      .bg-\[\#0F0F10\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(15 15 16/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#111112\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(17 17 18/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#1A1A1C\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(26 26 28/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#1E1E1F\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(30 30 31/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#1a1a1a\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(26 26 26/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#222224\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(34 34 36/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#242424\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(36 36 36/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#273638\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(39 54 56/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#5fd3f3\]\/10 {
+         background-color: #5fd3f31a
+      }
+
+      .bg-\[\#80FFF9\]\/10 {
+         background-color: #80fff91a
+      }
+
+      .bg-\[\#ECECEC\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(236 236 236/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-\[\#FFFFFF0A\] {
+         background-color: #ffffff0a
+      }
+
+      .bg-\[\#FFFFFF14\] {
+         background-color: #ffffff14
+      }
+
+      .bg-\[\#FFFFFF\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(255 255 255/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-transparent {
+         background-color: transparent
+      }
+
+      .bg-white {
+         --tw-bg-opacity: 1;
+         background-color: rgb(255 255 255/var(--tw-bg-opacity, 1))
+      }
+
+      .bg-white\/20 {
+         background-color: #fff3
+      }
+
+      .bg-white\/5 {
+         background-color: #ffffff0d
+      }
+
+      .bg-none {
+         background-image: none
+      }
+
+      .from-\[\#0f0f0f\] {
+         --tw-gradient-from: #0f0f0f var(--tw-gradient-from-position);
+         --tw-gradient-to: rgb(15 15 15/0) var(--tw-gradient-to-position);
+         --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+      }
+
+      .to-\[\#0f0f0f00\] {
+         --tw-gradient-to: #0f0f0f00 var(--tw-gradient-to-position)
+      }
+
+      .bg-cover {
+         background-size: cover
+      }
+
+      .bg-center {
+         background-position: center
+      }
+
+      .bg-no-repeat {
+         background-repeat: no-repeat
+      }
+
+      .p-0 {
+         padding: 0
+      }
+
+      .p-0\.5 {
+         padding: .125rem
+      }
+
+      .p-1 {
+         padding: .25rem
+      }
+
+      .p-2 {
+         padding: .5rem
+      }
+
+      .p-2\.5 {
+         padding: .625rem
+      }
+
+      .p-3 {
+         padding: .75rem
+      }
+
+      .p-4 {
+         padding: 1rem
+      }
+
+      .p-\[10px\] {
+         padding: 10px
+      }
+
+      .p-\[6px\] {
+         padding: 6px
+      }
+
+      .px-0 {
+         padding-left: 0;
+         padding-right: 0
+      }
+
+      .px-2 {
+         padding-left: .5rem;
+         padding-right: .5rem
+      }
+
+      .px-4 {
+         padding-left: 1rem;
+         padding-right: 1rem
+      }
+
+      .px-\[12px\] {
+         padding-left: 12px;
+         padding-right: 12px
+      }
+
+      .px-\[6px\] {
+         padding-left: 6px;
+         padding-right: 6px
+      }
+
+      .py-1 {
+         padding-top: .25rem;
+         padding-bottom: .25rem
+      }
+
+      .py-3 {
+         padding-top: .75rem;
+         padding-bottom: .75rem
+      }
+
+      .py-\[6px\] {
+         padding-top: 6px;
+         padding-bottom: 6px
+      }
+
+      .pb-0 {
+         padding-bottom: 0
+      }
+
+      .pb-\[15rem\] {
+         padding-bottom: 15rem
+      }
+
+      .pb-\[5px\] {
+         padding-bottom: 5px
+      }
+
+      .pl-0 {
+         padding-left: 0
+      }
+
+      .pl-0\.5 {
+         padding-left: .125rem
+      }
+
+      .pl-1\.5 {
+         padding-left: .375rem
+      }
+
+      .pl-2 {
+         padding-left: .5rem
+      }
+
+      .pl-\[8px\] {
+         padding-left: 8px
+      }
+
+      .pr-0\.5 {
+         padding-right: .125rem
+      }
+
+      .pr-1 {
+         padding-right: .25rem
+      }
+
+      .pr-2 {
+         padding-right: .5rem
+      }
+
+      .pr-2\.5 {
+         padding-right: .625rem
+      }
+
+      .pr-\[10px\] {
+         padding-right: 10px
+      }
+
+      .pr-\[12px\] {
+         padding-right: 12px
+      }
+
+      .pt-0 {
+         padding-top: 0
+      }
+
+      .pt-1 {
+         padding-top: .25rem
+      }
+
+      .pt-2 {
+         padding-top: .5rem
+      }
+
+      .pt-\[3px\] {
+         padding-top: 3px
+      }
+
+      .pt-\[7px\] {
+         padding-top: 7px
+      }
+
+      .text-left {
+         text-align: left
+      }
+
+      .text-right {
+         text-align: right
+      }
+
+      .font-\[\'Brockmann\'\] {
+         font-family: Brockmann
+      }
+
+      .font-\[\'Inter\'\] {
+         font-family: Inter
+      }
+
+      .font-inter {
+         font-family: Inter, sans-serif
+      }
+
+      .font-jetbrains,
+      .font-mono {
+         font-family: JetBrains Mono, monospace
+      }
+
+      .text-\[13px\] {
+         font-size: 13px
+      }
+
+      .text-\[14px\] {
+         font-size: 14px
+      }
+
+      .text-\[15px\] {
+         font-size: 15px
+      }
+
+      .text-\[16px\] {
+         font-size: 16px
+      }
+
+      .text-base {
+         font-size: 1rem;
+         line-height: 1.5rem
+      }
+
+      .text-sm {
+         font-size: .875rem;
+         line-height: 1.25rem
+      }
+
+      .font-\[600\] {
+         font-weight: 600
+      }
+
+      .font-medium {
+         font-weight: 500
+      }
+
+      .font-normal {
+         font-weight: 400
+      }
+
+      .font-semibold {
+         font-weight: 600
+      }
+
+      .leading-\[20px\] {
+         line-height: 20px
+      }
+
+      .leading-\[24px\] {
+         line-height: 24px
+      }
+
+      .leading-\[28px\] {
+         line-height: 28px
+      }
+
+      .leading-relaxed {
+         line-height: 1.625
+      }
+
+      .tracking-\[-0\.2px\] {
+         letter-spacing: -.2px
+      }
+
+      .text-\[\#0F0F10\] {
+         --tw-text-opacity: 1;
+         color: rgb(15 15 16/var(--tw-text-opacity, 1))
+      }
+
+      .text-\[\#5C5F66\] {
+         --tw-text-opacity: 1;
+         color: rgb(92 95 102/var(--tw-text-opacity, 1))
+      }
+
+      .text-\[\#7B7B80\] {
+         --tw-text-opacity: 1;
+         color: rgb(123 123 128/var(--tw-text-opacity, 1))
+      }
+
+      .text-\[\#939399\] {
+         --tw-text-opacity: 1;
+         color: rgb(147 147 153/var(--tw-text-opacity, 1))
+      }
+
+      .text-\[\#CCEDFF99\] {
+         color: #ccedff99
+      }
+
+      .text-\[\#CCEEFF\]\/30 {
+         color: #cceeff4d
+      }
+
+      .text-\[\#E6E6E6\] {
+         --tw-text-opacity: 1;
+         color: rgb(230 230 230/var(--tw-text-opacity, 1))
+      }
+
+      .text-\[\#cfe3e6\] {
+         --tw-text-opacity: 1;
+         color: rgb(207 227 230/var(--tw-text-opacity, 1))
+      }
+
+      .text-\[\#dcdce5\] {
+         --tw-text-opacity: 1;
+         color: rgb(220 220 229/var(--tw-text-opacity, 1))
+      }
+
+      .text-white {
+         --tw-text-opacity: 1;
+         color: rgb(255 255 255/var(--tw-text-opacity, 1))
+      }
+
+      .text-white\/50 {
+         color: #ffffff80
+      }
+
+      .text-white\/60 {
+         color: #fff9
+      }
+
+      .antialiased {
+         -webkit-font-smoothing: antialiased;
+         -moz-osx-font-smoothing: grayscale
+      }
+
+      .opacity-0 {
+         opacity: 0
+      }
+
+      .opacity-100 {
+         opacity: 1
+      }
+
+      .opacity-50 {
+         opacity: .5
+      }
+
+      .shadow-lg {
+         --tw-shadow: 0 10px 15px -3px rgb(0 0 0/.1), 0 4px 6px -4px rgb(0 0 0/.1);
+         --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color)
+      }
+
+      .shadow-sm {
+         --tw-shadow: 0 1px 2px 0 rgb(0 0 0/.05);
+         --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+         box-shadow: var(--tw-ring-offset-shadow, 0 0#0000), var(--tw-ring-shadow, 0 0#0000), var(--tw-shadow)
+      }
+
+      .outline-none {
+         outline: 2px solid transparent;
+         outline-offset: 2px
+      }
+
+      .ring-0 {
+         --tw-ring-offset-shadow: var(--tw-ring-inset)0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+         --tw-ring-shadow: var(--tw-ring-inset)0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+         box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0#0000)
+      }
+
+      .ring-offset-background {
+         --tw-ring-offset-color: hsl(var(--background))
+      }
+
+      .backdrop-blur-lg {
+         --tw-backdrop-blur: blur(16px);
+         -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+         backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+      }
+
+      .backdrop-blur-md {
+         --tw-backdrop-blur: blur(12px);
+         -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+         backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+      }
+
+      .transition-all {
+         transition-property: all;
+         transition-timing-function: cubic-bezier(.4, 0, .2, 1)
+      }
+
+      .transition-colors {
+         transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+         transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+         transition-duration: .15s
+      }
+
+      .transition-opacity {
+         transition-property: opacity;
+         transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+         transition-duration: .15s
+      }
+
+      .transition-transform {
+         transition-property: transform;
+         transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+         transition-duration: .15s
+      }
+
+      .duration-200 {
+         transition-duration: .2s
+      }
+
+      .duration-300 {
+         transition-duration: .3s
+      }
+
+      .ease-in-out {
+         transition-timing-function: cubic-bezier(.4, 0, .2, 1)
+      }
+
+      @keyframes enter {
+         0% {
+            opacity: var(--tw-enter-opacity, 1);
+            transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0))
+         }
+      }
+
+      @keyframes exit {
+         to {
+            opacity: var(--tw-exit-opacity, 1);
+            transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0))
+         }
+      }
+
+      .duration-200 {
+         animation-duration: .2s
+      }
+
+      .duration-300 {
+         animation-duration: .3s
+      }
+
+      .ease-in-out {
+         animation-timing-function: cubic-bezier(.4, 0, .2, 1)
+      }
+
+      .\[--base-color\:\#0D74CE\] {
+         --base-color: #0D74CE
+      }
+
+      .\[--base-gradient-color\:\#5EB1EF\] {
+         --base-gradient-color: #5EB1EF
+      }
+
+      .\[perspective\:500px\] {
+         perspective: 500px
+      }
+
+      .\[transform-style\:preserve-3d\] {
+         transform-style: preserve-3d
+      }
+
+      .font-sans {
+         font-family: var(--font-sans)
+      }
+
+      @keyframes sweep {
+         to {
+            background-position: -200%center
+         }
+      }
+
+      @keyframes borderBlink {
+
+         0%,
+         to {
+            border-color: #4d9fff4f;
+            box-shadow: 0 0#4d9fff00
+         }
+
+         50% {
+            border-color: #4d9fff;
+            box-shadow: 0 0 8px 2px #4d9fff66
+         }
+      }
+
+      @keyframes shimmer {
+         0% {
+            transform: translate(-100%)
+         }
+
+         to {
+            transform: translate(100%)
+         }
+      }
+
+      @keyframes gradient-x {
+
+         0%,
+         to {
+            background-position: 0% 50%
+         }
+
+         50% {
+            background-position: 100% 50%
+         }
+      }
+
+      @keyframes bounce-subtle {
+
+         0%,
+         to {
+            transform: translateY(0) rotate(180deg)
+         }
+
+         50% {
+            transform: translateY(6px) rotate(180deg)
+         }
+      }
+
+      .selection\:bg-\[\#66EAFF\] *::-moz-selection {
+         --tw-bg-opacity: 1;
+         background-color: rgb(102 234 255/var(--tw-bg-opacity, 1))
+      }
+
+      .selection\:bg-\[\#66EAFF\] *::selection {
+         --tw-bg-opacity: 1;
+         background-color: rgb(102 234 255/var(--tw-bg-opacity, 1))
+      }
+
+      .selection\:bg-opacity-10 *::-moz-selection {
+         --tw-bg-opacity: .1
+      }
+
+      .selection\:bg-opacity-10 *::selection {
+         --tw-bg-opacity: .1
+      }
+
+      .selection\:text-\[\#66EAFF\] *::-moz-selection {
+         --tw-text-opacity: 1;
+         color: rgb(102 234 255/var(--tw-text-opacity, 1))
+      }
+
+      .selection\:text-\[\#66EAFF\] *::selection {
+         --tw-text-opacity: 1;
+         color: rgb(102 234 255/var(--tw-text-opacity, 1))
+      }
+
+      .selection\:bg-\[\#66EAFF\]::-moz-selection {
+         --tw-bg-opacity: 1;
+         background-color: rgb(102 234 255/var(--tw-bg-opacity, 1))
+      }
+
+      .selection\:bg-\[\#66EAFF\]::selection {
+         --tw-bg-opacity: 1;
+         background-color: rgb(102 234 255/var(--tw-bg-opacity, 1))
+      }
+
+      .selection\:bg-opacity-10::-moz-selection {
+         --tw-bg-opacity: .1
+      }
+
+      .selection\:bg-opacity-10::selection {
+         --tw-bg-opacity: .1
+      }
+
+      .selection\:text-\[\#66EAFF\]::-moz-selection {
+         --tw-text-opacity: 1;
+         color: rgb(102 234 255/var(--tw-text-opacity, 1))
+      }
+
+      .selection\:text-\[\#66EAFF\]::selection {
+         --tw-text-opacity: 1;
+         color: rgb(102 234 255/var(--tw-text-opacity, 1))
+      }
+
+      .placeholder\:text-white\/50::-moz-placeholder {
+         color: #ffffff80
+      }
+
+      .placeholder\:text-white\/50::placeholder {
+         color: #ffffff80
+      }
+
+      .after\:absolute:after {
+         content: var(--tw-content);
+         position: absolute
+      }
+
+      .after\:inset-y-0:after {
+         content: var(--tw-content);
+         top: 0;
+         bottom: 0
+      }
+
+      .after\:left-1\/2:after {
+         content: var(--tw-content);
+         left: 50%
+      }
+
+      .after\:w-1:after {
+         content: var(--tw-content);
+         width: .25rem
+      }
+
+      .after\:-translate-x-1\/2:after {
+         content: var(--tw-content);
+         --tw-translate-x: -50%;
+         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+      }
+
+      @keyframes aurora {
+         0% {
+            content: var(--tw-content);
+            background-position: 50% 50%, 50% 50%
+         }
+
+         to {
+            content: var(--tw-content);
+            background-position: 350% 50%, 350% 50%
+         }
+      }
+
+      @keyframes border-beam {
+         to {
+            content: var(--tw-content);
+            offset-distance: 100%
+         }
+      }
+
+      .hover\:border-\[\#00CCAF\]:hover {
+         --tw-border-opacity: 1;
+         border-color: rgb(0 204 175/var(--tw-border-opacity, 1))
+      }
+
+      .hover\:bg-\[\#00CCAF\]:hover {
+         --tw-bg-opacity: 1;
+         background-color: rgb(0 204 175/var(--tw-bg-opacity, 1))
+      }
+
+      .hover\:bg-\[\#00CCAF\]\/60:hover {
+         background-color: #00ccaf99
+      }
+
+      .hover\:bg-\[\#202020\]:hover {
+         --tw-bg-opacity: 1;
+         background-color: rgb(32 32 32/var(--tw-bg-opacity, 1))
+      }
+
+      .hover\:bg-\[\#2A2A2B\]:hover {
+         --tw-bg-opacity: 1;
+         background-color: rgb(42 42 43/var(--tw-bg-opacity, 1))
+      }
+
+      .hover\:bg-\[\#3c3c40\]:hover {
+         --tw-bg-opacity: 1;
+         background-color: rgb(60 60 64/var(--tw-bg-opacity, 1))
+      }
+
+      .hover\:bg-\[\#FFFFFF14\]:hover {
+         background-color: #ffffff14
+      }
+
+      .hover\:bg-\[rgba\(255\,255\,255\,0\.02\)\]:hover {
+         background-color: #ffffff05
+      }
+
+      .hover\:bg-gray-100\/10:hover {
+         background-color: #f3f4f61a
+      }
+
+      .hover\:bg-primary\/90:hover {
+         background-color: hsl(var(--primary)/.9)
+      }
+
+      .hover\:bg-secondary\/50:hover {
+         background-color: hsl(var(--secondary)/.5)
+      }
+
+      .hover\:bg-white\/10:hover {
+         background-color: #ffffff1a
+      }
+
+      .hover\:bg-white\/15:hover {
+         background-color: #ffffff26
+      }
+
+      .hover\:bg-white\/90:hover {
+         background-color: #ffffffe6
+      }
+
+      .hover\:text-\[\#E5E5E5\]:hover {
+         --tw-text-opacity: 1;
+         color: rgb(229 229 229/var(--tw-text-opacity, 1))
+      }
+
+      .hover\:text-\[\#ccc\]:hover {
+         --tw-text-opacity: 1;
+         color: rgb(204 204 204/var(--tw-text-opacity, 1))
+      }
+
+      .hover\:text-accent-foreground:hover {
+         color: hsl(var(--accent-foreground))
+      }
+
+      .hover\:text-white:hover {
+         --tw-text-opacity: 1;
+         color: rgb(255 255 255/var(--tw-text-opacity, 1))
+      }
+
+      .focus\:outline-none:focus {
+         outline: 2px solid transparent;
+         outline-offset: 2px
+      }
+
+      .focus-visible\:outline-none:focus-visible {
+         outline: 2px solid transparent;
+         outline-offset: 2px
+      }
+
+      .focus-visible\:ring-1:focus-visible {
+         --tw-ring-offset-shadow: var(--tw-ring-inset)0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+         --tw-ring-shadow: var(--tw-ring-inset)0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+         box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0#0000)
+      }
+
+      .focus-visible\:ring-2:focus-visible {
+         --tw-ring-offset-shadow: var(--tw-ring-inset)0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+         --tw-ring-shadow: var(--tw-ring-inset)0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+         box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0#0000)
+      }
+
+      .focus-visible\:ring-ring:focus-visible {
+         --tw-ring-color: hsl(var(--ring))
+      }
+
+      .focus-visible\:ring-offset-1:focus-visible {
+         --tw-ring-offset-width: 1px
+      }
+
+      .focus-visible\:ring-offset-2:focus-visible {
+         --tw-ring-offset-width: 2px
+      }
+
+      .focus-visible\:ring-offset-background:focus-visible {
+         --tw-ring-offset-color: hsl(var(--background))
+      }
+
+      .disabled\:pointer-events-none:disabled {
+         pointer-events: none
+      }
+
+      .disabled\:cursor-not-allowed:disabled {
+         cursor: not-allowed
+      }
+
+      .disabled\:opacity-20:disabled {
+         opacity: .2
+      }
+
+      .disabled\:opacity-50:disabled {
+         opacity: .5
+      }
+
+      .group\/paperclip:hover .group-hover\/paperclip\:rotate-45 {
+         --tw-rotate: 45deg;
+         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+      }
+
+      .group:hover .group-hover\:bg-\[\#00CCAF\] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(0 204 175/var(--tw-bg-opacity, 1))
+      }
+
+      .data-\[state\=unchecked\]\:translate-x-0[data-state=unchecked] {
+         --tw-translate-x: 0px;
+         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+      }
+
+      @keyframes collapsible-up {
+         0% {
+            height: var(--radix-collapsible-content-height)
+         }
+
+         to {
+            height: 0
+         }
+      }
+
+      @keyframes collapsible-down {
+         0% {
+            height: 0
+         }
+
+         to {
+            height: var(--radix-collapsible-content-height)
+         }
+      }
+
+      .data-\[state\=unchecked\]\:bg-\[\#3B3B3B\][data-state=unchecked] {
+         --tw-bg-opacity: 1;
+         background-color: rgb(59 59 59/var(--tw-bg-opacity, 1))
+      }
+
+      .dark\:\[--base-color\:\#71717a\]:is(.dark *) {
+         --base-color: #71717a
+      }
+
+      .dark\:\[--base-gradient-color\:\#ffffff\]:is(.dark *) {
+         --base-gradient-color: #ffffff
+      }
+
+      @media not all and (min-width:768px) {
+         .max-md\:absolute {
+            position: absolute
+         }
+
+         .max-md\:inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0
+         }
+
+         .max-md\:hidden {
+            display: none
+         }
+
+         .max-md\:h-9 {
+            height: 2.25rem
+         }
+
+         .max-md\:justify-between {
+            justify-content: space-between
+         }
+
+         .max-md\:bg-transparent {
+            background-color: transparent
+         }
+
+         .max-md\:px-0 {
+            padding-left: 0;
+            padding-right: 0
+         }
+
+         .max-md\:pt-2 {
+            padding-top: .5rem
+         }
+      }
+
+      @media (min-width:640px) {
+         .sm\:bottom-0 {
+            bottom: 0
+         }
+
+         .sm\:left-0 {
+            left: 0
+         }
+
+         .sm\:top-auto {
+            top: auto
+         }
+
+         .sm\:max-w-4xl {
+            max-width: 56rem
+         }
+
+         .sm\:flex-col {
+            flex-direction: column
+         }
+      }
+
+      @media (min-width:768px) {
+         .md\:absolute {
+            position: absolute
+         }
+
+         .md\:relative {
+            position: relative
+         }
+
+         .md\:right-3 {
+            right: .75rem
+         }
+
+         .md\:top-\[0px\] {
+            top: 0
+         }
+
+         .md\:z-\[49\] {
+            z-index: 49
+         }
+
+         .md\:my-5 {
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem
+         }
+
+         .md\:my-8 {
+            margin-top: 2rem;
+            margin-bottom: 2rem
+         }
+
+         .md\:ml-14 {
+            margin-left: 3.5rem
+         }
+
+         .md\:mr-4 {
+            margin-right: 1rem
+         }
+
+         .md\:block {
+            display: block
+         }
+
+         .md\:flex {
+            display: flex
+         }
+
+         .md\:hidden {
+            display: none
+         }
+
+         .md\:h-16 {
+            height: 4rem
+         }
+
+         .md\:h-\[56px\] {
+            height: 56px
+         }
+
+         .md\:h-screen {
+            height: 100vh
+         }
+
+         .md\:max-h-\[56px\] {
+            max-height: 56px
+         }
+
+         .md\:min-h-screen {
+            min-height: 100vh
+         }
+
+         .md\:w-full {
+            width: 100%
+         }
+
+         .md\:min-w-\[180px\] {
+            min-width: 180px
+         }
+
+         .md\:min-w-fit {
+            min-width: fit-content
+         }
+
+         .md\:max-w-4xl {
+            max-width: 56rem
+         }
+
+         .md\:max-w-\[420px\] {
+            max-width: 420px
+         }
+
+         .md\:max-w-\[calc\(100\%-280px\)\] {
+            max-width: calc(100% - 280px)
+         }
+
+         .md\:items-end {
+            align-items: flex-end
+         }
+
+         .md\:gap-4 {
+            gap: 1rem
+         }
+
+         .md\:space-x-2>:not([hidden])~:not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(.5rem*var(--tw-space-x-reverse));
+            margin-left: calc(.5rem*calc(1 - var(--tw-space-x-reverse)))
+         }
+
+         .md\:overflow-auto {
+            overflow: auto
+         }
+
+         .md\:text-nowrap {
+            text-wrap: nowrap
+         }
+
+         .md\:rounded-\[14px\] {
+            border-radius: 14px
+         }
+
+         .md\:rounded-xl {
+            border-radius: .75rem
+         }
+
+         .md\:bg-\[\#1A1A1C\] {
+            --tw-bg-opacity: 1;
+            background-color: rgb(26 26 28/var(--tw-bg-opacity, 1))
+         }
+
+         .md\:bg-\[rgba\(30\,30\,31\,0\.8\)\] {
+            background-color: #1e1e1fcc
+         }
+
+         .md\:bg-background {
+            background-color: hsl(var(--background))
+         }
+
+         .md\:bg-gradient-to-b {
+            background-image: linear-gradient(to bottom, var(--tw-gradient-stops))
+         }
+
+         .md\:p-1 {
+            padding: .25rem
+         }
+
+         .md\:p-4 {
+            padding: 1rem
+         }
+
+         .md\:px-3 {
+            padding-left: .75rem;
+            padding-right: .75rem
+         }
+
+         .md\:px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem
+         }
+
+         .md\:py-2 {
+            padding-top: .5rem;
+            padding-bottom: .5rem
+         }
+
+         .md\:py-20 {
+            padding-top: 5rem
+         }
+
+         .md\:pb-2 {
+            padding-bottom: .5rem
+         }
+
+         .md\:pb-\[20rem\] {
+            padding-bottom: 20rem
+         }
+
+         .md\:pl-12 {
+            padding-left: 3rem
+         }
+
+         .md\:pt-1 {
+            padding-top: .25rem
+         }
+
+         .md\:pt-3 {
+            padding-top: .75rem
+         }
+
+         .md\:text-\[15px\] {
+            font-size: 15px
+         }
+
+         .md\:text-\[16px\] {
+            font-size: 16px
+         }
+
+         .md\:text-\[18px\] {
+            font-size: 18px
+         }
+
+         .md\:backdrop-blur-\[40px\] {
+            --tw-backdrop-blur: blur(40px);
+            -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+         }
+
+         .md\:backdrop-blur-md {
+            --tw-backdrop-blur: blur(12px);
+            -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+         }
+      }
+
+      .\[\&_p\]\:my-0 p {
+         margin-top: 0;
+         margin-bottom: 0
+      }
+
+      @font-face {
+         font-family: Brockmann;
+         src: url("assets/fonts/fonts_00009.otf")format("opentype");
+         font-weight: 400;
+         font-style: normal
+      }
+
+      @font-face {
+         font-family: Brockmann;
+         src: url("assets/fonts/fonts_00010.otf")format("opentype");
+         font-weight: 400;
+         font-style: italic
+      }
+
+      @font-face {
+         font-family: Brockmann;
+         src: url("assets/fonts/fonts_00011.otf")format("opentype");
+         font-weight: 500;
+         font-style: normal
+      }
+
+      @font-face {
+         font-family: Brockmann;
+         src: url("assets/fonts/fonts_00012.otf")format("opentype");
+         font-weight: 500;
+         font-style: italic
+      }
+
+      @font-face {
+         font-family: Brockmann;
+         src: url("assets/fonts/fonts_00013.otf")format("opentype");
+         font-weight: 600;
+         font-style: normal
+      }
+
+      @font-face {
+         font-family: Brockmann;
+         src: url("assets/fonts/fonts_00014.otf")format("opentype");
+         font-weight: 600;
+         font-style: italic
+      }
+
+      @font-face {
+         font-family: Brockmann;
+         src: url("assets/fonts/fonts_00015.otf")format("opentype");
+         font-weight: 700;
+         font-style: normal
+      }
+
+      @font-face {
+         font-family: Brockmann;
+         src: url("assets/fonts/fonts_00016.otf")format("opentype");
+         font-weight: 700;
+         font-style: italic
+      }
+
+      @font-face {
+         font-family: Berkeley Mono Trial;
+         src: url("assets/fonts/fonts_00017.ttf")format("truetype");
+         font-weight: 400;
+         font-style: normal
+      }
+
+      @font-face {
+         font-family: Ndot;
+         src: url("assets/fonts/fonts_00018.otf")format("opentype");
+         font-weight: 400;
+         font-style: normal
+      }
+
+      @font-face {
+         font-family: Digital-7;
+         src: url("assets/fonts/fonts_00019.ttf")format("truetype");
+         font-weight: 400;
+         font-style: normal
+      }
+   </style>
+   <style>
+      @media (pointer:fine) {
+         [data-vaul-handle-hitarea]: {
+            width: 100%;
+            height: 100%
+         }
+      }
+
+      @keyframes fadeIn {
+         from {
+            opacity: 0
+         }
+
+         to {
+            opacity: 1
+         }
+      }
+
+      @keyframes fadeOut {
+         to {
+            opacity: 0
+         }
+      }
+
+      @keyframes slideFromBottom {
+         from {
+            transform: translate3d(0, var(--initial-transform, 100%), 0)
+         }
+
+         to {
+            transform: translate3d(0, 0, 0)
+         }
+      }
+
+      @keyframes slideToBottom {
+         to {
+            transform: translate3d(0, var(--initial-transform, 100%), 0)
+         }
+      }
+
+      @keyframes slideFromTop {
+         from {
+            transform: translate3d(0, calc(var(--initial-transform, 100%)*-1), 0)
+         }
+
+         to {
+            transform: translate3d(0, 0, 0)
+         }
+      }
+
+      @keyframes slideToTop {
+         to {
+            transform: translate3d(0, calc(var(--initial-transform, 100%)*-1), 0)
+         }
+      }
+
+      @keyframes slideFromLeft {
+         from {
+            transform: translate3d(calc(var(--initial-transform, 100%)*-1), 0, 0)
+         }
+
+         to {
+            transform: translate3d(0, 0, 0)
+         }
+      }
+
+      @keyframes slideToLeft {
+         to {
+            transform: translate3d(calc(var(--initial-transform, 100%)*-1), 0, 0)
+         }
+      }
+
+      @keyframes slideFromRight {
+         from {
+            transform: translate3d(var(--initial-transform, 100%), 0, 0)
+         }
+
+         to {
+            transform: translate3d(0, 0, 0)
+         }
+      }
+
+      @keyframes slideToRight {
+         to {
+            transform: translate3d(var(--initial-transform, 100%), 0, 0)
+         }
+      }
+   </style>
+   <meta content="notranslate" name="google" />
+   <meta content="no-referrer" name="referrer" />
+   <link href="assets/media/media_00001.ico" rel="icon" type="image/x-icon" />
+   <style>
+      .sf-hidden {
+         display: none !important
+      }
+   </style>
+   <meta
+      content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"
+      http-equiv="content-security-policy" />
+</head>
+
+<body class="notranslate">
+   <div data-sf-nesting-track-id="1.2" id="root">
+      <div class="font-sans antialiased h-dvh md:h-screen dark" data-sf-nesting-track-id="1.2.1">
+         <div class="relative h-full md:min-h-screen w-full" data-sf-nesting-track-id="1.2.1.1">
+            <div class="relative h-full md:min-h-screen z-10" data-sf-nesting-track-id="1.2.1.1.1">
+               <div class="flex h-full flex-col" data-sf-nesting-track-id="1.2.1.1.1.1">
+                  <header class="z-[10000] md:bg-[rgba(30,30,31,0.8)] max-md:bg-transparent sticky top-0">
+                     <div
+                        class="flex items-center justify-between px-2 h-[56px] md:h-[56px] md:max-h-[56px] md:px-4 container-fluid">
+                        <div
+                           class="flex-1 h-full flex md:items-end overflow-hidden md:mr-4 w-full md:max-w-[calc(100%-280px)]">
+                           <div class="relative flex items-center w-full max-md:justify-between">
+                              <div class="flex items-center gap-4"><button
+                                    class="z-10 bg-[#FFFFFF14] flex-shrink-0 h-9 w-9 flex items-center justify-center rounded-full hover:bg-secondary/50 md:hidden sf-hidden"
+                                    title="Back to Home" type="button"><svg
+                                       class="lucide lucide-chevron-down w-5 h-5 text-white rotate-90" fill="none"
+                                       height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                       stroke-width="2" viewbox="0 0 24 24" width="24"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path d="m6 9 6 6 6-6"></path>
+                                    </svg></button>
+                                 <div
+                                    class="inset-0 flex items-center justify-center gap-1 pointer-events-none md:hidden sf-hidden">
+                                 </div>
+                              </div>
+                              <div
+                                 class="relative items-center flex-1 hidden space-x-0 overflow-hidden md:flex px-[6px] pt-[3px]"
+                                 style="scrollbar-width:none">
+                                 <div class="flex items-center"
+                                    style="opacity:1;transform:none;transform-origin:50% 50% 0px">
+                                    <div class="group relative" data-state="closed">
+                                       <div
+                                          class="flex justify-between items-center pr-0.5 pl-0.5 pt-[7px] pb-[5px] mx-1 mb-1 cursor-pointer transition-all duration-200 font-brockmann text-[14px] leading-[20px] font-medium relative z-20 hover:bg-white/10 rounded-lg"
+                                          data-testid="tab-home"
+                                          style="color:rgb(179,179,179);transform:none;transform-origin:50% 50% 0px">
+                                          <div class="flex items-center space-x-0 md:space-x-2 py-1 pl-2 pr-1"><svg
+                                                fill="none" height="13" viewbox="0 0 13 13" width="13"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                   d="M2.966 0C2.406 0 1.93533 2.98023e-08 1.562 0.05C1.166 0.103333 0.804 0.221333 0.512667 0.512667C0.221333 0.804 0.103333 1.166 0.05 1.562C2.98023e-08 1.93533 0 2.406 0 2.966V3.03333C0 3.59333 2.98023e-08 4.064 0.05 4.43733C0.103333 4.83333 0.221333 5.19533 0.512667 5.48667C0.804 5.778 1.166 5.896 1.562 5.94933C1.93533 5.99933 2.406 5.99933 2.966 5.99933H3.03333C3.59333 5.99933 4.064 5.99933 4.43733 5.94933C4.83333 5.896 5.19533 5.778 5.48667 5.48667C5.778 5.19533 5.896 4.83333 5.94933 4.43733C5.99933 4.064 5.99933 3.59333 5.99933 3.03333V2.96667C5.99933 2.40667 5.99933 1.936 5.94933 1.56267C5.896 1.16667 5.778 0.804667 5.48667 0.513333C5.19533 0.222 4.83333 0.104 4.43733 0.0506667C4.064 0.000666648 3.59333 0.000666618 3.03333 0.000666618L2.966 0ZM9.966 0C9.406 0 8.93533 2.98023e-08 8.562 0.05C8.166 0.103333 7.804 0.221333 7.51267 0.512667C7.22133 0.804 7.10333 1.166 7.05 1.562C7 1.93533 7 2.406 7 2.966V3.03333C7 3.59333 7 4.064 7.05 4.43733C7.10333 4.83333 7.22133 5.19533 7.51267 5.48667C7.804 5.778 8.166 5.896 8.562 5.94933C8.93533 5.99933 9.406 5.99933 9.966 5.99933H10.034C10.594 5.99933 11.0647 5.99933 11.438 5.94933C11.834 5.896 12.196 5.778 12.4873 5.48667C12.7787 5.19533 12.8967 4.83333 12.95 4.43733C13 4.064 13 3.59333 13 3.03333V2.96667C13 2.40667 13 1.936 12.95 1.56267C12.8967 1.16667 12.7787 0.804667 12.4873 0.513333C12.196 0.222 11.834 0.104 11.438 0.0506667C11.0647 0.000666648 10.5947 0.000666618 10.0347 0.000666618L9.966 0ZM2.966 7.00467C2.406 7.00467 1.93533 7.00467 1.562 7.05467C1.166 7.108 0.804 7.226 0.512667 7.51733C0.221333 7.80867 0.103333 8.17067 0.05 8.56667C2.98023e-08 8.94 0 9.41067 0 9.97067V10.0387C0 10.5987 2.98023e-08 11.0693 0.05 11.4427C0.103333 11.8387 0.221333 12.2007 0.512667 12.492C0.804 12.7833 1.166 12.9013 1.562 12.9547C1.93533 13.0047 2.406 13.0047 2.966 13.0047H3.03333C3.59333 13.0047 4.064 13.0047 4.43733 12.9547C4.83333 12.9013 5.19533 12.7833 5.48667 12.492C5.778 12.2007 5.896 11.8387 5.94933 11.4427C5.99933 11.0693 5.99933 10.5987 5.99933 10.0387V9.97067C5.99933 9.41067 5.99933 8.94067 5.94933 8.56667C5.896 8.17067 5.778 7.80867 5.48667 7.51733C5.19533 7.226 4.83333 7.108 4.43733 7.05467C4.064 7.00467 3.59333 7.00467 3.03333 7.00467H2.966ZM9.966 7.00467C9.406 7.00467 8.93533 7.00467 8.562 7.05467C8.166 7.108 7.804 7.226 7.51267 7.51733C7.22133 7.80867 7.10333 8.17067 7.05 8.56667C7 8.94 7 9.41067 7 9.97067V10.0387C7 10.5987 7 11.0693 7.05 11.4427C7.10333 11.8387 7.22133 12.2007 7.51267 12.492C7.804 12.7833 8.166 12.9013 8.562 12.9547C8.93533 13.0047 9.406 13.0047 9.966 13.0047H10.034C10.594 13.0047 11.0647 13.0047 11.438 12.9547C11.834 12.9013 12.196 12.7833 12.4873 12.492C12.7787 12.2007 12.8967 11.8387 12.95 11.4427C13 11.0693 13 10.5987 13 10.0387V9.97067C13 9.41067 13 8.94067 12.95 8.56667C12.8967 8.17067 12.7787 7.80867 12.4873 7.51733C12.196 7.226 11.834 7.108 11.438 7.05467C11.0647 7.00467 10.594 7.00467 10.0347 7.00467H9.966Z"
+                                                   fill="#7B7B80"></path>
+                                             </svg>
+                                             <p class="hidden md:block">Home</p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div
+                                       class="h-5 w-[1px] bg-white/20 flex-shrink-0 mb-1 self-center transition-opacity duration-200 opacity-0"
+                                       style="transform:none;transform-origin:50% 50% 0px"></div>
+                                 </div>
+                                 <div class="flex items-center"
+                                    style="opacity:1;transform:none;transform-origin:50% 50% 0px">
+                                    <div class="group relative" data-state="closed">
+                                       <div class="absolute inset-0 rounded-tl-lg rounded-tr-lg"
+                                          style="background-color:rgb(15,15,16);transform:none;transform-origin:50% 50% 0px;opacity:1">
+                                          <div class="absolute inset-0 rounded-tl-lg rounded-tr-lg pointer-events-none"
+                                             style="padding:1px;background:linear-gradient(rgba(255,255,255,0.15) 0%,transparent 50%);mask:linear-gradient(rgb(255,255,255) 0px,rgb(255,255,255) 0px) content-box xor,linear-gradient(rgb(255,255,255) 0px,rgb(255,255,255) 0px)">
+                                          </div>
+                                          <div class="absolute bottom-0 -left-[20px] w-[20px] h-[20px] z-10"
+                                             style="border-bottom-right-radius:12px;box-shadow:rgb(15,15,16) 6px 6px 0px 6px;clip-path:inset(0px -10px 0px 0px)">
+                                          </div>
+                                          <div class="absolute bottom-0 -right-[20px] w-[20px] h-[20px] z-10"
+                                             style="border-bottom-left-radius:12px;box-shadow:rgb(15,15,16) -6px 6px 0px 6px;clip-path:inset(0px 0px 0px -10px)">
+                                          </div>
+                                       </div>
+                                       <div
+                                          class="flex justify-between items-center pr-0.5 pl-0.5 pt-[7px] pb-[5px] mx-1 mb-1 cursor-pointer transition-all duration-200 font-brockmann text-[14px] leading-[20px] font-medium relative z-20 rounded-t-xl"
+                                          data-testid="tab-9228e1f1-6c6d-48ea-9cdb-6ddd2c5fd5e6"
+                                          style="width:1444px;min-width:40px;max-width:170px;transform:none;transform-origin:50% 50% 0px;color:rgb(255,255,255)">
+                                          <div class="flex items-center space-x-2 overflow-hidden pl-1.5 py-1">
+                                             <div
+                                                class="rounded-lg flex justify-center items-center w-3 h-3 animate-status-pulse flex-shrink-0"
+                                                style="background-color:rgba(103,203,101,0.125);--status-pulse-color:#67CB6570;--status-pulse-transparent:#67CB6500">
+                                                <div class="rounded w-1.5 h-1.5"
+                                                   style="background-color:rgb(103,203,101)"></div>
+                                             </div><span class="text-sm font-medium cursor-default truncate">I am
+                                                building a production-grade AI app platform. Read everything carefully
+                                                before making changes.
+                                                PROJECT CONTEXT (DO NOT CHANGE ARCHITECTURE)
+                                                Stack:
+                                                Frontend: Next.js
+                                                Backend: Node.js with TypeScript and Fastify
+                                                A Python proxy server (server.py) managed by supervisor
+                                                Important constraints:
+                                                The Python proxy runs on port 8001
+                                                Supervisor starts ONLY the Python proxy
+                                                The Python proxy forwards ALL requests to the Fastify backend on port
+                                                4000
+                                                The Python environment MUST have httpx installed
+                                                Do NOT change ports, proxy behavior, or supervisor configuration
+                                                Secure execution sandbox is already implemented
+                                                Agent-based multi-step code generation (not simple chat)
+                                                Supports multiple AI providers (cloud and local)
+                                                Supports local models via LM Studio using an OpenAI-compatible API
+                                                Supports small models with reduced context
+                                                Uses multi-step processing pipelines
+                                                One-command installation on Ubuntu Server 24.04
+                                                I need to improve the install.sh update feature. In case of update
+                                                failed, it must restore the backup, restart and check the services
+                                                health.</span>
+                                          </div><button
+                                             class="hover:bg-white/10 rounded-full p-0.5 flex-shrink-0 transition-opacity duration-200 text-[#7B7B80] hover:text-white opacity-100"
+                                             data-testid="close-tab-9228e1f1-6c6d-48ea-9cdb-6ddd2c5fd5e6"
+                                             title="Close Tab" type="button"><svg fill="none" height="14"
+                                                viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor"
+                                                   stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                </path>
+                                             </svg></button>
+                                       </div>
+                                    </div>
+                                    <div
+                                       class="h-5 w-[1px] bg-white/20 flex-shrink-0 mb-1 self-center transition-opacity duration-200 opacity-0"
+                                       style="transform:none;transform-origin:50% 50% 0px"></div>
+                                 </div>
+                                 <div class="flex items-center" style="opacity:1;transform:none"></div>
+                                 <div class="flex items-center cursor-pointer ml-1 mb-1" data-testid="new-tab-button"
+                                    style="transform:none;transform-origin:50% 50% 0px">
+                                    <div
+                                       class="ml-1 flex items-center justify-center w-9 h-9 rounded-md transition-all duration-200 hover:bg-white/10 text-[#7B7B80] hover:text-white">
+                                       <svg fill="none" height="13" viewbox="0 0 13 13" width="13"
+                                          xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                             d="M6.59375 0.254883C7.05596 0.301849 7.41699 0.692389 7.41699 1.16699V5.58301H11.833C12.3393 5.58306 12.7499 5.99373 12.75 6.5L12.7451 6.59375C12.6981 7.05595 12.3076 7.41698 11.833 7.41699H7.41699V11.833C7.41693 12.3076 7.05597 12.6981 6.59375 12.7451L6.5 12.75C5.99374 12.7499 5.58307 12.3393 5.58301 11.833V7.41699H1.16699C0.660749 7.41697 0.250019 7.00624 0.25 6.5L0.254883 6.40625C0.301867 5.94402 0.692365 5.58306 1.16699 5.58301H5.58301V1.16699C5.58301 0.660735 5.99374 0.250006 6.5 0.25L6.59375 0.254883Z"
+                                             fill="currentColor" opacity="0.8" stroke="currentColor" stroke-width="0.5">
+                                          </path>
+                                       </svg>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="flex items-center gap-2 justify-end flex-shrink-0 md:min-w-[180px]"><button
+                              class="relative flex h-8 justify-center items-center rounded-full font-[600] text-[14px] text-[#0F0F10] pl-[8px] pr-[12px] gap-[4px]"
+                              style="background:linear-gradient(90deg,rgba(255,255,255,0.19),rgba(0,0,0,0.314)) center center/cover,rgb(243,202,95);background-blend-mode:overlay,normal;box-shadow:rgba(243,202,95,0.4) 0px 0px 20px 0px,rgba(255,255,255,0.4) 0px 2.18px 3.64px 1.45px inset,rgba(0,0,0,0.2) 0px -1.45px 0px 0px inset,rgba(0,0,0,0.1) 0px 0.73px 0.73px 0.73px"
+                              title="Agents" type="button"><img alt="right arrow" class="w-5 h-5"
+                                 src="assets/svg/plus.svg" /><span class="tracking-[-0.2px]">Agents</span></button>
+                           <div class="items-center justify-end hidden gap-4 md:flex"><button aria-controls="radix-:rd:"
+                                 aria-expanded="false" aria-haspopup="dialog"
+                                 class="inline-flex items-center whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-20 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground gap-2 relative w-8 h-8 p-0 rounded-full bg-[#1E1E1F] hover:bg-[#2A2A2B] justify-center"
+                                 data-state="closed" data-testid="menubar-avatar-button" type="button">
+                                 <div class="flex items-center w-full"><span
+                                       class="relative flex shrink-0 overflow-hidden rounded-full h-8 w-8 bg-[#1E1E1F]"><span
+                                          class="flex h-full w-full items-center justify-center rounded-full bg-[#1E1E1F] text-sm font-medium">9</span></span>
+                                 </div>
+                              </button></div>
+                        </div>
+                     </div>
+                  </header>
+                  <div class="absolute inset-0 mt-[56px] hidden sf-hidden" data-sf-nesting-track-id="1.2.1.1.1.1.2">
+                     <div
+                        class="relative flex flex-col items-center h-full overflow-y-scroll md:h-screen justify-between md:block bg-cover bg-center bg-no-repeat sf-hidden"
+                        data-sf-nesting-track-id="1.2.1.1.1.1.2.1" data-testid="home-container"
+                        style="background-image:var(--sf-img-19)">
+                        <div class="relative mb-14 sf-hidden">
+                           <section
+                              class="hidden md:block overflow-hidden md:py-20 pb-[15rem] md:pb-[20rem] mt-[10rem] relative sf-hidden">
+                              <div class="pointer-events-none md:overflow-auto sf-hidden"
+                                 style="position:absolute;inset:30% 0px 0px;width:100%;height:70%;opacity:0.8;background-color:rgb(15,15,16)">
+                                 <style>
+                                    @keyframes retro-grid-animation-45 {
+                                       0% {
+                                          transform: rotateX(45deg) translateY(-50%)
+                                       }
+
+                                       100% {
+                                          transform: rotateX(45deg) translateY(0)
+                                       }
+                                    }
+                                 </style>
+                              </div>
+                           </section>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="absolute inset-0 mt-[56px]" data-sf-nesting-track-id="1.2.1.1.1.1.3">
+                     <div
+                        class="h-full data-[panel-group-direction=vertical]:flex-col relative flex w-full bg-[#0F0F10]"
+                        data-panel-group="" data-panel-group-direction="horizontal" data-panel-group-id=":r3d:"
+                        data-sf-nesting-track-id="1.2.1.1.1.1.3.1" data-slot="resizable-panel-group"
+                        style="display:flex;flex-direction:row;height:calc(-56px + 100dvh);overflow:hidden;width:100%">
+                        <div class="md:block hidden" data-panel="" data-panel-group-id=":r3d:" data-panel-id=":r3e:"
+                           data-panel-size="50.0" data-sf-nesting-track-id="1.2.1.1.1.1.3.1.1"
+                           data-slot="resizable-panel" id=":r3e:" style="flex:50 1 0px;overflow:hidden">
+                           <div class="relative flex flex-col h-full max-md:pt-2"
+                              data-sf-nesting-track-id="1.2.1.1.1.1.3.1.1.1" data-testid="chat-screen">
+                              <div
+                                 class="h-10 md:h-16 pt-1 md:pt-3 bg-transparent md:bg-gradient-to-b from-[#0f0f0f] to-[#0f0f0f00] w-fit md:w-full right-0 md:right-3 fixed md:absolute top-[14px] md:top-[0px] z-[50] md:z-[49]">
+                                 <div class="flex items-center gap-4">
+                                    <div class="flex-1"></div>
+                                    <div class="flex items-center"></div>
+                                 </div>
+                              </div>
+                              <div class="relative flex-1 w-full h-full overflow-hidden">
+                                 <div class="absolute inset-0">
+                                    <div class="w-full h-full overflow-x-hidden" data-testid="virtuoso-item-list"
+                                       data-virtuoso-scroller="true"
+                                       style="height:100%;outline:none;overflow-y:auto;position:relative;padding-top:120px"
+                                       tabindex="0">
+                                       <div data-viewport-type="element"
+                                          style="height:100%;position:absolute;top:0px;width:100%">
+                                          <div data-testid="virtuoso-item-list"
+                                             style="box-sizing:border-box;margin-top:0px;padding-bottom:0px;padding-top:0px">
+                                             <div data-index="0" data-item-index="0" data-known-size="842"
+                                                style="overflow-anchor:none">
+                                                <div class="flex justify-center w-full min-h-[1px]">
+                                                   <div class="w-full hover:bg-[rgba(255,255,255,0.02)] mt-10">
+                                                      <div class="mx-auto px-4 w-full">
+                                                         <div class="relative group flex justify-center mb-0"
+                                                            id="user-task">
+                                                            <div
+                                                               class="my-4 md:my-8 group flex flex-col space-y-[10px] w-full md:max-w-4xl md:pl-12 justify-end items-end">
+                                                               <div
+                                                                  class="px-4 py-1 rounded-xl rounded-br-none overflow-hidden space-y-[10px] flex items-end bg-[#273638] max-4-xl w-4xl"
+                                                                  style="background:radial-gradient(50% 50%,rgba(128,255,249,0.16) 0%,rgba(128,255,249,0.08) 100%)">
+                                                                  <div class="flex items-start gap-3">
+                                                                     <div class="flex-1 min-w-0">
+                                                                        <div class="prose prose-invert max-w-none">
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">I am building
+                                                                                    a production-grade AI app platform.
+                                                                                    Read everything carefully before
+                                                                                    making changes.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">PROJECT
+                                                                                    CONTEXT (DO NOT CHANGE ARCHITECTURE)
+                                                                                 </p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                              </div>
+                                                                           </div>
+                                                                           <pre
+                                                                              class="my-2 p-3 rounded-lg overflow-hidden font-jetbrains text-sm leading-relaxed bg-[#1a1a1a] whitespace-pre-wrap break-words text-[#dcdce5]"><code>Stack:
+Frontend: Next.js
+Backend: Node.js with TypeScript and Fastify</code></pre>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">A Python
+                                                                                    proxy server (server.py) managed by
+                                                                                    supervisor</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Important
+                                                                                    constraints:</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">The Python
+                                                                                    proxy runs on port 8001</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Supervisor
+                                                                                    starts ONLY the Python proxy</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">The Python
+                                                                                    proxy forwards ALL requests to the
+                                                                                    Fastify backend on port 4000</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">The Python
+                                                                                    environment MUST have httpx
+                                                                                    installed</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Do NOT change
+                                                                                    ports, proxy behavior, or supervisor
+                                                                                    configuration</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Secure
+                                                                                    execution sandbox is already
+                                                                                    implemented</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Agent-based
+                                                                                    multi-step code generation (not
+                                                                                    simple chat)</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Supports
+                                                                                    multiple AI providers (cloud and
+                                                                                    local)</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Supports
+                                                                                    local models via LM Studio using an
+                                                                                    OpenAI-compatible API</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Supports
+                                                                                    small models with reduced context
+                                                                                 </p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">Uses
+                                                                                    multi-step processing pipelines</p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">One-command
+                                                                                    installation on Ubuntu Server 24.04
+                                                                                 </p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                              </div>
+                                                                           </div>
+                                                                           <div
+                                                                              class="my-1 overflow-hidden text-[#cfe3e6] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                              <div
+                                                                                 class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                 <p class="my-4 font-['Inter']"
+                                                                                    node="[object Object]">I need to
+                                                                                    improve the install.sh update
+                                                                                    feature. In case of update failed,
+                                                                                    it must restore the backup, restart
+                                                                                    and check the services health.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                               <div
+                                                                  class="transition-opacity duration-200 h-5 text-right opacity-100">
+                                                                  <div
+                                                                     class="inline-flex items-center gap-2 text-[#5C5F66] opacity-100">
+                                                                     <span
+                                                                        class="font-['Berkeley Mono Trial'] text-[13px] md:text-[15px] leading-[20px]">Jan
+                                                                        8, 11:05 AM</span>
+                                                                  </div>
+                                                                  <div class="relative">
+                                                                     <div
+                                                                        class="inline-flex items-center gap-1 opacity-0 absolute pointer-events-none">
+                                                                        <button
+                                                                           class="justify-center duration-200 focus:outline-none p-[6px] bg-white/5 hover:bg-white/15 text-[15px] font-inter font-medium text-white/50 hover:text-white flex items-center space-x-1 rounded-lg transition-colors max-h-full bg-none"
+                                                                           data-testid="message-copy-button"
+                                                                           type="button"><svg
+                                                                              class="lucide lucide-copy text-white/60"
+                                                                              fill="none" height="16"
+                                                                              stroke="currentColor"
+                                                                              stroke-linecap="round"
+                                                                              stroke-linejoin="round" stroke-width="2"
+                                                                              viewbox="0 0 24 24" width="16"
+                                                                              xmlns="http://www.w3.org/2000/svg">
+                                                                              <rect height="14" rx="2" ry="2" width="14"
+                                                                                 x="8" y="8"></rect>
+                                                                              <path
+                                                                                 d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+                                                                              </path>
+                                                                           </svg><span class="ml-1">Copy</span></button>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div data-index="1" data-item-index="1" data-known-size="251"
+                                                style="overflow-anchor:none">
+                                                <div class="flex justify-center w-full min-h-[1px]">
+                                                   <div class="w-full hover:bg-[rgba(255,255,255,0.02)]">
+                                                      <div class="mx-auto px-4 w-full">
+                                                         <div
+                                                            class="relative group selection:text-[#66EAFF] selection:bg-[#66EAFF] selection:bg-opacity-10 my-3 md:my-5 space-y-[10px]"
+                                                            data-action="initial-llm" data-function-name="initial-llm"
+                                                            data-testid="agent-message-message--1" id="message--1">
+                                                            <div class="overflow-hidden rounded-lg">
+                                                               <div class="flex flex-col w-full space-y-4">
+                                                                  <div
+                                                                     class="flex items-start w-full max-w-4xl mx-auto md:gap-4 md:w-4xl">
+                                                                     <div>
+                                                                        <div class="hidden row-span-2 md:block"><span
+                                                                              class="relative flex shrink-0 overflow-hidden rounded-full flex-shrink-0 w-10 h-10"
+                                                                              data-testid="agent-avatar"><span
+                                                                                 class="flex h-full w-full items-center justify-center rounded-full bg-transparent"><img
+                                                                                    alt="Robot" class="h-8 w-fit"
+                                                                                    src="assets/svg/robot.svg" /></span></span>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="flex flex-col flex-1 w-full gap-3">
+                                                                        <div class="min-w-0 w-full">
+                                                                           <div
+                                                                              class="flex flex-col w-full prose prose-invert max-w-none">
+                                                                              <div
+                                                                                 class="flex flex-col prose prose-invert max-w-none"
+                                                                                 data-testid="message-content">
+                                                                                 <div
+                                                                                    class="my-1 overflow-hidden text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                                    <div
+                                                                                       class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                       <p class="my-4 font-['Inter']"
+                                                                                          node="[object Object]">Welcome
+                                                                                          to Emergent - your single
+                                                                                          destination to build and
+                                                                                          deploy production-ready
+                                                                                          applications. I see you're
+                                                                                          looking to enhance your
+                                                                                          installation script with
+                                                                                          robust error handling,
+                                                                                          ensuring a seamless update
+                                                                                          process by restoring backups
+                                                                                          and verifying service health
+                                                                                          if anything goes wrong. I'll
+                                                                                          make sure your installation is
+                                                                                          as reliable as your
+                                                                                          application.</p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <div
+                                                                                    class="my-1 overflow-hidden text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                                    <div
+                                                                                       class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <div
+                                                                                    class="my-1 overflow-hidden text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                                    <div
+                                                                                       class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                       <p class="my-4 font-['Inter']"
+                                                                                          node="[object Object]">I'll
+                                                                                          start building this now.</p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div
+                                                                           class="w-full col-span-1 space-y-1 md:space-y-[10px]">
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div
+                                                               class="transition-opacity duration-200 h-[25px] max-w-4xl items-center flex justify-between mx-auto opacity-100">
+                                                               <div
+                                                                  class="flex justify-between items-center text-[#5C5F66]">
+                                                                  <span class="md:ml-14"></span>
+                                                               </div>
+                                                               <div class="text-[#5C5F66] w-full">
+                                                                  <div
+                                                                     class="relative flex items-center justify-between">
+                                                                     <div
+                                                                        class="flex items-center gap-2 opacity-0 pointer-events-none sf-hidden">
+                                                                     </div>
+                                                                     <div class="relative">
+                                                                        <div
+                                                                           class="inline-flex items-center gap-2 absolute opacity-0 pointer-events-none">
+                                                                           <button
+                                                                              class="justify-center duration-200 focus:outline-none p-[6px] bg-white/5 hover:bg-white/15 text-[15px] font-inter font-medium text-white/50 hover:text-white flex items-center space-x-1 rounded-lg transition-colors max-h-full bg-none"
+                                                                              data-testid="message-copy-button"
+                                                                              type="button"><svg
+                                                                                 class="lucide lucide-copy text-white/60"
+                                                                                 fill="none" height="16"
+                                                                                 stroke="currentColor"
+                                                                                 stroke-linecap="round"
+                                                                                 stroke-linejoin="round"
+                                                                                 stroke-width="2" viewbox="0 0 24 24"
+                                                                                 width="16"
+                                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                                 <rect height="14" rx="2" ry="2"
+                                                                                    width="14" x="8" y="8"></rect>
+                                                                                 <path
+                                                                                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+                                                                                 </path>
+                                                                              </svg><span
+                                                                                 class="ml-1">Copy</span></button>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div data-index="2" data-item-index="2" data-known-size="371"
+                                                style="overflow-anchor:none">
+                                                <div class="flex justify-center w-full min-h-[1px]">
+                                                   <div class="w-full hover:bg-[rgba(255,255,255,0.02)]">
+                                                      <div class="mx-auto px-4 w-full">
+                                                         <div
+                                                            class="relative group selection:text-[#66EAFF] selection:bg-[#66EAFF] selection:bg-opacity-10 my-3 md:my-5 space-y-[10px]"
+                                                            data-action="
+Starting task: Improve install.sh update feature with backup restoration and health checks on failure.
+
+Key requirements from problem statement:
+1. Production-grade AI app platform
+2. Stack: Next.js frontend, Node.js/TypeScript/Fastify backend, Python proxy on port 8001
+3. Python proxy forwards to Fastify on port 4000
+4. Supervisor manages Python proxy only
+5. DO NOT change ports, proxy behavior, or supervisor config
+6. Need to improve install.sh update feature to:
+   - Restore backup on update failure
+   - Restart services after restore
+   - Check services health
+
+My plan:
+1. First explore the root directory structure
+2. Find and read install.sh to understand current update mechanism
+3. Check for existing backup mechanisms
+4. Understand supervisor configuration
+5. Identify all services that need health checks
+6. Create comprehensive plan and get user approval
+7. Implement improvements
+" data-function-name="think" data-testid="agent-message-message-0" id="message-0">
+                                                            <div class="overflow-hidden rounded-lg">
+                                                               <div class="flex flex-col w-full space-y-4">
+                                                                  <div
+                                                                     class="flex items-start w-full max-w-4xl mx-auto md:gap-4 md:w-4xl">
+                                                                     <div>
+                                                                        <div class="hidden row-span-2 md:block"><span
+                                                                              class="relative flex shrink-0 overflow-hidden rounded-full flex-shrink-0 w-10 h-10"
+                                                                              data-testid="agent-avatar"><span
+                                                                                 class="flex h-full w-full items-center justify-center rounded-full bg-transparent"><img
+                                                                                    alt="Robot" class="h-8 w-fit"
+                                                                                    src="assets/svg/robot.svg" /></span></span>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="flex flex-col flex-1 w-full gap-3">
+                                                                        <div class="min-w-0 w-full">
+                                                                           <div
+                                                                              class="flex flex-col w-full prose prose-invert max-w-none">
+                                                                              <div
+                                                                                 class="flex flex-col prose prose-invert max-w-none"
+                                                                                 data-testid="message-content">
+                                                                                 <div
+                                                                                    class="my-1 overflow-hidden text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal">
+                                                                                    <div
+                                                                                       class="selection:text-[#66EAFF] text-wrap break-words selection:bg-[#66EAFF] selection:bg-opacity-10 select-text p-0 text-[#dcdce5] font-['Inter'] text-[16px] leading-[28px] font-normal [&amp;_p]:my-0 max-w-[50rem]">
+                                                                                       <p class="my-4 font-['Inter']"
+                                                                                          node="[object Object]">I'll
+                                                                                          help you improve the
+                                                                                          install.sh update feature with
+                                                                                          proper backup restoration and
+                                                                                          health checks. Let me start by
+                                                                                          exploring the codebase to
+                                                                                          understand the current
+                                                                                          structure and implementation.
+                                                                                       </p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                        </div>
+                                                                        <div
+                                                                           class="w-full col-span-1 space-y-1 md:space-y-[10px]">
+                                                                           <div
+                                                                              class="max-md:max-w-screen w-full max-w-[calc(896px-52px)] text-wrap backdrop-blur-lg rounded-[12px] text-left select-text cursor-pointer hover:bg-[#202020]"
+                                                                              data-testid="action-display"
+                                                                              style="background:radial-gradient(50% 50%,rgba(230,247,255,0.1) 0%,rgba(229,246,255,0.05) 100%)">
+                                                                              <div
+                                                                                 class="flex items-start justify-between p-3">
+                                                                                 <div
+                                                                                    class="flex items-center flex-1 min-w-0 gap-2">
+                                                                                    <div
+                                                                                       class="flex items-start gap-2 text-wrap">
+                                                                                       <div
+                                                                                          class="flex items-center gap-2 select-text">
+                                                                                          <svg fill="none" height="20"
+                                                                                             viewbox="0 0 20 20"
+                                                                                             width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg">
+                                                                                             <path
+                                                                                                d="M15.2017 5.13281C15.4534 5.13281 15.6872 5.17777 15.903 5.26769C16.1188 5.3576 16.3106 5.48648 16.4785 5.65433C16.6463 5.82217 16.7722 6.011 16.8561 6.2208C16.9401 6.43061 16.988 6.66739 17 6.93114C17 7.17092 16.955 7.40171 16.8651 7.6235C16.7752 7.84529 16.6463 8.04011 16.4785 8.20796L9.33911 15.3563C9.17127 15.5242 8.97645 15.653 8.75466 15.743C8.53286 15.8329 8.30208 15.8808 8.0623 15.8868C7.82252 15.8868 7.59174 15.8419 7.36994 15.752C7.14815 15.662 6.95333 15.5302 6.78548 15.3563L3.53051 12.1013C3.36266 11.9335 3.23378 11.7387 3.14387 11.5169C3.05395 11.2951 3.00599 11.0643 3 10.8245C3 10.5728 3.04796 10.339 3.14387 10.1232C3.23978 9.90738 3.36866 9.71556 3.53051 9.54771C3.69236 9.37987 3.88118 9.25399 4.09698 9.17006C4.31278 9.08614 4.54956 9.03819 4.80732 9.0262C5.0471 9.0262 5.27788 9.07116 5.49968 9.16107C5.72147 9.25099 5.91629 9.37987 6.08414 9.54771L8.0623 11.5259L13.9249 5.65433C14.0927 5.48648 14.2875 5.3576 14.5093 5.26769C14.7311 5.17777 14.9619 5.13281 15.2017 5.13281Z"
+                                                                                                fill="#E5F6FF"></path>
+                                                                                          </svg>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div
+                                                                                       class="flex items-center flex-1 min-w-0 gap-2">
+                                                                                       <code
+                                                                                          class="text-[#CCEDFF99] font-mono text-sm w-full overflow-hidden">
+Starting task: Improve install.sh update feature ...</code>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <div
+                                                                                    class="text-[#939399] transition-all duration-200 ml-2 shrink-0 cursor-pointer hover:text-[#E5E5E5] p-1 -m-1"
+                                                                                    data-testid="action-display-chevron">
+                                                                                    <svg
+                                                                                       class="lucide lucide-chevron-right w-5 h-5 transition-transform duration-200 ease-in-out"
+                                                                                       fill="none" height="24"
+                                                                                       stroke="currentColor"
+                                                                                       stroke-linecap="round"
+                                                                                       stroke-linejoin="round"
+                                                                                       stroke-width="2"
+                                                                                       viewbox="0 0 24 24" width="24"
+                                                                                       xmlns="http://www.w3.org/2000/svg">
+                                                                                       <path d="m9 18 6-6-6-6"></path>
+                                                                                    </svg>
+                                                                                 </div>
+                                                                              </div>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div
+                                                               class="transition-opacity duration-200 h-[25px] max-w-4xl items-center flex justify-between mx-auto opacity-100">
+                                                               <div
+                                                                  class="flex justify-between items-center text-[#5C5F66]">
+                                                                  <span class="md:ml-14"></span>
+                                                               </div>
+                                                               <div class="text-[#5C5F66] w-full">
+                                                                  <div
+                                                                     class="relative flex items-center justify-between">
+                                                                     <div
+                                                                        class="flex items-center gap-2 opacity-0 pointer-events-none">
+                                                                        <span
+                                                                           class="text-[13px] md:text-[15px] w-full leading-[20px] font-medium font-mono text-nowrap transition-opacity text-[#CCEEFF]/30">Jan
+                                                                           8, 11:05 AM</span>
+                                                                     </div>
+                                                                     <div class="relative">
+                                                                        <div
+                                                                           class="inline-flex items-center gap-2 absolute opacity-0 pointer-events-none">
+                                                                           <button
+                                                                              class="p-[6px] pr-[10px] bg-[#222224] hover:bg-[#3c3c40] text-[#7B7B80] disabled:opacity-50 hover:text-[#ccc] flex items-center space-x-1 rounded-lg transition-colors"
+                                                                              data-state="closed" disabled=""
+                                                                              type="button">
+                                                                              <div
+                                                                                 class="flex items-center justify-center w-5 h-5">
+                                                                                 <img alt="Rollback"
+                                                                                    class="w-4 h-4 text-[#5C5F66]"
+                                                                                    src="assets/svg/svg_00004.svg" />
+                                                                              </div><span
+                                                                                 class="text-[15px] leading-[20px] font-['Inter'] font-medium">Rollback</span>
+                                                                           </button><button
+                                                                              class="justify-center duration-200 focus:outline-none p-[6px] bg-white/5 hover:bg-white/15 text-[15px] font-inter font-medium text-white/50 hover:text-white flex items-center space-x-1 rounded-lg transition-colors max-h-full bg-none"
+                                                                              data-testid="message-copy-button"
+                                                                              type="button"><svg
+                                                                                 class="lucide lucide-copy text-white/60"
+                                                                                 fill="none" height="16"
+                                                                                 stroke="currentColor"
+                                                                                 stroke-linecap="round"
+                                                                                 stroke-linejoin="round"
+                                                                                 stroke-width="2" viewbox="0 0 24 24"
+                                                                                 width="16"
+                                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                                 <rect height="14" rx="2" ry="2"
+                                                                                    width="14" x="8" y="8"></rect>
+                                                                                 <path
+                                                                                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2">
+                                                                                 </path>
+                                                                              </svg><span
+                                                                                 class="ml-1">Copy</span></button>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="mt-4">
+                                                            <div class="typing-animation-container">
+                                                               <div class="max-w-4xl mx-auto">
+                                                                  <div class="flex items-start space-x-3">
+                                                                     <div class="row-span-2"><span
+                                                                           class="relative flex shrink-0 overflow-hidden rounded-full flex-shrink-0 w-10 h-10"><span
+                                                                              class="flex h-full w-full items-center justify-center rounded-full bg-transparent"><img
+                                                                                 alt="Robot" class="h-8 w-fit"
+                                                                                 src="assets/svg/robot.svg" /></span></span>
+                                                                     </div>
+                                                                     <div class="flex flex-col w-full space-y-4">
+                                                                        <div
+                                                                           class="w-[300px] flex items-center justify-between rounded-xl p-4 pt-2 pl-0">
+                                                                           <div class="flex items-center space-x-3">
+                                                                              <p class="relative inline-block [perspective:500px] dark:[--base-color:#71717a] dark:[--base-gradient-color:#ffffff] [--base-color:#0D74CE] [--base-gradient-color:#5EB1EF] text-base"
+                                                                                 style="color:var(--base-color)"><span class="inline-block whitespace-pre [transform-style:preserve-3d]"
+                                                                                    style="color:rgb(194,194,196);transform:translateX(0.945093px) translateY(-0.945093px) translateZ(0.472546px) scale(1.04725) rotateY(9.45093deg)">Processing next step...</span>
+                                                                              </p>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="h-32"></div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div>
+                                             <div class="h-[14rem]"></div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div
+                                 class="absolute z-[40] bottom-0 left-0 right-0 px-0 max-xs:px-0 max-md:px-0 md:px-4 flex flex-col justify-center bg-transparent rounded-t-l-[14px] rounded-t-r-[14px]"
+                                 data-sf-nesting-track-id="1.2.1.1.1.1.3.1.1.1.3">
+                                 <div
+                                    class="relative flex items-center justify-center w-full md:pb-2 pb-0 md:backdrop-blur-md backdrop-blur-md rounded-t-l-[14px] rounded-t-r-[14px]"
+                                    data-sf-nesting-track-id="1.2.1.1.1.1.3.1.1.1.3.1">
+                                    <div
+                                       class="flex flex-col md:p-1 p-0 max-w-full sm:max-w-4xl md:pt-1 pt-0 w-full md:rounded-[14px] rounded-b-l-none rounded-b-r-none md:backdrop-blur-[40px] xs:backdrop-blur-[0px] shadow-sm md:bg-[#1A1A1C] rounded-t-l-[14px] rounded-t-r-[14px]"
+                                       data-sf-nesting-track-id="1.2.1.1.1.1.3.1.1.1.3.1.1"
+                                       style="background:linear-gradient(rgba(255,255,255,0.02) 0%,rgba(103,203,101,0.2) 100%);opacity:1;transform:none">
+                                       <div class="flex items-center justify-between w-full px-2 md:px-3 md:py-2">
+                                          <div class="flex items-center gap-2">
+                                             <div class="flex items-center gap-2 md:gap-4">
+                                                <div class="flex items-center gap-2 min-w-[58vw] md:min-w-fit md:gap-4">
+                                                   <div
+                                                      class="w-4 h-4 rounded-lg flex justify-center items-center animate-status-pulse"
+                                                      style="background-color:rgba(103,203,101,0.125);--status-pulse-color:#67CB6570;--status-pulse-transparent:#67CB6500">
+                                                      <div class="w-2 h-2 rounded"
+                                                         style="background-color:rgb(103,203,101)"></div>
+                                                   </div><span
+                                                      class="text-[15px] md:text-[16px] font-medium md:text-nowrap"
+                                                      data-testid="agent-status"
+                                                      style="color:rgb(103,203,101);white-space:normal">Agent is
+                                                      running...</span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <form
+                                          class="flex flex-1 flex-col md:bg-background bg-[#1A1A1C] rounded-none rounded-tl-[14px] rounded-tr-[14px] border-1 relative md:rounded-xl border-[#252526]"
+                                          data-sf-nesting-track-id="1.2.1.1.1.1.3.1.1.1.3.1.1.2"><textarea
+                                             class="w-full resize-none md:bg-background bg-[#1A1A1C] outline-none text-[16px] px-4 py-3 min-h-[64px] overflow-y-auto placeholder:text-white/50 max-h-[200px] rounded-xl"
+                                             data-testid="chat-input" placeholder="Message Agent" rows="2"
+                                             style="line-height:1.5;height:72px"></textarea>
+                                          <div
+                                             class="flex items-center justify-between p-2.5 md:bg-background bg-[#1A1A1C] rounded-xl"
+                                             data-sf-nesting-track-id="1.2.1.1.1.1.3.1.1.1.3.1.1.2.2">
+                                             <div class="relative flex items-center gap-2"
+                                                data-sf-nesting-track-id="1.2.1.1.1.1.3.1.1.1.3.1.1.2.2.1"><button
+                                                   class="p-2 transition-colors duration-200 rounded-[30px] bg-[#FFFFFF14] hover:bg-gray-100/10 group/paperclip"
+                                                   data-testid="chat-input-attach-button" type="button"><img
+                                                      alt="Attach"
+                                                      class="size-5 transition-transform duration-200 transform group-hover/paperclip:rotate-45"
+                                                      src="assets/svg/attachment.svg" /></button><input accept="*/*"
+                                                   aria-hidden="true" multiple="" style="display:none" type="file"
+                                                   value="" /><button
+                                                   class="p-2 pr-2.5 h-9 transition-colors duration-200 rounded-full flex items-center gap-1 bg-[#FFFFFF14] hover:bg-gray-100/10 opacity-50 cursor-not-allowed"
+                                                   data-testid="chat-input-github-button" disabled="" type="button"><img
+                                                      alt="GitHub" class="size-5" src="assets/svg/github.svg" /><span
+                                                      class="text-sm font-medium text-[#E6E6E6]">Save to
+                                                      GitHub</span></button>
+                                                <div class="relative transition-all duration-200">
+                                                </div>
+                                             </div>
+                                             <div class="flex items-center gap-2"><button
+                                                   class="w-[48px] px-[12px] flex py-[6px] justify-center items-center gap-[10px] max-md:h-9 rounded-[38px] bg-[#ECECEC] transition-all duration-300 hover:bg-primary/90 cursor-pointer"
+                                                   data-testid="chat-input-submit" type="submit"><img alt="pause"
+                                                      class="w-6 h-6" src="assets/svg/stop.svg" /></button></div>
+                                          </div>
+                                       </form>
+                                       <div
+                                          class="flex flex-row justify-between items-center w-full md:hidden p-[10px] bg-[#5fd3f3]/10 sf-hidden">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div style="opacity:1;width:auto">
+                           <div aria-controls=":r3e:" aria-valuemax="72" aria-valuemin="45" aria-valuenow="50"
+                              class="h-full focus-visible:ring-ring relative w-px items-center justify-center after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:translate-x-0 data-[panel-group-direction=vertical]:after:-translate-y-1/2 [&amp;[data-panel-group-direction=vertical]&gt;div]:rotate-90 group hover:bg-[#00CCAF]/60 data-[resize-handle-state=drag]:bg-[#00CCAF]/60 transition-colors duration-200 bg-[#242424] hidden md:flex"
+                              data-panel-group-direction="horizontal" data-panel-group-id=":r3d:"
+                              data-panel-resize-handle-enabled="true" data-panel-resize-handle-id=":r5a:"
+                              data-resize-handle="" data-resize-handle-state="inactive" data-slot="resizable-handle"
+                              role="separator" style="touch-action:none;user-select:none" tabindex="0">
+                              <div
+                                 class="group-hover:bg-[#00CCAF] z-10 min-w-2 min-h-6 border bg-[#242424] border-[#242424] rounded-md hover:bg-[#00CCAF] hover:border-[#00CCAF] data-[resize-handle-state=drag]:bg-[#00CCAF] data-[resize-handle-state=drag]:border-[#00CCAF] transition-all duration-200">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="h-full overflow-hidden" style="width:50%">
+                           <div class="h-full bg-[#0F0F10] md:relative absolute inset-0 w-full" data-panel=""
+                              data-panel-group-id=":r3d:" data-panel-id=":r5b:" data-panel-size="50.0"
+                              data-slot="resizable-panel" id=":r5b:" style="flex:50 1 0px;overflow:hidden">
+                              <div class="w-full h-full" style="opacity:1;transform:none">
+                                 <div class="relative w-full h-full" style="opacity:1">
+                                    <div class="absolute inset-0" data-testid="subagent-panel-container"
+                                       style="pointer-events:none;opacity:0;transform:translateX(100%)"></div>
+                                    <div class="absolute inset-0" data-testid="info-panel-container"
+                                       style="pointer-events:none;opacity:0;transform:translateX(100%)"></div>
+                                    <div class="absolute inset-0" data-testid="preview-panel-container"
+                                       style="pointer-events:auto;opacity:1;transform:none">
+                                       <div class="w-full h-full" style="pointer-events:auto">
+                                          <div
+                                             class="w-full h-full bg-[#111112] max-md:absolute max-md:inset-0 relative block">
+                                             <div class="flex flex-col h-full">
+                                                <div class="pointer-events-auto">
+                                                   <div
+                                                      class="p-4 px-0 md:p-4 bg-[#111112] z-[2] flex items-center justify-between border-b border-[#242424]/60">
+                                                      <div
+                                                         class="text-[#939399] font-['Brockmann'] text-[15px] md:text-[18px] font-medium leading-[24px]">
+                                                         App Preview</div>
+                                                      <div class="flex items-center gap-2"><button
+                                                            class="w-8 h-8 bg-[#FFFFFF0A] hover:bg-[#FFFFFF14] flex items-center justify-center rounded-[6px]"
+                                                            data-state="closed"
+                                                            data-testid="preview-panel-refresh-button" title="Refresh"
+                                                            type="button"><svg aria-label="Refresh icon" fill="none"
+                                                               focusable="false" height="20" viewbox="0 0 20 20"
+                                                               width="20" xmlns="http://www.w3.org/2000/svg">
+                                                               <path
+                                                                  d="M10.0418 16.6667C8.18072 16.6667 6.59738 16.0209 5.29183 14.7292C3.98627 13.4375 3.3335 11.8612 3.3335 10V9.85421L2.00016 11.1875L0.833496 10.0209L4.16683 6.68754L7.50016 10.0209L6.3335 11.1875L5.00016 9.85421V10C5.00016 11.3889 5.48975 12.5695 6.46891 13.5417C7.44808 14.5139 8.63905 15 10.0418 15C10.4029 15 10.7571 14.9584 11.1043 14.875C11.4516 14.7917 11.7918 14.6667 12.1252 14.5L13.3752 15.75C12.8474 16.0556 12.3057 16.2848 11.7502 16.4375C11.1946 16.5903 10.6252 16.6667 10.0418 16.6667ZM15.8335 13.3125L12.5002 9.97921L13.6668 8.81254L15.0002 10.1459V10C15.0002 8.61115 14.5106 7.4306 13.5314 6.45837C12.5522 5.48615 11.3613 5.00004 9.9585 5.00004C9.59738 5.00004 9.24322 5.04171 8.896 5.12504C8.54877 5.20837 8.2085 5.33337 7.87516 5.50004L6.62516 4.25004C7.15294 3.94449 7.69461 3.71532 8.25016 3.56254C8.80572 3.40976 9.37516 3.33337 9.9585 3.33337C11.8196 3.33337 13.4029 3.97921 14.7085 5.27087C16.014 6.56254 16.6668 8.13893 16.6668 10V10.1459L18.0002 8.81254L19.1668 9.97921L15.8335 13.3125Z"
+                                                                  fill="#737380" style="transition:fill 0.2s"></path>
+                                                            </svg></button><button
+                                                            class="w-8 h-8 bg-[#FFFFFF0A] hover:bg-[#FFFFFF14] flex items-center justify-center rounded-[6px]"
+                                                            data-state="closed"
+                                                            data-testid="preview-panel-open-new-tab-button"
+                                                            type="button"><img alt="Open in new tab" class="w-5 h-5"
+                                                               src="assets/svg/newtab.svg" /></button><button
+                                                            class="w-8 h-8 bg-[#FFFFFF0A] hover:bg-[#FFFFFF14] flex items-center justify-center rounded-[6px]"
+                                                            data-state="closed" data-testid="preview-panel-close-button"
+                                                            title="Close" type="button"><img alt="Close" class="w-5 h-5"
+                                                               src="assets/svg/close.svg" /></button></div>
+                                                   </div>
+                                                </div>
+                                                <div class="relative flex-1 p-0 overflow-hidden pointer-events-auto">
+                                                   <div class="w-full h-full flex items-center justify-center">
+                                                      <div class="h-full w-full">
+                                                         <div class="relative w-full h-full"><iframe
+                                                               class="flex-1 w-full h-full overflow-y-auto border-0 rounded-sm"
+                                                               sandbox="allow-popups allow-top-navigation-by-user-activation"
+                                                               srcdoc="&lt;html&gt;&lt;meta charset=utf-8&gt;&lt;meta name=color-scheme content=&quot;light dark&quot;&gt;&lt;meta name=referrer content=no-referrer&gt;&lt;meta http-equiv=content-security-policy content=&quot;default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;&quot;&gt;&lt;body&gt;&lt;pre style=word-wrap:break-word;white-space:pre-wrap&gt;PLACEHOLDER APP PREVIEW
+&lt;/pre&gt;" style="pointer-events:auto;transform:scale(1);transform-origin:left top;z-index:10"
+                                                               title="URL Preview"></iframe></div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="absolute inset-0 z-[49]" data-testid="deploy-panel-container"
+                                       style="pointer-events:none;opacity:0;transform:translateX(100%)"></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="absolute inset-0 mt-[56px] hidden sf-hidden" data-sf-nesting-track-id="1.2.1.1.1.1.4">
+                     <div
+                        class="relative flex flex-col items-center h-full overflow-y-scroll md:h-screen justify-between md:block bg-cover bg-center bg-no-repeat sf-hidden"
+                        data-sf-nesting-track-id="1.2.1.1.1.1.4.1" data-testid="home-container"
+                        style="background-image:var(--sf-img-19)">
+                        <div class="relative mb-14 sf-hidden">
+                           <section
+                              class="hidden md:block overflow-hidden md:py-20 pb-[15rem] md:pb-[20rem] mt-[10rem] relative sf-hidden">
+                              <div class="pointer-events-none md:overflow-auto sf-hidden"
+                                 style="position:absolute;inset:30% 0px 0px;width:100%;height:70%;opacity:0.8;background-color:rgb(15,15,16)">
+                                 <style>
+                                    @keyframes retro-grid-animation-45 {
+                                       0% {
+                                          transform: rotateX(45deg) translateY(-50%)
+                                       }
+
+                                       100% {
+                                          transform: rotateX(45deg) translateY(0)
+                                       }
+                                    }
+                                 </style>
+                              </div>
+                           </section>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div aria-label="Notifications (F8)" role="region" style="pointer-events:none" tabindex="-1">
+            <ol class="fixed top-0 z-[99999] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:left-0 sm:top-auto sm:flex-col md:max-w-[420px]"
+               tabindex="-1"></ol>
+         </div>
+      </div>
+   </div>
+   <iframe height="0" style="display:none;visibility:hidden" width="0"></iframe>
+   <script>(function Wi(n, e, t = !1) { const a = {}; n.currentScript && n.currentScript.remove(), function n(t) { const o = t.getAttribute(e); o && (a[o] = t); Array.from(t.children).forEach(n) }(n.body), Object.keys(a).forEach(n => { const e = a[n], t = n.split("."); if (t.length > 1) { const n = t.slice(0, -1).join("."), o = a[n]; o && e.parentElement !== o && o.appendChild(e) } }), t || n.querySelectorAll("[" + e + "]").forEach(n => n.removeAttribute(e)) })(document, "data-sf-nesting-track-id");</script>
+</body>
+
+</html>
