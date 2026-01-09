@@ -1,15 +1,29 @@
 # AI Implementation Guide - Emergent.sh Visual Clone
 
 ## Project Overview
+This document provides a comprehensive analysis and implementation guide for creating a pixel-perfect visual clone of the Emergent.sh AI Agent execution UI.
 
-This document provides a comprehensive analysis and implementation guide for creating a pixel-perfect visual clone of the Emergent.sh AI Agent execution UI. The goal is to refactor the existing project execution page to match the design exactly.
-
-## Project Architecture
+- Secure execution sandbox is already implemented
+- Agent-based multi-step code generation (not simple chat)
+- Supports multiple AI providers (cloud and local)
+- Supports local models via LM Studio using an OpenAI-compatible API
+- Supports small models with reduced context
+- Uses multi-step processing pipelines
+- One-command installation on Ubuntu Server 24.04 (install.sh)
 
 ### Tech Stack
 - **Frontend**: Next.js with TypeScript
 - **Backend**: Node.js with TypeScript and Fastify
 - **Python Proxy**: server.py managed by supervisor
+
+**Important constraints**:
+- The Python proxy runs on port 8001
+- Supervisor starts ONLY the Python proxy
+- The Python proxy forwards ALL requests to the Fastify backend on port 4000
+- The Python environment MUST have httpx installed
+- Code change/creation is the #1 priority of this task
+- Implement the changes first.
+- Do not in any circunstance start building frontend and backend before all the necessary code change are done.
 
 ### Current Project Structure
 ```
@@ -437,10 +451,11 @@ export const layout = {
    - Brockmann-Medium-DWnaEPVI.otf
    - Brockmann-SemiBold-DN9dX72F.otf
    - ndot-47-inspired-by-nothing-D5y43lnK.otf
+   - JetBrainsMono[wght].ttf
+   - codicon-DCmgc-ay.ttf
+   - Inter-VariableFont_opsz,wght.ttf
 
-4. **No Backend Changes**: This is purely a frontend UI task. All APIs remain unchanged.
-
-5. **Exact Visual Match**: This is NOT inspiration - it's a pixel-perfect visual cloning task. All colors, spacing, animations must match exactly.
+4. **Exact Visual Match**: This is NOT inspiration - it's a pixel-perfect visual cloning task. All colors, spacing, animations must match exactly.
 
 ---
 
