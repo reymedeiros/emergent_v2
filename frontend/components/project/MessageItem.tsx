@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Check, ChevronRight, Copy, RotateCcw, Bot, User } from 'lucide-react';
-import { colors } from '@/lib/design-tokens';
+import { Check, ChevronRight, ChevronDown, Copy, Bot, User } from 'lucide-react';
+import { emergentColors } from '@/lib/design-tokens';
 
 export interface Message {
   id: string;
@@ -12,6 +12,7 @@ export interface Message {
   type?: 'text' | 'code' | 'step' | 'file';
   status?: 'pending' | 'completed' | 'error';
   fileName?: string;
+  expandedContent?: string;
 }
 
 interface MessageItemProps {
@@ -22,8 +23,8 @@ interface MessageItemProps {
 
 export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
   const [copied, setCopied] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const isAgent = message.role === 'agent';
-  const isSystem = message.role === 'system';
   const isStep = message.type === 'step';
   const isCode = message.type === 'code';
 
@@ -34,124 +35,114 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
     onCopy?.();
   };
 
-  const formatTime = (date: Date) => {
-    return new Intl.DateTimeFormat('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true,
-    }).format(date);
+  // Parse file paths in content for highlighting
+  const renderContentWithPaths = (content: string) => {
+    // Match file paths like /app/path/file.ext
+    const pathRegex = /(\/[\w\-\/\.]+)/g;
+    const parts = content.split(pathRegex);
+    
+    return parts.map((part, index) => {
+      if (pathRegex.test(part)) {
+        return (
+          <span key={index} className="text-[#FF99FD] font-brockmann">
+            {part}
+          </span>
+        );
+      }
+      return part;
+    });
   };
 
-  // Step message (command execution)
+  // Step/Tool message (command execution)
   if (isStep || isCode) {
+    const isCompleted = message.status === 'completed';
+    
     return (
-      <div className="message-fade-in" data-testid="message-step">
-        <div className="flex items-start gap-3 py-3">
-          {/* Icon */}
-          <div className="flex-shrink-0 mt-1">
-            <div 
-              className="w-6 h-6 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: colors.secondary }}
-            >
-              <Bot className="w-3.5 h-3.5" style={{ color: colors.mutedForeground }} />
+      <div className="message-fade-in my-1" data-testid="message-step">
+        <div 
+          className="rounded-lg overflow-hidden"
+          style={{ 
+            border: `1px solid ${emergentColors.border}`,
+          }}
+        >
+          <div 
+            className="flex items-center justify-between px-4 py-2.5 cursor-pointer hover:bg-white/5 transition-colors"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            <div className="flex items-center gap-2 min-w-0 flex-1">
+              {/* Status Icon */}
+              {isCompleted ? (
+                <Check className="w-4 h-4 flex-shrink-0" style={{ color: emergentColors.stepSuccess }} />
+              ) : (
+                <div 
+                  className="w-4 h-4 rounded-full animate-pulse flex-shrink-0"
+                  style={{ backgroundColor: emergentColors.taskRunning }}
+                />
+              )}
+              
+              {/* Code/Command Text */}
+              <code 
+                className="text-[#CCEDFF99] font-mono text-sm w-full overflow-hidden"
+              >
+                <span className="flex items-center gap-2 font-mono text-wrap">
+                  {renderContentWithPaths(message.fileName || message.content)}
+                </span>
+              </code>
             </div>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 min-w-0">
-            {message.fileName && (
-              <p className="text-sm mb-2" style={{ color: colors.subtleText }}>
-                {message.content}
-              </p>
-            )}
             
+            {/* Expand/Collapse Chevron */}
+            {isExpanded ? (
+              <ChevronDown className="w-4 h-4 flex-shrink-0" style={{ color: emergentColors.mutedForeground }} />
+            ) : (
+              <ChevronRight className="w-4 h-4 flex-shrink-0" style={{ color: emergentColors.mutedForeground }} />
+            )}
+          </div>
+          
+          {/* Expanded Content */}
+          {isExpanded && message.expandedContent && (
             <div 
-              className="rounded-lg overflow-hidden"
+              className="px-4 py-3 font-mono text-sm overflow-x-auto"
               style={{ 
-                backgroundColor: colors.codeBackground,
-                border: `1px solid ${colors.codeBorder}`,
+                backgroundColor: emergentColors.codeBackground,
+                borderTop: `1px solid ${emergentColors.border}`,
+                color: emergentColors.subtleText,
               }}
             >
-              <div className="flex items-center justify-between px-4 py-2.5">
-                <div className="flex items-center gap-2">
-                  {message.status === 'completed' ? (
-                    <Check className="w-4 h-4" style={{ color: colors.stepSuccess }} />
-                  ) : (
-                    <span 
-                      className="w-4 h-4 rounded-full animate-pulse"
-                      style={{ backgroundColor: colors.taskRunning }}
-                    />
-                  )}
-                  <code 
-                    className="text-sm font-mono"
-                    style={{ color: colors.subtleText }}
-                  >
-                    {message.fileName || message.content}
-                  </code>
-                </div>
-                <ChevronRight className="w-4 h-4" style={{ color: colors.mutedForeground }} />
-              </div>
+              <pre className="whitespace-pre-wrap">{message.expandedContent}</pre>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );
   }
 
-  // Agent message
+  // Agent text message
   if (isAgent) {
     return (
-      <div className="message-fade-in py-3" data-testid="message-agent">
-        <div className="flex items-start gap-3">
-          {/* Icon */}
-          <div className="flex-shrink-0 mt-1">
-            <div 
-              className="w-6 h-6 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: colors.secondary }}
-            >
-              <Bot className="w-3.5 h-3.5" style={{ color: colors.mutedForeground }} />
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 min-w-0">
-            <p 
-              className="text-sm leading-relaxed whitespace-pre-wrap"
-              style={{ color: colors.foreground }}
-            >
-              {message.content}
-            </p>
-          </div>
-        </div>
+      <div className="message-fade-in my-3" data-testid="message-agent">
+        <p 
+          className="text-sm leading-relaxed whitespace-pre-wrap"
+          style={{ color: emergentColors.foreground }}
+        >
+          {message.content}
+        </p>
       </div>
     );
   }
 
   // Human message
   return (
-    <div className="message-fade-in py-3" data-testid="message-human">
-      <div className="flex items-start gap-3">
-        {/* Icon */}
-        <div className="flex-shrink-0 mt-1">
-          <div 
-            className="w-6 h-6 rounded-full flex items-center justify-center"
-            style={{ backgroundColor: colors.yellowPrimary }}
-          >
-            <User className="w-3.5 h-3.5" style={{ color: colors.background }} />
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 min-w-0">
-          <p 
-            className="text-sm leading-relaxed whitespace-pre-wrap"
-            style={{ color: colors.foreground }}
-          >
-            {message.content}
-          </p>
-        </div>
+    <div className="message-fade-in my-3" data-testid="message-human">
+      <div 
+        className="rounded-xl px-4 py-3 inline-block max-w-full"
+        style={{ backgroundColor: emergentColors.secondary }}
+      >
+        <p 
+          className="text-sm leading-relaxed whitespace-pre-wrap"
+          style={{ color: emergentColors.foreground }}
+        >
+          {message.content}
+        </p>
       </div>
     </div>
   );

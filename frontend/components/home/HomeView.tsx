@@ -5,13 +5,13 @@ import { ParticleBackground } from '../ui/ParticleBackground';
 import { HeroSection } from './HeroSection';
 import { PromptInput } from './PromptInput';
 import { RecentTasks } from './RecentTasks';
-import { colors } from '@/lib/design-tokens';
+import { emergentColors } from '@/lib/design-tokens';
 
 export function HomeView() {
   return (
     <div 
-      className="relative min-h-full overflow-y-auto"
-      style={{ backgroundColor: colors.background }}
+      className="relative min-h-full overflow-y-auto md:h-screen"
+      style={{ backgroundColor: emergentColors.background }}
       data-testid="home-view"
     >
       {/* Animated Background - Only visible on home */}

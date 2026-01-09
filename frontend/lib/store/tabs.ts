@@ -8,6 +8,7 @@ export interface Tab {
   type: 'home' | 'project';
   projectId?: string;
   isActive: boolean;
+  status?: 'running' | 'waiting' | 'idle'; // Agent status for the tab
 }
 
 interface TabState {
@@ -17,6 +18,7 @@ interface TabState {
   removeTab: (id: string) => void;
   setActiveTab: (id: string) => void;
   updateTabTitle: (id: string, title: string) => void;
+  updateTabStatus: (id: string, status: 'running' | 'waiting' | 'idle') => void;
 }
 
 export const useTabStore = create<TabState>((set, get) => ({
@@ -36,11 +38,11 @@ export const useTabStore = create<TabState>((set, get) => ({
         activeTabId: tab.id,
       });
     } else {
-      // Add new tab and activate it
+      // Add new tab with default 'running' status and activate it
       set({
         tabs: [
           ...tabs.map(t => ({ ...t, isActive: false })),
-          { ...tab, isActive: true }
+          { ...tab, isActive: true, status: tab.status || 'running' }
         ],
         activeTabId: tab.id,
       });
@@ -80,6 +82,12 @@ export const useTabStore = create<TabState>((set, get) => ({
   updateTabTitle: (id, title) => {
     set(state => ({
       tabs: state.tabs.map(t => t.id === id ? { ...t, title } : t),
+    }));
+  },
+
+  updateTabStatus: (id, status) => {
+    set(state => ({
+      tabs: state.tabs.map(t => t.id === id ? { ...t, status } : t),
     }));
   },
 }));

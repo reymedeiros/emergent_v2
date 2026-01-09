@@ -8,13 +8,13 @@ import {
   Mic, 
   ArrowRight,
   ChevronDown,
-  Sparkles,
   Layers,
   FileText,
   Smartphone
 } from 'lucide-react';
 import { useTabStore } from '@/lib/store/tabs';
 import { useProjectStore } from '@/lib/store/projects';
+import { emergentColors } from '@/lib/design-tokens';
 
 const AI_MODELS = [
   { id: 'claude-4.5', name: 'Claude 4.5 Sonnet', icon: '✨' },
@@ -82,12 +82,12 @@ export function PromptInput() {
               className={`
                 flex items-center gap-2 px-4 py-2.5 rounded-lg
                 transition-all duration-200 text-sm font-medium
-                ${
-                  selectedAppType.id === type.id
-                    ? 'bg-secondary text-foreground border border-border'
-                    : 'bg-transparent text-muted-foreground hover:bg-secondary/50 border border-transparent'
-                }
               `}
+              style={{
+                backgroundColor: selectedAppType.id === type.id ? emergentColors.secondary : 'transparent',
+                color: selectedAppType.id === type.id ? emergentColors.foreground : emergentColors.mutedForeground,
+                border: `1px solid ${selectedAppType.id === type.id ? emergentColors.border : 'transparent'}`,
+              }}
             >
               <Icon className="w-4 h-4" />
               <span>{type.name}</span>
@@ -97,18 +97,21 @@ export function PromptInput() {
       </div>
 
       {/* Main Input Card */}
-      <div className="bg-secondary/50 border border-border rounded-2xl p-1 backdrop-blur-sm">
+      <div 
+        className="rounded-2xl p-1 backdrop-blur-sm"
+        style={{
+          backgroundColor: `${emergentColors.secondary}80`,
+          border: `1px solid ${emergentColors.border}`,
+        }}
+      >
         <div className="p-4">
           {/* Textarea */}
           <textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Build me a clone of netflix..."
-            className="
-              w-full bg-transparent text-foreground placeholder:text-muted-foreground
-              text-base resize-none outline-none min-h-[100px]
-              leading-relaxed
-            "
+            className="w-full bg-transparent placeholder:text-white/50 text-base resize-none outline-none min-h-[100px] leading-relaxed"
+            style={{ color: emergentColors.foreground }}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
                 handleSubmit();
@@ -118,34 +121,37 @@ export function PromptInput() {
         </div>
 
         {/* Bottom Row */}
-        <div className="flex items-center justify-between px-4 pb-4 pt-2 border-t border-border/50">
+        <div 
+          className="flex items-center justify-between px-4 pb-4 pt-2"
+          style={{ borderTop: `1px solid ${emergentColors.border}50` }}
+        >
           {/* Left Actions */}
           <div className="flex items-center gap-1">
             <button 
-              className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+              className="p-2 rounded-lg hover:bg-white/5 transition-colors"
               title="Attach file"
             >
-              <Paperclip className="w-5 h-5 text-muted-foreground" />
+              <Paperclip className="w-5 h-5" style={{ color: emergentColors.mutedForeground }} />
             </button>
             <button 
-              className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+              className="p-2 rounded-lg hover:bg-white/5 transition-colors"
               title="Import from GitHub"
             >
-              <Github className="w-5 h-5 text-muted-foreground" />
+              <Github className="w-5 h-5" style={{ color: emergentColors.mutedForeground }} />
             </button>
 
             {/* Model Selector */}
             <div className="relative ml-2">
               <button
                 onClick={() => setShowModelDropdown(!showModelDropdown)}
-                className="
-                  flex items-center gap-2 px-3 py-2 rounded-lg
-                  hover:bg-muted/50 transition-colors text-sm
-                "
+                className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors text-sm"
               >
                 <span className="text-base">{selectedModel.icon}</span>
-                <span className="text-foreground font-medium">{selectedModel.name}</span>
-                <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showModelDropdown ? 'rotate-180' : ''}`} />
+                <span style={{ color: emergentColors.foreground }} className="font-medium">{selectedModel.name}</span>
+                <ChevronDown 
+                  className={`w-4 h-4 transition-transform ${showModelDropdown ? 'rotate-180' : ''}`}
+                  style={{ color: emergentColors.mutedForeground }}
+                />
               </button>
 
               {showModelDropdown && (
@@ -154,11 +160,13 @@ export function PromptInput() {
                     className="fixed inset-0 z-40" 
                     onClick={() => setShowModelDropdown(false)}
                   />
-                  <div className="
-                    absolute left-0 top-full mt-2 w-56
-                    bg-popover border border-border rounded-lg shadow-xl
-                    dropdown-enter z-50 py-2
-                  ">
+                  <div 
+                    className="absolute left-0 top-full mt-2 w-56 rounded-lg shadow-xl dropdown-enter z-50 py-2"
+                    style={{
+                      backgroundColor: emergentColors.secondary,
+                      border: `1px solid ${emergentColors.border}`,
+                    }}
+                  >
                     {AI_MODELS.map((model) => (
                       <button
                         key={model.id}
@@ -166,14 +174,13 @@ export function PromptInput() {
                           setSelectedModel(model);
                           setShowModelDropdown(false);
                         }}
-                        className={`
-                          w-full px-4 py-2.5 flex items-center gap-3 text-left
-                          hover:bg-secondary transition-colors text-sm
-                          ${selectedModel.id === model.id ? 'bg-secondary' : ''}
-                        `}
+                        className="w-full px-4 py-2.5 flex items-center gap-3 text-left hover:bg-white/5 transition-colors text-sm"
+                        style={{
+                          backgroundColor: selectedModel.id === model.id ? 'rgba(255,255,255,0.05)' : 'transparent',
+                        }}
                       >
                         <span className="text-base">{model.icon}</span>
-                        <span>{model.name}</span>
+                        <span style={{ color: emergentColors.foreground }}>{model.name}</span>
                       </button>
                     ))}
                   </div>
@@ -187,42 +194,25 @@ export function PromptInput() {
             {/* Public/Private Toggle */}
             <button 
               onClick={() => setIsPublic(!isPublic)}
-              className="
-                flex items-center gap-2 px-3 py-2 rounded-lg
-                hover:bg-muted/50 transition-colors text-sm
-              "
+              className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors text-sm"
             >
-              <Globe className="w-4 h-4 text-muted-foreground" />
-              <span className="text-foreground">{isPublic ? 'Public' : 'Private'}</span>
-            </button>
-
-            {/* Image Upload */}
-            <button className="p-2 rounded-lg hover:bg-muted/50 transition-colors">
-              <svg className="w-5 h-5 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="9" cy="9" r="2" />
-                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-              </svg>
+              <Globe className="w-4 h-4" style={{ color: emergentColors.mutedForeground }} />
+              <span style={{ color: emergentColors.foreground }}>{isPublic ? 'Public' : 'Private'}</span>
             </button>
 
             {/* Mic Button */}
-            <button className="p-2 rounded-lg hover:bg-muted/50 transition-colors">
-              <Mic className="w-5 h-5 text-muted-foreground" />
+            <button className="p-2 rounded-lg hover:bg-white/5 transition-colors">
+              <Mic className="w-5 h-5" style={{ color: emergentColors.mutedForeground }} />
             </button>
 
             {/* Submit Button */}
             <button
               onClick={handleSubmit}
               disabled={!prompt.trim()}
-              className="
-                ml-2 w-10 h-10 rounded-full bg-foreground text-background
-                flex items-center justify-center
-                hover:bg-foreground/90 transition-all
-                disabled:opacity-30 disabled:cursor-not-allowed
-                hover:scale-105 active:scale-95
-              "
+              className="ml-2 w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90 transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
+              style={{ backgroundColor: emergentColors.foreground }}
             >
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5" style={{ color: emergentColors.background }} />
             </button>
           </div>
         </div>
@@ -234,12 +224,12 @@ export function PromptInput() {
           <button
             key={example}
             onClick={() => handleExampleClick(example)}
-            className="
-              px-4 py-2 rounded-lg
-              bg-secondary/30 border border-border/50
-              hover:bg-secondary hover:border-border
-              transition-all text-sm text-muted-foreground hover:text-foreground
-            "
+            className="px-4 py-2 rounded-lg transition-all text-sm hover:bg-white/5"
+            style={{
+              backgroundColor: `${emergentColors.secondary}30`,
+              border: `1px solid ${emergentColors.border}50`,
+              color: emergentColors.mutedForeground,
+            }}
           >
             <span className="font-pixel">{example}</span>
           </button>

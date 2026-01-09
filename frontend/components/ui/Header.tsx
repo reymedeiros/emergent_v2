@@ -7,7 +7,7 @@ import { useTabStore } from '@/lib/store/tabs';
 import { TabBar } from './TabBar';
 import { ProviderSettings } from '../ProviderSettings';
 import { UserManagement } from '../UserManagement';
-import { colors } from '@/lib/design-tokens';
+import { emergentColors } from '@/lib/design-tokens';
 
 export function Header() {
   const { user, logout } = useAuthStore();
@@ -40,16 +40,13 @@ export function Header() {
     return 'U';
   };
 
-  // Check if we're on a project tab (not home)
-  const isProjectView = activeTabId !== 'home';
-
   return (
     <>
       <header 
-        className="h-14 flex items-center justify-between px-4 z-50 relative"
+        className="h-[56px] flex items-center justify-between px-4 z-50 relative"
         style={{ 
-          backgroundColor: colors.background,
-          borderBottom: `1px solid ${colors.border}`,
+          backgroundColor: emergentColors.background,
+          borderBottom: `1px solid ${emergentColors.border}`,
         }}
         data-testid="header"
       >
@@ -66,8 +63,8 @@ export function Header() {
               onClick={() => setShowProviders(!showProviders)}
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
               style={{
-                backgroundColor: colors.yellowPrimary,
-                color: colors.background,
+                backgroundColor: emergentColors.yellowPrimary,
+                color: emergentColors.background,
               }}
               data-testid="providers-button"
             >
@@ -79,15 +76,15 @@ export function Header() {
               <div 
                 className="absolute right-0 top-full mt-2 w-64 rounded-lg shadow-xl z-50"
                 style={{
-                  backgroundColor: colors.secondary,
-                  border: `1px solid ${colors.border}`,
+                  backgroundColor: emergentColors.secondary,
+                  border: `1px solid ${emergentColors.border}`,
                 }}
               >
                 <div className="p-4">
-                  <h3 className="text-sm font-semibold mb-3" style={{ color: colors.foreground }}>
+                  <h3 className="text-sm font-semibold mb-3" style={{ color: emergentColors.foreground }}>
                     LLM Providers
                   </h3>
-                  <p className="text-xs mb-4" style={{ color: colors.mutedForeground }}>
+                  <p className="text-xs mb-4" style={{ color: emergentColors.mutedForeground }}>
                     Configure your AI providers and API keys
                   </p>
                   <button
@@ -97,8 +94,8 @@ export function Header() {
                     }}
                     className="w-full px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                     style={{
-                      backgroundColor: colors.foreground,
-                      color: colors.background,
+                      backgroundColor: emergentColors.foreground,
+                      color: emergentColors.background,
                     }}
                   >
                     Manage Providers
@@ -114,9 +111,9 @@ export function Header() {
               onClick={() => setShowAvatarMenu(!showAvatarMenu)}
               className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold transition-colors"
               style={{
-                backgroundColor: colors.secondary,
-                color: colors.foreground,
-                border: `1px solid ${colors.border}`,
+                backgroundColor: emergentColors.secondary,
+                color: emergentColors.foreground,
+                border: `1px solid ${emergentColors.border}`,
               }}
               data-testid="avatar-button"
             >
@@ -127,24 +124,24 @@ export function Header() {
               <div 
                 className="absolute right-0 top-full mt-2 w-56 rounded-lg shadow-xl z-50 overflow-hidden"
                 style={{
-                  backgroundColor: colors.secondary,
-                  border: `1px solid ${colors.border}`,
+                  backgroundColor: emergentColors.secondary,
+                  border: `1px solid ${emergentColors.border}`,
                 }}
               >
                 {/* User Info */}
-                <div className="p-4" style={{ borderBottom: `1px solid ${colors.border}` }}>
+                <div className="p-4" style={{ borderBottom: `1px solid ${emergentColors.border}` }}>
                   <div className="flex items-center gap-3">
                     <div 
                       className="w-10 h-10 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: colors.background }}
+                      style={{ backgroundColor: emergentColors.background }}
                     >
                       {getUserInitial()}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate" style={{ color: colors.foreground }}>
+                      <p className="text-sm font-medium truncate" style={{ color: emergentColors.foreground }}>
                         {user?.name || 'User'}
                       </p>
-                      <p className="text-xs truncate" style={{ color: colors.mutedForeground }}>
+                      <p className="text-xs truncate" style={{ color: emergentColors.mutedForeground }}>
                         {user?.email}
                       </p>
                     </div>
@@ -156,8 +153,8 @@ export function Header() {
                   <button 
                     className="w-full px-4 py-2 flex items-center gap-3 hover:bg-white/5 transition-colors text-left"
                   >
-                    <User className="w-4 h-4" style={{ color: colors.mutedForeground }} />
-                    <span className="text-sm" style={{ color: colors.foreground }}>Profile</span>
+                    <User className="w-4 h-4" style={{ color: emergentColors.mutedForeground }} />
+                    <span className="text-sm" style={{ color: emergentColors.foreground }}>Profile</span>
                   </button>
 
                   {user?.isAdmin && (
@@ -168,19 +165,19 @@ export function Header() {
                       }}
                       className="w-full px-4 py-2 flex items-center gap-3 hover:bg-white/5 transition-colors text-left"
                     >
-                      <Users className="w-4 h-4" style={{ color: colors.mutedForeground }} />
-                      <span className="text-sm" style={{ color: colors.foreground }}>User Management</span>
+                      <Users className="w-4 h-4" style={{ color: emergentColors.mutedForeground }} />
+                      <span className="text-sm" style={{ color: emergentColors.foreground }}>User Management</span>
                     </button>
                   )}
 
                   <button 
                     className="w-full px-4 py-2 flex items-center gap-3 hover:bg-white/5 transition-colors text-left"
                   >
-                    <HelpCircle className="w-4 h-4" style={{ color: colors.mutedForeground }} />
-                    <span className="text-sm" style={{ color: colors.foreground }}>Help & Support</span>
+                    <HelpCircle className="w-4 h-4" style={{ color: emergentColors.mutedForeground }} />
+                    <span className="text-sm" style={{ color: emergentColors.foreground }}>Help & Support</span>
                   </button>
 
-                  <div className="my-2" style={{ borderTop: `1px solid ${colors.border}` }} />
+                  <div className="my-2" style={{ borderTop: `1px solid ${emergentColors.border}` }} />
 
                   <button
                     onClick={logout}
@@ -202,23 +199,23 @@ export function Header() {
           <div 
             className="w-full max-w-4xl h-[85vh] flex flex-col rounded-lg"
             style={{
-              backgroundColor: colors.background,
-              border: `1px solid ${colors.border}`,
+              backgroundColor: emergentColors.background,
+              border: `1px solid ${emergentColors.border}`,
             }}
           >
             <div 
               className="flex items-center justify-between p-4"
-              style={{ borderBottom: `1px solid ${colors.border}` }}
+              style={{ borderBottom: `1px solid ${emergentColors.border}` }}
             >
-              <h2 className="text-xl font-semibold" style={{ color: colors.foreground }}>
+              <h2 className="text-xl font-semibold" style={{ color: emergentColors.foreground }}>
                 Provider Settings
               </h2>
               <button
                 onClick={() => setShowProviderModal(false)}
                 className="px-4 py-2 rounded-md transition"
                 style={{
-                  backgroundColor: colors.secondary,
-                  color: colors.foreground,
+                  backgroundColor: emergentColors.secondary,
+                  color: emergentColors.foreground,
                 }}
               >
                 Close
@@ -237,23 +234,23 @@ export function Header() {
           <div 
             className="w-full max-w-3xl h-[80vh] flex flex-col rounded-lg"
             style={{
-              backgroundColor: colors.background,
-              border: `1px solid ${colors.border}`,
+              backgroundColor: emergentColors.background,
+              border: `1px solid ${emergentColors.border}`,
             }}
           >
             <div 
               className="flex items-center justify-between p-4"
-              style={{ borderBottom: `1px solid ${colors.border}` }}
+              style={{ borderBottom: `1px solid ${emergentColors.border}` }}
             >
-              <h2 className="text-xl font-semibold" style={{ color: colors.foreground }}>
+              <h2 className="text-xl font-semibold" style={{ color: emergentColors.foreground }}>
                 User Management
               </h2>
               <button
                 onClick={() => setShowUserManagement(false)}
                 className="px-4 py-2 rounded-md transition"
                 style={{
-                  backgroundColor: colors.secondary,
-                  color: colors.foreground,
+                  backgroundColor: emergentColors.secondary,
+                  color: emergentColors.foreground,
                 }}
               >
                 Close

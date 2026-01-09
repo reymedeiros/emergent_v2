@@ -1,48 +1,82 @@
 // Emergent.sh Design Tokens - Pixel Perfect Colors and Styles
 
-export const colors = {
-  // Core backgrounds
-  background: 'hsl(240, 3%, 6%)', // #0f0f10
-  backgroundHover: 'hsl(240, 3%, 8%)',
-  secondary: 'hsl(240, 2%, 12%)', // #1e1e20
-  secondaryHover: 'hsl(240, 2%, 15%)',
+export const emergentColors = {
+  // Backgrounds
+  background: '#0F0F10',
+  secondary: '#1A1A1C',
+  inputBackground: '#1E1E1F',
+  codeBackground: '#18181B',
+  cardBackground: '#171717',
+  hoverBackground: '#2A2A2B',
+  divider: '#242424',
+  border: '#252526',
   
-  // Text colors
-  foreground: 'hsl(210, 40%, 98%)', // #f8fafc
-  mutedForeground: 'hsl(220, 5%, 38%)', // #5c5f66
-  subtleText: 'hsl(220, 5%, 55%)',
+  // Status Colors (Agent Running)
+  agentRunningPrimary: '#67CB65',
+  agentRunningBackground: 'rgba(103,203,101,0.125)',
+  agentRunningPulse: '#67CB6570',
+  agentRunningPulseTransparent: '#67CB6500',
   
-  // Borders
-  border: 'hsl(0, 0%, 20%)', // #333333
-  borderHover: 'hsl(0, 0%, 35%)',
-  borderSubtle: 'hsl(0, 0%, 15%)',
+  // Status Colors (Agent Waiting)
+  agentWaitingPrimary: '#5FD3F3',
+  agentWaitingBackground: 'rgba(95,211,243,0.125)',
+  agentWaitingPulse: '#5FD3F370',
+  agentWaitingPulseTransparent: '#5FD3F300',
   
-  // Status colors
-  agentRunning: '#29CC83', // Green
-  agentWaiting: '#2EBBE5', // Blue/Cyan
-  taskDone: '#DDDDE6',
-  taskRunning: '#2EBBE5',
-  taskPending: '#5C5F66',
-  
-  // Step colors
-  stepInactive: '#5C5F66',
+  // Text Colors
+  foreground: '#F8FAFC',
+  mutedForeground: '#5C5F66',
+  subtleText: '#939399',
   stepTitle: '#ACACB2',
-  stepCompleted: '#939399',
+  codeText: '#CCEDFF99',
+  pathHighlight: '#FF99FD',
+  
+  // Accent Colors
+  accentTeal: '#00CCAF',
+  cyan: '#66EAFF',
+  borderBlink: '#4d9fff',
+  
+  // Task Colors
+  taskRunning: '#2EBBE5',
+  taskDone: '#DDDDE6',
   stepSuccess: '#29CC83',
+  stepInactive: '#5C5F66',
+  stepCompleted: '#939399',
   
-  // Accent colors
-  yellowPrimary: 'hsl(40, 44%, 64%)', // #C9A74D
+  // Special
+  yellowPrimary: '#C9A74D',
   yellowText: 'hsl(40, 5%, 38%)',
-  cyanAccent: '#61D7FB',
-  buyCredits: '#22C55E', // Green for Buy Credits
-  
-  // Message colors
-  humanMessage: 'hsl(240, 2%, 14%)',
+} as const;
+
+// Legacy colors export for backward compatibility
+export const colors = {
+  background: emergentColors.background,
+  backgroundHover: emergentColors.hoverBackground,
+  secondary: emergentColors.secondary,
+  secondaryHover: emergentColors.hoverBackground,
+  foreground: emergentColors.foreground,
+  mutedForeground: emergentColors.mutedForeground,
+  subtleText: emergentColors.subtleText,
+  border: emergentColors.border,
+  borderHover: '#3A3A3C',
+  borderSubtle: emergentColors.divider,
+  agentRunning: emergentColors.agentRunningPrimary,
+  agentWaiting: emergentColors.agentWaitingPrimary,
+  taskDone: emergentColors.taskDone,
+  taskRunning: emergentColors.taskRunning,
+  taskPending: emergentColors.mutedForeground,
+  stepInactive: emergentColors.stepInactive,
+  stepTitle: emergentColors.stepTitle,
+  stepCompleted: emergentColors.stepCompleted,
+  stepSuccess: emergentColors.stepSuccess,
+  yellowPrimary: emergentColors.yellowPrimary,
+  yellowText: emergentColors.yellowText,
+  cyanAccent: emergentColors.cyan,
+  buyCredits: '#22C55E',
+  humanMessage: emergentColors.secondary,
   agentMessage: 'transparent',
-  
-  // Code block
-  codeBackground: 'hsl(240, 3%, 10%)',
-  codeBorder: 'hsl(0, 0%, 22%)',
+  codeBackground: emergentColors.codeBackground,
+  codeBorder: emergentColors.border,
 } as const;
 
 export const spacing = {
@@ -56,24 +90,40 @@ export const spacing = {
 } as const;
 
 export const typography = {
-  fontFamily: "'Brockmann', 'Inter', system-ui, -apple-system, sans-serif",
-  monoFamily: "'JetBrains Mono', 'Fira Code', monospace",
-  pixelFamily: "'Ndot', monospace",
-  
-  // Font sizes
-  xs: '12px',
-  sm: '13px',
-  base: '14px',
-  md: '15px',
-  lg: '16px',
-  xl: '18px',
-  '2xl': '24px',
-  '3xl': '32px',
-  
-  // Line heights
-  tight: '1.25',
-  normal: '1.5',
-  relaxed: '1.625',
+  fontFamily: {
+    sans: "Brockmann, ui-sans-serif, system-ui, sans-serif",
+    mono: "JetBrains Mono, monospace",
+    pixel: "Ndot, monospace",
+    inter: "Inter, system-ui, sans-serif",
+  },
+  sizes: {
+    xs: '12px',
+    sm: '13px',
+    base: '14px',
+    md: '15px',
+    lg: '16px',
+    xl: '18px',
+  },
+  weights: {
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+  },
+} as const;
+
+export const layout = {
+  headerHeight: '56px',
+  tabBarHeight: '36px',
+  inputMinHeight: '64px',
+  inputMaxHeight: '200px',
+  borderRadius: {
+    sm: '4px',
+    md: '8px',
+    lg: '12px',
+    xl: '14px',
+    '2xl': '16px',
+    full: '9999px',
+  },
 } as const;
 
 export const shadows = {
