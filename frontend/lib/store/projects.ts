@@ -25,7 +25,7 @@ interface ProjectState {
   isLoading: boolean;
   
   loadProjects: () => Promise<void>;
-  createProject: (name: string, description: string, prompt: string) => Promise<void>;
+  createProject: (name: string, description: string, prompt: string) => Promise<Project>;
   selectProject: (id: string) => Promise<void>;
   deleteProject: (id: string) => Promise<void>;
   
