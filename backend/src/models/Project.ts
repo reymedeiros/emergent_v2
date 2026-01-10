@@ -6,6 +6,7 @@ export interface IProject extends Document {
   description: string;
   prompt: string;
   status: 'idle' | 'planning' | 'building' | 'running' | 'error' | 'completed';
+  codeServerPassword?: string;
   metadata: {
     stack?: string[];
     framework?: string;
@@ -25,6 +26,7 @@ const projectSchema = new Schema<IProject>({
     enum: ['idle', 'planning', 'building', 'running', 'error', 'completed'],
     default: 'idle'
   },
+  codeServerPassword: String,
   metadata: {
     stack: [String],
     framework: String,
