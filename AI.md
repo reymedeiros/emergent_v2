@@ -21,6 +21,8 @@ This document provides a comprehensive analysis and implementation guide for cre
 - Supervisor starts ONLY the Python proxy
 - The Python proxy forwards ALL requests to the Fastify backend on port 4000
 - The Python environment MUST have httpx installed
+- Code-server runs on port 8080 with global password authentication
+- Each project has an isolated workspace at `/workspace/projects/{projectId}`
 - Code change/creation is the #1 priority of this task
 - Implement the changes first.
 - Do not in any circunstance start building frontend and backend before all the necessary code change are done.
@@ -42,6 +44,7 @@ This document provides a comprehensive analysis and implementation guide for cre
 │   ├── project/
 │   │   ├── AgentChatPanel.tsx    # Chat/message interface
 │   │   ├── AgentStatus.tsx       # Status indicator
+│   │   ├── CodeServerDialog.tsx  # Code-server credentials dialog
 │   │   ├── MessageItem.tsx       # Message rendering
 │   │   ├── PreviewPanel.tsx      # App preview iframe
 │   │   └── ProjectExecutionView.tsx  # Main project view
@@ -51,10 +54,21 @@ This document provides a comprehensive analysis and implementation guide for cre
 │       ├── TabBar.tsx
 │       └── TopBar.tsx
 ├── lib/
+│   ├── api.ts               # API client with code-server endpoint
 │   ├── design-tokens.ts     # Color and style tokens
 │   └── store/               # Zustand state management
 └── public/
     └── fonts/               # Brockmann & Ndot fonts
+```
+
+/app/backend/
+├── src/
+│   ├── models/
+│   │   └── Project.ts       # Updated with codeServerPassword field
+│   ├── routes/
+│   │   └── projects.ts      # Added /projects/:id/code-server endpoint
+│   └── ...
+└── ...
 ```
 
 ---
@@ -423,6 +437,13 @@ export const layout = {
 - Border: `1px solid #252526`
 - Border radius: `8px`
 - Icon + text layout
+
+**Code Button Behavior**:
+- When clicked, fetches code-server credentials from `/api/projects/:id/code-server`
+- Opens CodeServerDialog with URL and password
+- User can copy URL and password
+- "Open in Browser" button opens code-server in new tab
+- Code-server workspace is isolated per project at `/workspace/projects/{projectId}`
 
 ---
 
