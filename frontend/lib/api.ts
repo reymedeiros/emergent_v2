@@ -60,6 +60,7 @@ export const projectsAPI = {
   create: (name: string, description: string, prompt: string) =>
     api.post('/projects', { name, description, prompt }),
   delete: (id: string) => api.delete(`/projects/${id}`),
+  getCodeServerCredentials: (id: string) => api.get(`/projects/${id}/code-server`),
 };
 
 export const filesAPI = {
