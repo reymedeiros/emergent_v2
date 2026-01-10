@@ -99,6 +99,32 @@ export function ProjectExecutionView({ projectId, projectName }: ProjectExecutio
     setIsDragging(true);
   }, []);
 
+  // Mouse move handler for resizing
+  React.useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging) return;
+      const container = document.getElementById('split-container');
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      const newWidth = ((e.clientX - rect.left) / rect.width) * 100;
+      setPanelWidth(Math.min(Math.max(newWidth, 20), 80));
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging]);
+
   const isSplitView = showPreview || showCode;
 
   return (
