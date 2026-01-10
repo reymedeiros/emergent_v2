@@ -478,6 +478,13 @@ export const layout = {
 
 4. **Exact Visual Match**: This is NOT inspiration - it's a pixel-perfect visual cloning task. All colors, spacing, animations must match exactly.
 
+5. **Code-Server Integration**: 
+   - Code-server runs on port 8080 with password authentication
+   - Each project gets an isolated workspace at `/workspace/projects/{projectId}`
+   - When "Code" button is clicked, a dialog shows the URL and password
+   - Users can copy credentials and open code-server in a new browser tab
+   - Backend API endpoint: `GET /api/projects/:id/code-server`
+
 ---
 
 ## Sample Assets Location
