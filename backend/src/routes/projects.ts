@@ -151,12 +151,13 @@ export async function projectRoutes(fastify: FastifyInstance) {
       // Get the global code-server password from environment
       const codeServerPassword = process.env.CODE_SERVER_PASSWORD || '8feb5b8f';
 
-      // Construct code-server URL
-      // Code-server will be running on port 8080 with password authentication
+      // Construct code-server URL - use network-accessible URL
       const host = request.headers.host || 'localhost:8001';
-      const protocol = request.headers['x-forwarded-proto'] || 'http';
-      const baseUrl = host.includes('localhost') ? 'http://localhost:8080' : `${protocol}://${host.replace(':8001', ':8080')}`;
-      const codeServerUrl = `${baseUrl}/?folder=/workspace/projects/${id}`;
+      const protocol = request.headers['x-forwarded-proto'] || (host.includes('localhost') ? 'http' : 'https');
+      
+      // Extract hostname and construct code-server URL on port 8080
+      const hostname = host.split(':')[0];
+      const codeServerUrl = `${protocol}://${hostname}:8080/?folder=/workspace/projects/${id}`;
 
       return {
         url: codeServerUrl,
