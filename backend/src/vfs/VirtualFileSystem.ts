@@ -138,6 +138,9 @@ export class VirtualFileSystem {
       },
     });
 
+    // Write to filesystem
+    await this.writeToFilesystem(projectId, path, content);
+
     const vFile: VirtualFile = {
       id: fileDoc._id.toString(),
       projectId: fileDoc.projectId.toString(),
