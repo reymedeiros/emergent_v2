@@ -7,6 +7,41 @@ import * as path from 'path';
 
 export class VirtualFileSystem {
   private cache: Map<string, Map<string, VirtualFile>> = new Map();
+  private workspaceRoot = '/workspace/projects';
+
+  private getProjectPath(projectId: string): string {
+    return path.join(this.workspaceRoot, projectId);
+  }
+
+  private async ensureProjectDirectory(projectId: string): Promise<void> {
+    const projectPath = this.getProjectPath(projectId);
+    await fs.mkdir(projectPath, { recursive: true });
+  }
+
+  private async writeToFilesystem(projectId: string, filePath: string, content: string): Promise<void> {
+    const projectPath = this.getProjectPath(projectId);
+    const fullPath = path.join(projectPath, filePath);
+    const dirPath = path.dirname(fullPath);
+    
+    // Ensure directory exists
+    await fs.mkdir(dirPath, { recursive: true });
+    
+    // Write file
+    await fs.writeFile(fullPath, content, 'utf8');
+  }
+
+  private async deleteFromFilesystem(projectId: string, filePath: string): Promise<void> {
+    const projectPath = this.getProjectPath(projectId);
+    const fullPath = path.join(projectPath, filePath);
+    
+    try {
+      await fs.unlink(fullPath);
+    } catch (error: any) {
+      if (error.code !== 'ENOENT') {
+        throw error;
+      }
+    }
+  }
 
   async loadProject(projectId: string): Promise<Map<string, VirtualFile>> {
     if (this.cache.has(projectId)) {
