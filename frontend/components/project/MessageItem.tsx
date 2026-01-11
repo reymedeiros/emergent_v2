@@ -167,21 +167,23 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
               
               {/* File Content with Syntax Highlighting */}
               {message.fileContent && (
-                <div className="overflow-x-auto">
-                  <SyntaxHighlighter
-                    language={message.language || getLanguageFromFileName(message.fileName || '')}
-                    style={vscDarkPlus}
-                    customStyle={{
-                      margin: 0,
-                      padding: '1rem',
-                      backgroundColor: emergentColors.codeBackground,
-                      fontSize: '13px',
-                      lineHeight: '1.5',
-                    }}
-                    showLineNumbers
-                  >
-                    {message.fileContent}
-                  </SyntaxHighlighter>
+                <div className="overflow-x-auto" style={{ backgroundColor: emergentColors.codeBackground }}>
+                  <div className="p-4">
+                    <div className="text-xs mb-2" style={{ color: emergentColors.mutedForeground }}>
+                      {message.fileName}
+                    </div>
+                    <pre 
+                      className="text-sm overflow-x-auto"
+                      style={{ 
+                        fontFamily: 'JetBrains Mono, monospace',
+                        color: '#d4d4d4',
+                        lineHeight: '1.6',
+                        margin: 0,
+                      }}
+                    >
+                      <code>{message.fileContent}</code>
+                    </pre>
+                  </div>
                 </div>
               )}
               
