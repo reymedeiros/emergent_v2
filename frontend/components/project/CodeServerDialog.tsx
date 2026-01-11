@@ -109,7 +109,7 @@ export function CodeServerDialog({ isOpen, onClose, url, password }: CodeServerD
               }}
             >
               <code
-                className="flex-1 text-sm font-mono overflow-x-auto"
+                className="flex-1 text-sm font-mono overflow-x-auto whitespace-nowrap"
                 style={{ color: emergentColors.foreground }}
               >
                 {url}
