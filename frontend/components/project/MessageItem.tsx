@@ -37,6 +37,27 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
   const isStep = message.type === 'step';
   const isCode = message.type === 'code';
 
+  // Determine file language from extension
+  const getLanguageFromFileName = (fileName: string): string => {
+    const ext = fileName.split('.').pop()?.toLowerCase() || '';
+    const languageMap: { [key: string]: string } = {
+      js: 'javascript',
+      jsx: 'jsx',
+      ts: 'typescript',
+      tsx: 'tsx',
+      py: 'python',
+      html: 'html',
+      css: 'css',
+      json: 'json',
+      md: 'markdown',
+      yml: 'yaml',
+      yaml: 'yaml',
+      sh: 'bash',
+      sql: 'sql',
+    };
+    return languageMap[ext] || 'text';
+  };
+
   // Parse file paths in content for highlighting
   const renderContentWithPaths = (content: string) => {
     // Match file paths like /app/path/file.ext
