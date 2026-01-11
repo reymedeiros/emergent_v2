@@ -11,6 +11,7 @@ import { projectRoutes } from './routes/projects';
 import { fileRoutes } from './routes/files';
 import { buildRoutes } from './routes/build';
 import { providerRoutes } from './routes/providers';
+import { previewRoutes } from './routes/preview';
 
 const fastify = Fastify({
   logger: {
