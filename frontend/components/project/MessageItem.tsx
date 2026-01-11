@@ -80,6 +80,7 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
   // Step/Tool message (command execution)
   if (isStep || isCode) {
     const isCompleted = message.status === 'completed';
+    const hasExpandableContent = message.expandedContent || message.fileContent || message.planDetails;
     
     return (
       <div className="message-fade-in my-1" data-testid="message-step">
@@ -90,8 +91,8 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
           }}
         >
           <div 
-            className="flex items-center justify-between px-4 py-2.5 cursor-pointer hover:bg-white/5 transition-colors"
-            onClick={() => setIsExpanded(!isExpanded)}
+            className={`flex items-center justify-between px-4 py-2.5 ${hasExpandableContent ? 'cursor-pointer hover:bg-white/5' : ''} transition-colors`}
+            onClick={() => hasExpandableContent && setIsExpanded(!isExpanded)}
           >
             <div className="flex items-center gap-2 min-w-0 flex-1">
               {/* Status Icon */}
@@ -118,25 +119,88 @@ export function MessageItem({ message, onRollback, onCopy }: MessageItemProps) {
             </div>
             
             {/* Expand/Collapse Chevron */}
-            {isExpanded ? (
-              <ChevronDown className="w-4 h-4 flex-shrink-0" style={{ color: emergentColors.mutedForeground }} />
-            ) : (
-              <ChevronRight className="w-4 h-4 flex-shrink-0" style={{ color: emergentColors.mutedForeground }} />
+            {hasExpandableContent && (
+              isExpanded ? (
+                <ChevronDown className="w-4 h-4 flex-shrink-0" style={{ color: emergentColors.mutedForeground }} />
+              ) : (
+                <ChevronRight className="w-4 h-4 flex-shrink-0" style={{ color: emergentColors.mutedForeground }} />
+              )
             )}
           </div>
           
           {/* Expanded Content */}
-          {isExpanded && message.expandedContent && (
+          {isExpanded && hasExpandableContent && (
             <div 
-              className="px-4 py-3 text-sm overflow-x-auto"
+              className="text-sm overflow-hidden"
               style={{ 
                 backgroundColor: emergentColors.codeBackground,
                 borderTop: `1px solid ${emergentColors.border}`,
-                color: emergentColors.subtleText,
-                fontFamily: 'JetBrains Mono, monospace'
               }}
             >
-              <pre className="whitespace-pre-wrap" style={{ fontFamily: 'JetBrains Mono, monospace' }}>{message.expandedContent}</pre>
+              {/* Plan Details */}
+              {message.planDetails && (
+                <div className="px-4 py-3 space-y-2">
+                  {message.planDetails.projectType && (
+                    <div>
+                      <span style={{ color: emergentColors.subtleText }}>Project Type: </span>
+                      <span style={{ color: emergentColors.foreground }}>{message.planDetails.projectType}</span>
+                    </div>
+                  )}
+                  {message.planDetails.stack && message.planDetails.stack.length > 0 && (
+                    <div>
+                      <span style={{ color: emergentColors.subtleText }}>Tech Stack: </span>
+                      <span style={{ color: emergentColors.foreground }}>{message.planDetails.stack.join(', ')}</span>
+                    </div>
+                  )}
+                  {message.planDetails.files && message.planDetails.files.length > 0 && (
+                    <div>
+                      <span style={{ color: emergentColors.subtleText }}>Files: </span>
+                      <div className="mt-2 space-y-1">
+                        {message.planDetails.files.map((file, idx) => (
+                          <div key={idx} className="text-[#FF99FD] font-mono text-xs pl-4">
+                            {file}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+              
+              {/* File Content with Syntax Highlighting */}
+              {message.fileContent && (
+                <div className="overflow-x-auto">
+                  <SyntaxHighlighter
+                    language={message.language || getLanguageFromFileName(message.fileName || '')}
+                    style={vscDarkPlus}
+                    customStyle={{
+                      margin: 0,
+                      padding: '1rem',
+                      backgroundColor: emergentColors.codeBackground,
+                      fontSize: '13px',
+                      lineHeight: '1.5',
+                    }}
+                    showLineNumbers
+                  >
+                    {message.fileContent}
+                  </SyntaxHighlighter>
+                </div>
+              )}
+              
+              {/* Plain Text Expanded Content */}
+              {!message.fileContent && message.expandedContent && (
+                <div className="px-4 py-3 overflow-x-auto">
+                  <pre 
+                    className="whitespace-pre-wrap" 
+                    style={{ 
+                      fontFamily: 'JetBrains Mono, monospace',
+                      color: emergentColors.subtleText,
+                    }}
+                  >
+                    {message.expandedContent}
+                  </pre>
+                </div>
+              )}
             </div>
           )}
         </div>
