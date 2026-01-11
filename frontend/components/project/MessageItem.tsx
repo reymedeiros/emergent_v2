@@ -5,14 +5,14 @@ import { Check, ChevronRight, ChevronDown } from 'lucide-react';
 import { emergentColors } from '@/lib/design-tokens';
 import dynamic from 'next/dynamic';
 
-// Dynamically import SyntaxHighlighter to avoid SSR issues
-const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter').then(mod => mod.Prism), {
-  ssr: false,
-  loading: () => <div>Loading...</div>
-});
-
-// Import the theme separately
+// Import the theme separately (this is safe)
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+
+// Dynamically import SyntaxHighlighter to avoid SSR issues
+const SyntaxHighlighter = dynamic(
+  () => import('react-syntax-highlighter').then(mod => ({ default: mod.Prism })),
+  { ssr: false }
+);
 
 export interface Message {
   id: string;
