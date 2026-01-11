@@ -10,6 +10,8 @@ This document provides a comprehensive analysis and implementation guide for cre
 - Supports small models with reduced context
 - Uses multi-step processing pipelines
 - One-command installation on Ubuntu Server 24.04 (install.sh)
+- **Real-time WebSocket communication between frontend and backend**
+- **Project creation triggers automatic build execution with live updates**
 
 ### Tech Stack
 - **Frontend**: Next.js with TypeScript
