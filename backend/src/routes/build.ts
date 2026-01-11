@@ -84,11 +84,17 @@ export async function buildRoutes(fastify: FastifyInstance) {
         project.prompt,
         providerId,
         model,
-        (message: string) => {
-          connection.socket.send(JSON.stringify({
-            type: 'progress',
-            message
-          }));
+        (data: any) => {
+          // Handle both string messages (backward compatibility) and structured messages
+          if (typeof data === 'string') {
+            connection.socket.send(JSON.stringify({
+              type: 'progress',
+              message: data
+            }));
+          } else {
+            // Send structured message as-is
+            connection.socket.send(JSON.stringify(data));
+          }
         }
       );
 
