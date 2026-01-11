@@ -691,7 +691,7 @@ echo "  ✓ Frontend built successfully"
 if [ "$MODE" = "INSTALL" ]; then
   echo ""
   echo "========================================="
-  echo "Step 12: Creating initial admin user"
+  echo "Step 13: Creating initial admin user"
   echo "========================================="
   cd "$APP_DIR/backend"
   node -e "
