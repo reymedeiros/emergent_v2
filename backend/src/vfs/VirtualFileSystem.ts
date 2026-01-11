@@ -159,6 +159,9 @@ export class VirtualFileSystem {
   async deleteFile(projectId: string, path: string): Promise<void> {
     const projectFiles = await this.loadProject(projectId);
     projectFiles.delete(path);
+    
+    // Delete from filesystem
+    await this.deleteFromFilesystem(projectId, path);
   }
 
   async getFile(projectId: string, path: string): Promise<VirtualFile | null> {
