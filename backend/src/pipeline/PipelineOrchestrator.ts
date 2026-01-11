@@ -108,7 +108,7 @@ export class PipelineOrchestrator {
   private async executeAgent(
     agentName: keyof typeof this.agents,
     context: PipelineContext,
-    onProgress?: (message: string) => void
+    onProgress?: (message: any) => void
   ): Promise<AgentResult> {
     const agent = this.agents[agentName];
     
