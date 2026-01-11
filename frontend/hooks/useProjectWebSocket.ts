@@ -73,35 +73,16 @@ export function useProjectWebSocket(projectId: string, token: string) {
       case 'progress':
         // Progress update from pipeline
         if (wsMessage.message) {
-          // Check if this is a step message (contains emoji indicators)
-          const isStep = /^(🎯|⚡|💾|✅|❌)/.test(wsMessage.message);
-          
-          if (isStep) {
-            const status = wsMessage.message.includes('✅') ? 'completed' as const : 'pending' as const;
-            setMessages((prev) => [
-              ...prev,
-              {
-                id: messageId,
-                role: 'agent' as const,
-                content: wsMessage.message || '',
-                timestamp,
-                type: 'step' as const,
-                status: status,
-                fileName: (wsMessage.message || '').replace(/^[🎯⚡💾✅❌]\s*/, ''),
-              },
-            ]);
-          } else {
-            setMessages((prev) => [
-              ...prev,
-              {
-                id: messageId,
-                role: 'agent' as const,
-                content: wsMessage.message || '',
-                timestamp,
-                type: 'text' as const,
-              },
-            ]);
-          }
+          setMessages((prev) => [
+            ...prev,
+            {
+              id: messageId,
+              role: 'agent' as const,
+              content: wsMessage.message || '',
+              timestamp,
+              type: 'text' as const,
+            },
+          ]);
         }
         setAgentStatus('running');
         break;
@@ -137,17 +118,21 @@ export function useProjectWebSocket(projectId: string, token: string) {
         break;
 
       case 'step':
-        // Specific step message
+        // Specific step message with expandable content
         setMessages((prev) => [
           ...prev,
           {
             id: messageId,
             role: 'agent' as const,
-            content: wsMessage.content || wsMessage.message || '',
+            content: wsMessage.message || '',
             timestamp,
             type: 'step' as const,
             status: (wsMessage.status === 'running' ? 'pending' : wsMessage.status) as 'pending' | 'completed' | 'error' | undefined,
             fileName: wsMessage.fileName,
+            fileContent: wsMessage.fileContent,
+            language: wsMessage.language,
+            diff: wsMessage.diff,
+            planDetails: wsMessage.planDetails,
           },
         ]);
         break;
