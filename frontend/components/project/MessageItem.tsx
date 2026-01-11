@@ -3,16 +3,26 @@
 import React, { useState } from 'react';
 import { Check, ChevronRight, ChevronDown } from 'lucide-react';
 import { emergentColors } from '@/lib/design-tokens';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 export interface Message {
   id: string;
   role: 'agent' | 'human' | 'system';
   content: string;
   timestamp: Date;
-  type?: 'text' | 'code' | 'step' | 'file';
+  type?: 'text' | 'code' | 'step' | 'file' | 'plan';
   status?: 'pending' | 'completed' | 'error';
   fileName?: string;
   expandedContent?: string;
+  fileContent?: string;
+  language?: string;
+  diff?: string;
+  planDetails?: {
+    projectType?: string;
+    stack?: string[];
+    files?: string[];
+  };
 }
 
 interface MessageItemProps {
