@@ -7,7 +7,7 @@ export class PlannerAgent extends BaseAgent {
   protected temperature = 0.3;
   protected maxTokens = 1024;
 
-  async execute(context: PipelineContext): Promise<AgentResult> {
+  async execute(context: PipelineContext, onProgress?: (message: string) => void): Promise<AgentResult> {
     this.log(context, 'Starting planning phase...');
 
     const systemPrompt = `You are a technical planning agent. Given a user's project request, break it down into:
@@ -27,7 +27,7 @@ Provide a technical plan.`;
       const response = await this.callLLM([
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt },
-      ], context.userId, context.model);
+      ], context.userId, context.providerId, context.model);
 
       const plan = this.parsePlan(response);
 

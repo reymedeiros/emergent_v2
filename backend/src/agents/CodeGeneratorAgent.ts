@@ -7,7 +7,7 @@ export class CodeGeneratorAgent extends BaseAgent {
   protected temperature = 0.5;
   protected maxTokens = 4096;
 
-  async execute(context: PipelineContext): Promise<AgentResult> {
+  async execute(context: PipelineContext, onProgress?: (message: string) => void): Promise<AgentResult> {
     this.log(context, 'Starting code generation...');
 
     const plan = context.history.find(h => h.agentType === 'Planner')?.output;
@@ -24,8 +24,12 @@ export class CodeGeneratorAgent extends BaseAgent {
     const logs: string[] = [];
 
     try {
-      for (const filePath of plan.files || []) {
+      const filesToGenerate = plan.files || [];
+      
+      for (let i = 0; i < filesToGenerate.length; i++) {
+        const filePath = filesToGenerate[i];
         this.log(context, `Generating ${filePath}...`);
+        onProgress?.(`  📝 Generating ${filePath} (${i + 1}/${filesToGenerate.length})...`);
         
         const content = await this.generateFileContent(filePath, plan, context);
         
@@ -36,6 +40,7 @@ export class CodeGeneratorAgent extends BaseAgent {
         });
 
         logs.push(`Generated ${filePath}`);
+        onProgress?.(`  ✅ Completed ${filePath}`);
       }
 
       return {
@@ -73,7 +78,7 @@ Project context:
     const response = await this.callLLM([
       { role: 'system', content: systemPrompt },
       { role: 'user', content: userPrompt },
-    ], context.userId, context.model);
+    ], context.userId, context.providerId, context.model);
 
     return this.cleanCodeResponse(response);
   }

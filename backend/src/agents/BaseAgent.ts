@@ -8,16 +8,19 @@ export abstract class BaseAgent {
   protected temperature: number = 0.7;
   protected maxTokens: number = 2048;
 
-  abstract execute(context: PipelineContext): Promise<AgentResult>;
+  abstract execute(context: PipelineContext, onProgress?: (message: string) => void): Promise<AgentResult>;
 
   protected async callLLM(
     messages: AIMessage[],
     userId: string,
+    providerId?: string,
     model?: string,
     stream: boolean = false,
     onChunk?: (chunk: string) => void
   ): Promise<string> {
-    const provider = await providerManager.getProvider(userId);
+    // Get the provider - use specified providerId or default to primary
+    const provider = await providerManager.getProvider(userId, providerId);
+    
     const config = {
       model: model || this.defaultModel,
       temperature: this.temperature,

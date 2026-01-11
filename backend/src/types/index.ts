@@ -59,6 +59,7 @@ export interface PipelineContext {
   prompt: string;
   files: Map<string, VirtualFile>;
   history: AgentResult[];
+  providerId?: string;
   model?: string;
 }
 
