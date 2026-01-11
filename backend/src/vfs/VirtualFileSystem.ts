@@ -2,6 +2,8 @@ import { VirtualFile } from '../types';
 import { File } from '../models/File';
 import mongoose from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
+import * as fs from 'fs/promises';
+import * as path from 'path';
 
 export class VirtualFileSystem {
   private cache: Map<string, Map<string, VirtualFile>> = new Map();
