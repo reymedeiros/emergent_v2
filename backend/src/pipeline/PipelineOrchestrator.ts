@@ -15,6 +15,7 @@ export class PipelineOrchestrator {
     projectId: string,
     userId: string,
     prompt: string,
+    providerId?: string,
     model?: string,
     onProgress?: (message: string) => void
   ): Promise<AgentResult[]> {
@@ -24,6 +25,7 @@ export class PipelineOrchestrator {
       prompt,
       files: await vfs.loadProject(projectId),
       history: [],
+      providerId,
       model,
     };
 
@@ -31,10 +33,12 @@ export class PipelineOrchestrator {
 
     try {
       // Send initial status
-      onProgress?.('Starting build pipeline...');
+      onProgress?.('📦 Initializing project workspace...');
       
       // Planning phase
-      onProgress?.('🎯 Planning project...');
+      onProgress?.('🎯 Planning project architecture...');
+      onProgress?.('📝 Analyzing requirements and creating blueprint...');
+      
       const planResult = await this.executeAgent('planner', context);
       results.push(planResult);
       context.history.push(planResult);
@@ -43,21 +47,42 @@ export class PipelineOrchestrator {
         throw new Error('Planning failed');
       }
 
-      onProgress?.('✅ Planning completed');
+      onProgress?.('✅ Planning phase completed!');
+      
+      // Extract plan details for display
+      const plan = planResult.output;
+      if (plan) {
+        if (plan.projectType) {
+          onProgress?.(`🏛️ Project type: ${plan.projectType}`);
+        }
+        if (plan.stack && Array.isArray(plan.stack)) {
+          onProgress?.(`🛠️ Tech stack: ${plan.stack.join(', ')}`);
+        }
+        if (plan.files && Array.isArray(plan.files)) {
+          onProgress?.(`📄 Files to generate: ${plan.files.length}`);
+        }
+      }
 
       // Code generation phase
-      onProgress?.('⚡ Generating code...');
-      const codeResult = await this.executeAgent('codeGenerator', context);
+      onProgress?.('');
+      onProgress?.('⚡ Starting code generation...');
+      
+      const codeResult = await this.executeAgent('codeGenerator', context, onProgress);
       results.push(codeResult);
       context.history.push(codeResult);
 
       if (codeResult.success && codeResult.fileOperations) {
-        onProgress?.('💾 Saving files...');
-        await this.applyFileOperations(projectId, codeResult.fileOperations);
-        onProgress?.('✅ Files saved successfully');
+        onProgress?.('');
+        onProgress?.('💾 Saving generated files to workspace...');
+        
+        await this.applyFileOperations(projectId, codeResult.fileOperations, onProgress);
+        
+        onProgress?.('✅ All files saved successfully!');
       }
 
-      onProgress?.('✅ Build pipeline completed!');
+      onProgress?.('');
+      onProgress?.('🎉 Build pipeline completed successfully!');
+      onProgress?.('🚀 Your project is ready to preview!');
 
       return results;
     } catch (error: any) {
@@ -68,7 +93,8 @@ export class PipelineOrchestrator {
 
   private async executeAgent(
     agentName: keyof typeof this.agents,
-    context: PipelineContext
+    context: PipelineContext,
+    onProgress?: (message: string) => void
   ): Promise<AgentResult> {
     const agent = this.agents[agentName];
     
@@ -82,7 +108,8 @@ export class PipelineOrchestrator {
     });
 
     try {
-      const result = await agent.execute(context);
+      // Pass onProgress to agents that support it
+      const result = await agent.execute(context, onProgress);
 
       await Execution.findByIdAndUpdate(execution._id, {
         status: result.success ? 'completed' : 'failed',
@@ -113,17 +140,20 @@ export class PipelineOrchestrator {
 
   private async applyFileOperations(
     projectId: string,
-    operations: FileOperation[]
+    operations: FileOperation[],
+    onProgress?: (message: string) => void
   ): Promise<void> {
     for (const op of operations) {
       switch (op.type) {
         case 'create':
         case 'update':
           if (op.content) {
+            onProgress?.(`  📄 Saving ${op.path}...`);
             await vfs.updateFile(projectId, op.path, op.content, op.diff);
           }
           break;
         case 'delete':
+          onProgress?.(`  🗑️ Deleting ${op.path}...`);
           await vfs.deleteFile(projectId, op.path);
           break;
       }

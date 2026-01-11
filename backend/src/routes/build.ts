@@ -64,14 +64,26 @@ export async function buildRoutes(fastify: FastifyInstance) {
 
       connection.socket.send(JSON.stringify({
         type: 'status',
-        message: 'Starting build pipeline...'
+        message: `🚀 Starting build pipeline for "${project.name}"...`
       }));
+
+      // Extract provider info from project metadata
+      const providerId = project.metadata?.providerId;
+      const model = project.metadata?.model;
+
+      if (providerId) {
+        connection.socket.send(JSON.stringify({
+          type: 'progress',
+          message: `🤖 Using AI provider: ${model || 'default model'}`
+        }));
+      }
 
       const results = await pipelineOrchestrator.executePipeline(
         projectId,
         userId,
         project.prompt,
-        project.metadata?.lastExecutionId,
+        providerId,
+        model,
         (message: string) => {
           connection.socket.send(JSON.stringify({
             type: 'progress',
