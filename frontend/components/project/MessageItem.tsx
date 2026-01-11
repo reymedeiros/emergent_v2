@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import { Check, ChevronRight, ChevronDown } from 'lucide-react';
 import { emergentColors } from '@/lib/design-tokens';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export interface Message {
   id: string;
