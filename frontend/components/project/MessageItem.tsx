@@ -3,16 +3,8 @@
 import React, { useState } from 'react';
 import { Check, ChevronRight, ChevronDown } from 'lucide-react';
 import { emergentColors } from '@/lib/design-tokens';
-import dynamic from 'next/dynamic';
-
-// Import the theme separately (this is safe)
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-
-// Dynamically import SyntaxHighlighter to avoid SSR issues
-const SyntaxHighlighter = dynamic(
-  () => import('react-syntax-highlighter').then(mod => ({ default: mod.Prism })),
-  { ssr: false }
-);
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export interface Message {
   id: string;
