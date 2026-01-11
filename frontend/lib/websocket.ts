@@ -10,7 +10,15 @@ export interface WebSocketMessage {
   role?: 'agent' | 'system';
   content?: string;
   fileName?: string;
-  status?: 'running' | 'completed' | 'failed';
+  status?: 'running' | 'completed' | 'failed' | 'pending';
+  fileContent?: string;
+  language?: string;
+  diff?: string;
+  planDetails?: {
+    projectType?: string;
+    stack?: string[];
+    files?: string[];
+  };
 }
 
 export type WebSocketStatus = 'connecting' | 'connected' | 'disconnected' | 'error';
