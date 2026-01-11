@@ -7,7 +7,7 @@ export class CodeGeneratorAgent extends BaseAgent {
   protected temperature = 0.5;
   protected maxTokens = 4096;
 
-  async execute(context: PipelineContext, onProgress?: (message: string) => void): Promise<AgentResult> {
+  async execute(context: PipelineContext, onProgress?: (message: any) => void): Promise<AgentResult> {
     this.log(context, 'Starting code generation...');
 
     const plan = context.history.find(h => h.agentType === 'Planner')?.output;
@@ -29,7 +29,14 @@ export class CodeGeneratorAgent extends BaseAgent {
       for (let i = 0; i < filesToGenerate.length; i++) {
         const filePath = filesToGenerate[i];
         this.log(context, `Generating ${filePath}...`);
-        onProgress?.(`  📝 Generating ${filePath} (${i + 1}/${filesToGenerate.length})...`);
+        
+        // Send step with pending status
+        onProgress?.({
+          type: 'step',
+          message: `📝 Generating ${filePath} (${i + 1}/${filesToGenerate.length})`,
+          status: 'pending',
+          fileName: filePath,
+        });
         
         const content = await this.generateFileContent(filePath, plan, context);
         
@@ -40,7 +47,15 @@ export class CodeGeneratorAgent extends BaseAgent {
         });
 
         logs.push(`Generated ${filePath}`);
-        onProgress?.(`  ✅ Completed ${filePath}`);
+        
+        // Send step with completed status and file content
+        onProgress?.({
+          type: 'step',
+          message: `✅ Completed ${filePath}`,
+          status: 'completed',
+          fileName: filePath,
+          fileContent: content,
+        });
       }
 
       return {
