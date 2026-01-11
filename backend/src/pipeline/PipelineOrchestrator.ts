@@ -17,7 +17,7 @@ export class PipelineOrchestrator {
     prompt: string,
     providerId?: string,
     model?: string,
-    onProgress?: (message: string) => void
+    onProgress?: (message: any) => void
   ): Promise<AgentResult[]> {
     const context: PipelineContext = {
       projectId,
@@ -33,11 +33,11 @@ export class PipelineOrchestrator {
 
     try {
       // Send initial status
-      onProgress?.('📦 Initializing project workspace...');
+      onProgress?.({ type: 'progress', message: '📦 Initializing project workspace...' });
       
       // Planning phase
-      onProgress?.('🎯 Planning project architecture...');
-      onProgress?.('📝 Analyzing requirements and creating blueprint...');
+      onProgress?.({ type: 'progress', message: '🎯 Planning project architecture...' });
+      onProgress?.({ type: 'progress', message: '📝 Analyzing requirements and creating blueprint...' });
       
       const planResult = await this.executeAgent('planner', context);
       results.push(planResult);
@@ -47,46 +47,60 @@ export class PipelineOrchestrator {
         throw new Error('Planning failed');
       }
 
-      onProgress?.('✅ Planning phase completed!');
+      onProgress?.({ type: 'progress', message: '✅ Planning phase completed!' });
       
       // Extract plan details for display
       const plan = planResult.output;
       if (plan) {
+        // Send detailed plan as a step with expandable content
+        if (plan.projectType || plan.stack || plan.files) {
+          onProgress?.({ 
+            type: 'step',
+            message: '📋 Project Blueprint',
+            status: 'completed',
+            planDetails: {
+              projectType: plan.projectType,
+              stack: plan.stack,
+              files: plan.files,
+            }
+          });
+        }
+        
         if (plan.projectType) {
-          onProgress?.(`🏛️ Project type: ${plan.projectType}`);
+          onProgress?.({ type: 'progress', message: `🏛️ Project type: ${plan.projectType}` });
         }
         if (plan.stack && Array.isArray(plan.stack)) {
-          onProgress?.(`🛠️ Tech stack: ${plan.stack.join(', ')}`);
+          onProgress?.({ type: 'progress', message: `🛠️ Tech stack: ${plan.stack.join(', ')}` });
         }
         if (plan.files && Array.isArray(plan.files)) {
-          onProgress?.(`📄 Files to generate: ${plan.files.length}`);
+          onProgress?.({ type: 'progress', message: `📄 Files to generate: ${plan.files.length}` });
         }
       }
 
       // Code generation phase
-      onProgress?.('');
-      onProgress?.('⚡ Starting code generation...');
+      onProgress?.({ type: 'progress', message: '' });
+      onProgress?.({ type: 'progress', message: '⚡ Starting code generation...' });
       
       const codeResult = await this.executeAgent('codeGenerator', context, onProgress);
       results.push(codeResult);
       context.history.push(codeResult);
 
       if (codeResult.success && codeResult.fileOperations) {
-        onProgress?.('');
-        onProgress?.('💾 Saving generated files to workspace...');
+        onProgress?.({ type: 'progress', message: '' });
+        onProgress?.({ type: 'progress', message: '💾 Saving generated files to workspace...' });
         
         await this.applyFileOperations(projectId, codeResult.fileOperations, onProgress);
         
-        onProgress?.('✅ All files saved successfully!');
+        onProgress?.({ type: 'progress', message: '✅ All files saved successfully!' });
       }
 
-      onProgress?.('');
-      onProgress?.('🎉 Build pipeline completed successfully!');
-      onProgress?.('🚀 Your project is ready to preview!');
+      onProgress?.({ type: 'progress', message: '' });
+      onProgress?.({ type: 'progress', message: '🎉 Build pipeline completed successfully!' });
+      onProgress?.({ type: 'progress', message: '🚀 Your project is ready to preview!' });
 
       return results;
     } catch (error: any) {
-      onProgress?.(`❌ Pipeline failed: ${error.message}`);
+      onProgress?.({ type: 'error', message: `❌ Pipeline failed: ${error.message}` });
       throw error;
     }
   }
