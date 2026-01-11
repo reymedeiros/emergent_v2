@@ -568,9 +568,9 @@ echo ""
 # ============================================
 
 if [ "$MODE" = "INSTALL" ]; then
-  STEP_NUM=9
+  STEP_NUM=10
 else
-  STEP_NUM=2
+  STEP_NUM=3
 fi
 
 echo "========================================="
