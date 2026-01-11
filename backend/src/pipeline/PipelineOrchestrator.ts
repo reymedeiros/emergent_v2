@@ -155,19 +155,31 @@ export class PipelineOrchestrator {
   private async applyFileOperations(
     projectId: string,
     operations: FileOperation[],
-    onProgress?: (message: string) => void
+    onProgress?: (message: any) => void
   ): Promise<void> {
     for (const op of operations) {
       switch (op.type) {
         case 'create':
         case 'update':
           if (op.content) {
-            onProgress?.(`  📄 Saving ${op.path}...`);
+            // Send step message with file content
+            onProgress?.({
+              type: 'step',
+              message: `📄 Saving ${op.path}`,
+              status: 'completed',
+              fileName: op.path,
+              fileContent: op.content,
+            });
             await vfs.updateFile(projectId, op.path, op.content, op.diff);
           }
           break;
         case 'delete':
-          onProgress?.(`  🗑️ Deleting ${op.path}...`);
+          onProgress?.({
+            type: 'step',
+            message: `🗑️ Deleting ${op.path}`,
+            status: 'completed',
+            fileName: op.path,
+          });
           await vfs.deleteFile(projectId, op.path);
           break;
       }
